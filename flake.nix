@@ -12,7 +12,10 @@
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [ ./hosts/nixos.nix ];
+        modules = [
+          ./hosts/nixos.nix 
+          ./users/augusto/user.nix
+        ];
       };
     };
   };

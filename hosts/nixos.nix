@@ -46,13 +46,6 @@
     spice-vdagentd.enable = true;
   };
 
-  users.users.nix = {
-    isNormalUser = true;
-    description = "nix";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages =  [ ];
-  };
-
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
