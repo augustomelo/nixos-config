@@ -3,7 +3,7 @@
 {
   imports =
     [ 
-      ./hardware/aarch64-linux-utm.nix
+      ./hardware/vm-aarch64-utm.nix
     ];
 
   boot.loader = {
@@ -53,4 +53,10 @@
 
   system.stateVersion = "24.11";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  fileSystems."/mnt/utm" =
+    { device = "share";
+      fsType = "9p";
+      options = [ "trans=virtio" "version=9p2000.L" "rw" "_netdev" "nofail" "auto" ];
+    };
 }

@@ -12,13 +12,13 @@
   outputs = { nixpkgs, home-manager, ... } :
     let
       system = "aarch64-linux";
-      username = "nix";
+      username = "augusto";
     in {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      vm-aarch64-utm = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./hosts/nixos.nix 
+          ./hosts/vm-aarch64-utm.nix
           ./users/augusto/user.nix
           home-manager.nixosModules.home-manager
           {
