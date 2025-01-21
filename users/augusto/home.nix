@@ -19,5 +19,18 @@
       enable = true;
     };
   };
+
+  wayland.windowManager.sway = {
+    enable = true;
+    config = {
+      terminal = "ghostty";
+      modifier = "Mod4";
+      output = {
+        "Virtual-1" = {
+          mode = "1920x1080@60Hz";
+        };
+      };
+    };
+  };
 }
 

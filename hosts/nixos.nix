@@ -33,26 +33,23 @@
     };
   };
 
+  security.polkit.enable = true;
+  hardware.opengl.enable = true;
+
   services = {
-    xserver = {
-      enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-      xkb = {
-        layout = "us";
-        variant = "altgr-intl";
-      };
-    }; 
     spice-vdagentd.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-     neovim 
-     xsel
-     git
-  ];
+  environment = {
+    # variables.LIBGL_ALWAYS_SOFTWARE = "1";
+    systemPackages = with pkgs; [
+      neovim 
+        xsel
+        git
+    ];
+  };
 
   system.stateVersion = "24.11";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
