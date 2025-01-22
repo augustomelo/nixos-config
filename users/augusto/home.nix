@@ -9,10 +9,16 @@
     stateVersion = "24.11";
     username = username;
 
+    sessionVariables = {
+      GSK_RENDERER = "gl";
+    };
+
     packages = with pkgs; [
       home-manager
+      foot
     ];
   };
+
 
   programs = {
     ghostty = {
@@ -20,17 +26,11 @@
     };
   };
 
-  wayland.windowManager.sway = {
+  xsession.windowManager.i3 = {
     enable = true;
     config = {
       terminal = "ghostty";
       modifier = "Mod4";
-      output = {
-        "Virtual-1" = {
-          mode = "1920x1080@60Hz";
-        };
-      };
     };
   };
 }
-

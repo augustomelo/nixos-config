@@ -1,5 +1,5 @@
 {
-  description = "NixOS system and dotfiles configuration";
+  description = "NixOS system and home-manager configuration";
 
   inputs = {
     nixpkgs.url =  "github:nixos/nixpkgs/nixos-unstable";
@@ -11,20 +11,21 @@
 
   outputs = { nixpkgs, home-manager, ... } :
     let
+      host = "vm-aarch64-fusion";
       system = "aarch64-linux";
       username = "augusto";
     in {
     nixosConfigurations = {
-      vm-aarch64-utm = nixpkgs.lib.nixosSystem {
+      ${host} = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./hosts/vm-aarch64-utm.nix
-          ./users/augusto/user.nix
+          ./hosts/${host}.nix
+          ./users/${username}/user.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${username} = import ./users/augusto/home.nix;
+            home-manager.users.${username} = import ./users/${username}/home.nix;
             home-manager.extraSpecialArgs = { inherit username; };
           }
         ];

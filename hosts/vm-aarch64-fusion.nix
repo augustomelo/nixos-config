@@ -3,7 +3,7 @@
 {
   imports =
     [ 
-      ./hardware/vm-aarch64-utm.nix
+      ./hardware/vm-aarch64-fusion.nix
     ];
 
   boot.loader = {
@@ -34,13 +34,22 @@
   };
 
   security.polkit.enable = true;
-  hardware.opengl.enable = true;
-
-  services = {
-    spice-vdagentd.enable = true;
-  };
-
+  hardware.graphics.enable = true;
   nixpkgs.config.allowUnfree = true;
+
+  virtualisation.vmware.guest.enable = true;
+  fileSystems."/mnt/shared" = {
+    device = ".host:/";
+    fsType = "fuse./run/current-system/sw/bin/vmhgfs-fuse";
+    options = [
+      "umask=22"
+      "uid=1000"
+      "gid=100"
+      "allow_other"
+      "defaults"
+      "auto_unmount"
+    ];
+  };
 
   environment = {
     # variables.LIBGL_ALWAYS_SOFTWARE = "1";
@@ -51,12 +60,15 @@
     ];
   };
 
+  services.xserver = {
+    enable = true;
+    windowManager.i3.enable = true;
+  };
+
+  services.displayManager = {
+    defaultSession = "none+i3";
+  };
+
   system.stateVersion = "24.11";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  fileSystems."/mnt/utm" =
-    { device = "share";
-      fsType = "9p";
-      options = [ "trans=virtio" "version=9p2000.L" "rw" "_netdev" "nofail" "auto" ];
-    };
 }
