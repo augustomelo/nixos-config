@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   # Create a user with my name
   # Set the defalt shell, home and password
@@ -7,9 +7,13 @@
   # users.mutableUsers = false;
   # To generate a hashed password run mkpasswd
   # https://search.nixos.org/options?channel=24.11&show=users.users.%3Cname%3E.hashedPassword&from=0&size=50&sort=relevance&type=packages&query=users.users
-  users.users.nix = {
+
+  # programs.zsh.enable = true;
+
+  users.users.augusto = {
+    home = "/home/augusto";
     isNormalUser = true;
-    description = "nix";
+    # shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages =  [ ];
   };

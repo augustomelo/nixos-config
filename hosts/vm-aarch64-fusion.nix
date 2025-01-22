@@ -60,14 +60,20 @@
     ];
   };
 
-  services.xserver = {
-    enable = true;
-    windowManager.i3.enable = true;
+  services = {
+    xserver = {
+      enable = true;
+      windowManager.i3.enable = true;
+      xkb = {
+        layout = "us";
+        variant = "alt-intl";
+      };
+    };
+    displayManager = {
+      defaultSession = "none+i3";
+    };
   };
 
-  services.displayManager = {
-    defaultSession = "none+i3";
-  };
 
   system.stateVersion = "24.11";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
