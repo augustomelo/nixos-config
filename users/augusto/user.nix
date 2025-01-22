@@ -10,11 +10,13 @@
 
   # programs.zsh.enable = true;
 
+  users.mutableUsers = false;
+
   users.users.augusto = {
     home = "/home/augusto";
     isNormalUser = true;
     # shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
-    packages =  [ ];
+    hashedPassword = "$y$j9T$A2Oqm8m8.5Zum//7XtpHn0$J4cfByRWsz2xGxEl6tSF8hDrrj/kaF4J5f3GsIlryX8";
   };
 }
