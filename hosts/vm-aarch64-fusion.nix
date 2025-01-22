@@ -52,11 +52,16 @@
   };
 
   environment = {
-    # variables.LIBGL_ALWAYS_SOFTWARE = "1";
+    variables = {
+      GDK_SCALE = "2";
+    };
     systemPackages = with pkgs; [
       neovim 
         xsel
         git
+        (writeShellScriptBin "xrandr-auto" ''
+         xrandr --output Virtual-1 --auto
+         '')
     ];
   };
 

@@ -9,13 +9,8 @@
     stateVersion = "24.11";
     username = username;
 
-    sessionVariables = {
-      GSK_RENDERER = "gl";
-    };
-
     packages = with pkgs; [
       home-manager
-      foot
     ];
   };
 
@@ -31,6 +26,9 @@
     config = {
       terminal = "ghostty";
       modifier = "Mod4";
+      startup = [
+        { command = "exec xrandr --dpi 192"; }
+      ];
     };
   };
 }
