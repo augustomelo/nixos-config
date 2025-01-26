@@ -8,14 +8,14 @@
   # To generate a hashed password run mkpasswd
   # https://search.nixos.org/options?channel=24.11&show=users.users.%3Cname%3E.hashedPassword&from=0&size=50&sort=relevance&type=packages&query=users.users
 
-  # programs.zsh.enable = true;
+  programs.zsh.enable = true;
 
   users.mutableUsers = false;
 
   users.users.augusto = {
     home = "/home/augusto";
     isNormalUser = true;
-    # shell = pkgs.zsh;
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     hashedPassword = "$y$j9T$5qUofB6UibbNyT6gQ7nDX/$QpaTGYmim85ItVepaLalPmtPg1D/A6eFJj6YsCWMQfB";
   };
