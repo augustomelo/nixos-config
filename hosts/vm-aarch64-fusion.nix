@@ -7,7 +7,10 @@
     ];
 
   boot.loader = {
-    systemd-boot.enable = true;
+    systemd-boot = {
+      enable = true;
+      consoleMode = "0";
+    };
     efi.canTouchEfiVariables = true;
   };
 
@@ -33,7 +36,11 @@
     };
   };
 
-  security.polkit.enable = true;
+  security = {
+    polkit.enable = true;
+    sudo.wheelNeedsPassword = false;
+  };
+
   hardware.graphics.enable = true;
   nixpkgs.config.allowUnfree = true;
 
