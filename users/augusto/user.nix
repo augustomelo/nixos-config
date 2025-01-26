@@ -12,7 +12,7 @@
 
   users = {
     mutableUsers = false;
-    augusto = {
+    users.augusto = {
       home = "/home/augusto";
       isNormalUser = true;
       shell = pkgs.zsh;
