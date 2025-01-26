@@ -17,6 +17,6 @@
     isNormalUser = true;
     # shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
-    hashedPassword = "$y$j9T$A2Oqm8m8.5Zum//7XtpHn0$J4cfByRWsz2xGxEl6tSF8hDrrj/kaF4J5f3GsIlryX8";
+    hashedPassword = "$y$j9T$5qUofB6UibbNyT6gQ7nDX/$QpaTGYmim85ItVepaLalPmtPg1D/A6eFJj6YsCWMQfB";
   };
 }
