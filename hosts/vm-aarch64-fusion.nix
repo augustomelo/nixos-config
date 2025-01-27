@@ -73,10 +73,7 @@
     xserver = {
       enable = true;
       windowManager.i3.enable = true;
-      xkb = {
-        layout = "us";
-        variant = "alt-intl";
-      };
+      xkb.layout = "us";
     };
     displayManager = {
       defaultSession = "none+i3";
