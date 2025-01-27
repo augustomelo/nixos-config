@@ -11,6 +11,9 @@
 
     packages = with pkgs; [
       home-manager
+      neovim 
+      xsel
+      git
     ];
   };
 
