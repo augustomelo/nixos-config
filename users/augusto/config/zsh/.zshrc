@@ -2,7 +2,7 @@ for func in $ZDOTDIR/functions/*(N:t); autoload $func
 
 # The history configuration needs to be here, if the env varibles are on
 # .zshenv they are rolled back to the default values
-export HISTFILE="$XDG_CACHE_HOME/zsh/history"
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export HISTSIZE=50000
 export SAVEHIST=50000
 
