@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # https://nix-community.github.io/home-manager/index.xhtml#_why_are_the_session_variables_not_set
-. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+. "/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
 
 export SHELL="$HOME/.nix-profile/bin/zsh"
 
