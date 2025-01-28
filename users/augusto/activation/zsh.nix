@@ -18,8 +18,7 @@
       $DRY_RUN_CMD ${pkgs.docker}/bin/docker completion zsh > "$completion_folder/_docker"
       # ghostty completion comes bundle up with the application
       $DRY_RUN_CMD ${pkgs.kubectl}/bin/kubectl completion zsh > "$completion_folder/_kubectl"
-      $DRY_RUN_CMD ${pkgs.rg}/bin/rg --generate complete-zsh > "$completion_folder/_rg"
-      $DRY_RUN_CMD ${pkgs.wezterm}/bin/wezterm shell-completion --shell zsh > "$completion_folder/_wezterm" 
+      $DRY_RUN_CMD ${pkgs.ripgrep}/bin/rg --generate complete-zsh > "$completion_folder/_rg"
 
       $DRY_RUN_CMD ${pkgs.curl}/bin/curl -o "$completion_folder/_delta" https://raw.githubusercontent.com/dandavison/delta/refs/heads/main/etc/completion/completion.zsh
       $DRY_RUN_CMD ${pkgs.curl}/bin/curl -o "$completion_folder/_eza" https://raw.githubusercontent.com/eza-community/eza/refs/heads/main/completions/zsh/_eza
