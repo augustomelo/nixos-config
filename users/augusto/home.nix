@@ -135,6 +135,11 @@
     };
   };
 
+  imports = [
+    ./activation/vale.nix
+    ./activation/zsh.nix
+  ];
+
   nix.gc = {
     automatic = true;
     frequency = "weekly";
