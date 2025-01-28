@@ -8,6 +8,7 @@
     flavor = "macchiato";
     fzf.enable = true;
     k9s.enable = true;
+    kvantum.enable = false;
     tmux = {
       enable = true;
       extraConfig = ''
@@ -140,12 +141,6 @@
     randomizedDelaySec = "10m";
     persistent = true;
     options = "--delete-older-than 15d";
-  };
-  
-  qt = {
-    enable = true;
-    platformTheme.name = "kvantum";
-    style.name = "kvantum";
   };
   
   xdg.enable = true;
