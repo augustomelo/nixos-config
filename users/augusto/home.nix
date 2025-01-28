@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   ...
 }: {
@@ -21,16 +20,6 @@
   };
 
   home = {
-    activation = {
-      zshActivation = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        ./activation/zsh.zsh
-      '';
-
-      valeActivation = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        ./activation/vale.zsh
-      '';
-    };
-
     file.".config" = { source = ./config; recursive = true; };
     stateVersion = "24.11";
 
