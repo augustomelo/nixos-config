@@ -22,12 +22,16 @@
         modules = [
           ./hosts/${host}.nix
           ./users/${username}/user.nix
-          catppuccin.homeManagerModules.catppuccin
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${username} = import ./users/${username}/home.nix;
+            home-manager.users.${username} = {
+              imports = [
+                ./users/${username}/home.nix
+                catppuccin.homeManagerModules.catppuccin
+              ];
+            };
           }
         ];
       };
