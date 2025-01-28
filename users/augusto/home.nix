@@ -23,11 +23,11 @@
   home = {
     activation = {
       zshActivation = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        ${pkgs.zsh}/bin/zsh ./activation/zsh.zsh
+        ./activation/zsh.zsh
       '';
 
       valeActivation = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        ${pkgs.zsh}/bin/zsh ./activation/vale.zsh
+        ./activation/vale.zsh
       '';
     };
 
@@ -48,7 +48,7 @@
       hurl
       kubectl
       kubelogin-oidc
-      libsForQt5.qtstyleplugin-kvantum
+      make
       neovim
       neovim 
       ripgrep
