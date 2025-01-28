@@ -36,7 +36,8 @@
 
   environment = {
     variables = {
-      GDK_SCALE = "2";
+      QT_AUTO_SCREEN_SCALE_FACTOR = 1;
+      QT_ENABLE_HIGHDPI_SCALING = 1;
     };
 
     systemPackages = with pkgs; [
