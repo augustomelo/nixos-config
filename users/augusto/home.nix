@@ -141,6 +141,12 @@
     options = "--delete-older-than 15d";
   };
   
+  qt = {
+    enable = true;
+    platformTheme.name = "kvantum";
+    style.name = "kvantum";
+  };
+  
   xdg.enable = true;
 
   xsession.windowManager.i3 = {
