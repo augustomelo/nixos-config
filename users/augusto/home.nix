@@ -43,12 +43,12 @@
       fd
       fzf-git-sh
       git
+      gnumake
       go
       home-manager
       hurl
       kubectl
       kubelogin-oidc
-      make
       neovim
       neovim 
       ripgrep
