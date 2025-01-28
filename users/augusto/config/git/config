@@ -1,0 +1,115 @@
+# vim: set filetype=gitconfig:
+
+[user]
+  name = Augusto Melo
+  email = 4723788+augustomelo@users.noreply.github.com
+
+[advice]
+  addEmptyPathspec = false
+
+[alias]
+  cb = "!f() { \
+    if [ $# -eq 0 ]; then \
+      echo \"You need to provide a branch name\"; \
+    else\
+      defaultbranch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p'); \
+      git fetch origin $defaultbranch:$defaultbranch; \
+      git switch -c $1 $defaultbranch; \
+    fi \
+  }; f"
+
+  cm = commit
+
+  cma = commit --amend
+
+  cmane = commit --amend --no-edit
+
+  commitsAtDate = "!f() { \
+    git log --after=\"$1 0:00\" --before=\"$1 23:59\"; \
+  }; f"
+
+  pl = "!git pull origin "$(git symbolic-ref --short HEAD)""
+
+  ps = "!git push origin "$(git symbolic-ref --short HEAD)""
+
+  rebaseall = "!f() { \
+    currbranch=$(git symbolic-ref --short HEAD); \
+    defaultbranch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p'); \
+    git rebase -i $(git merge-base $currbranch $defaultbranch); \
+  }; f"
+
+  root = rev-parse --show-toplevel
+
+  st = status
+
+  sync = "!f() { \
+    defaultbranch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p'); \
+    git fetch origin $defaultbranch:$defaultbranch; \
+    git rebase $defaultbranch; \
+  }; f"
+
+  tidy = "!f() { \
+    defaultbranch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p'); \
+    git switch $1 $defaultbranch; \
+    git branch | grep -v $defaultbranch | xargs git branch -D; \
+  }; f"
+
+  unstage = reset HEAD --
+
+  wcb = "!f() { \
+    if [ $# -eq 0 ]; then \
+      echo \"You need to provide a branch name\"; \
+    else\
+      currdir=$(basename $(pwd)); \
+      dstdir=$(echo $currdir-$1 | tr / -); \
+      git worktree add "../$dstdir"  -b $1; \
+    fi \
+  }; f"
+
+[core]
+  editor = nvim
+  excludesFile = ~/.config/git/ignore
+  pager = delta
+
+[delta]
+  blame-timestamp-output-format = %y/%m/%d %R
+  navigate = true
+  side-by-side = true
+
+[diff]
+  colorMoved = default
+
+[format]
+  pretty = %C(auto)%h %as | %s - %aN<%aE> %d
+
+[includeIf "gitdir:~/workspace/work/"]
+  path = ~/workspace/work/.gitconfig
+
+[init]
+  defaultBranch = main
+
+[interactive]
+  diffFilter = delta --color-only
+
+[maintenance]
+  auto = false
+  strategy = incremental
+
+[merge]
+  tool = nvim
+
+[mergetool]
+  keepBackup = false
+
+[mergetool "nvim"]
+  cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
+
+[pull]
+  ff = only
+
+[push]
+  autoSetupRemote = true
+
+[rebase]
+  updateRefs = true
+
