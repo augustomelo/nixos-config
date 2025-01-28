@@ -36,6 +36,7 @@
       hurl
       kubectl
       kubelogin-oidc
+      libsForQt5.qtstyleplugin-kvantum
       neovim
       neovim 
       ripgrep
