@@ -41,12 +41,11 @@ vm/install-user-config:
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) root@$(NIXADDR) " \
 		cd / && \
 		nix shell nixpkgs#git --command git clone https://github.com/augustomelo/nixos-config.git && \
-		nixos-rebuild switch --flake \"/nixos-config#${NIXNAME}\" && \
-		mkdir -p /home/${NIXUSER}/workspace/{work,personal} && \
-		chown -R augusto: /home/${NIXUSER}/workspace && \
-		chown -R augusto: /nixos-config && \
-		mv /nixos-config /home/${NIXUSER}/workspace/personal/ && \
-		cd /home/${NIXUSER}/workspace/personal/nixos-config && \
+		cd /nixos-config && \
+		nixos-rebuild switch --flake \".#${NIXNAME}\" && \
 		nix shell nixpkgs#git --command git remote set-url origin git@github.com:augustomelo/nixos-config.git && \
+		mkdir -p /home/${NIXUSER}/workspace/{work,personal} && \
+		mv /nixos-config /home/${NIXUSER}/workspace/personal/ && \
+		chown -R augusto: /home/${NIXUSER}/workspace && \
 		reboot; \
 	"
