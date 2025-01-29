@@ -37,7 +37,7 @@ vm/partition-format-install:
 	"
 
 vm/install-user-config:
-	# Since git doesn't allow clone anonymously, we need to perform a set afterwards
+	# Since git doesn't allow clone anonymously using ssh, we need to perform a set afterwards
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) root@$(NIXADDR) " \
 		cd / && \
 		nix shell nixpkgs#git --command git clone https://github.com/augustomelo/nixos-config.git && \
