@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  ssh.startAgent = true;
-  zsh.enable = true;
   programs = {
     ssh.startAgent = true;
     zsh = {
