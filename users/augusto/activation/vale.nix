@@ -9,6 +9,13 @@ let
     "br"
     "en"
   ];
+  defaultCurlFlags = [
+    "--fail"
+    "--silent"
+    "--show-error"
+    "--location"
+    "--output"
+  ];
 in
 {
   home.activation.valeActivation = lib.hm.dag.entryAfter ["writeBoundary"] ''
@@ -29,8 +36,8 @@ in
 
       for lang in ${toString langs}; do
         $DRY_RUN_CMD echo "Dowlading dictionary: $lang"
-        ${pkgs.curl}/bin/curl --silent --show-error --output "$dic_path/$lang.dic" "https://raw.githubusercontent.com/wooorm/dictionaries/refs/heads/main/dictionaries/$lang/index.dic"
-        ${pkgs.curl}/bin/curl --silent --show-error --output  "$dic_path/$lang.aff" "https://raw.githubusercontent.com/wooorm/dictionaries/refs/heads/main/dictionaries/$lang/index.aff"
+        ${pkgs.curl}/bin/curl ${toString defaultCurlFlags} "$dic_path/$lang.dic" "https://raw.githubusercontent.com/wooorm/dictionaries/refs/heads/main/dictionaries/$lang/index.dic"
+        ${pkgs.curl}/bin/curl ${toString defaultCurlFlags}  "$dic_path/$lang.aff" "https://raw.githubusercontent.com/wooorm/dictionaries/refs/heads/main/dictionaries/$lang/index.aff"
         yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value "$lang" 'dictionaries.[]')
       done
 
