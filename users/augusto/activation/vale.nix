@@ -27,8 +27,8 @@ in
       yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value "\"%s\" is a typo!" 'message' )
 
       for lang in ${toString langs}; do
-        ${pkgs.curl}/bin/curl -o "$dic_path/$lang.dic" "https://raw.githubusercontent.com/wooorm/dictionaries/refs/heads/main/dictionaries/$lang/index.dic"
-        ${pkgs.curl}/bin/curl -o "$dic_path/$lang.aff" "https://raw.githubusercontent.com/wooorm/dictionaries/refs/heads/main/dictionaries/$lang/index.aff"
+        ${pkgs.curl}/bin/curl --silent --show-error --output "$dic_path/$lang.dic" "https://raw.githubusercontent.com/wooorm/dictionaries/refs/heads/main/dictionaries/$lang/index.dic"
+        ${pkgs.curl}/bin/curl --silent --show-error --output  "$dic_path/$lang.aff" "https://raw.githubusercontent.com/wooorm/dictionaries/refs/heads/main/dictionaries/$lang/index.aff"
         yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value "$lang" 'dictionaries.[]')
       done
 
