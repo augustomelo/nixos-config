@@ -36,8 +36,8 @@ in
 
       for lang in ${toString langs}; do
         $DRY_RUN_CMD echo "Set up dictionary: $lang"
-        cp ${dictSoure}/dictionaries/$lang/index.dic "$dic_path/$lang.dic"
-        cp ${dictSoure}/dictionaries/$lang/index.aff "$dic_path/$lang.aff"
+        ln -sf ${dictSoure}/dictionaries/$lang/index.dic "$dic_path/$lang.dic"
+        ln -sf ${dictSoure}/dictionaries/$lang/index.aff "$dic_path/$lang.aff"
         yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value "$lang" 'dictionaries.[]')
       done
 
