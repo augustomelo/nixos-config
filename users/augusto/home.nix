@@ -24,6 +24,7 @@
     stateVersion = "24.11";
 
     packages = with pkgs; [
+      cmake
       dasel
       delta
       docker-buildx
@@ -31,6 +32,7 @@
       eza
       fd
       fzf-git-sh
+      gcc
       git
       gnumake
       go
