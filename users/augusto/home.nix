@@ -79,6 +79,7 @@
       enable = true;
       enableZshIntegration = true;
       settings = {
+        font-size = 20;
         cursor-style = "block";
         link-url = true;
         mouse-hide-while-typing = true;
@@ -156,7 +157,7 @@
       terminal = "ghostty";
       modifier = "Mod4";
       startup = [
-        { command = "exec xrandr --dpi 192"; }
+        { command = "exec xrandr --dpi 220"; }
       ];
     };
   };
