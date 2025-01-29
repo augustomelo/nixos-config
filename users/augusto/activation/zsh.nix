@@ -1,13 +1,13 @@
-{ pkgs, lib, ... }: 
+{ pkgs, lib, config, ... }: 
 {
   home.activation.zshActivation = lib.hm.dag.entryAfter ["writeBoundary"] ''
     (
-      hist_folder="$XDG_STATE_HOME/zsh"
+      hist_folder=${config.xdg.stateHome}/zsh
       if [[ ! -d $hist_folder ]]; then
         $DRY_RUN_CMD mkdir -p $hist_folder
       fi
 
-      completion_folder="$XDG_DATA_HOME/zsh/completion"
+      completion_folder=${config.xdg.dataHome}/zsh/completion
       if [[ ! -d $completion_folder ]]; then
         $DRY_RUN_CMD mkdir -p $completion_folder
       fi
@@ -30,14 +30,11 @@
       $DRY_RUN_CMD ${pkgs.curl}/bin/curl -o "$completion_folder/_hurlfmt" https://raw.githubusercontent.com/Orange-OpenSource/hurl/refs/heads/master/completions/_hurlfmt
       $DRY_RUN_CMD ${pkgs.curl}/bin/curl -o "$completion_folder/_zoxide" https://raw.githubusercontent.com/ajeetdsouza/zoxide/refs/heads/main/contrib/completions/_zoxide
 
-      script_folder="$XDG_DATA_HOME/zsh/script"
+      script_folder=${config.xdg.dataHome}/zsh/script
       if [[ ! -d $script_folder ]]; then
         $DRY_RUN_CMD mkdir -p $script_folder
       fi
       $DRY_RUN_CMD ${pkgs.curl}/bin/curl -o "$script_folder/git-completion.bash" https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-completion.bash
-
-      $DRY_RUN_CMD autoload -U compinit && compinit
     )
   '';
 }
-
