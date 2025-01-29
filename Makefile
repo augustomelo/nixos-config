@@ -37,10 +37,12 @@ vm/partitioning-formating-installing:
 	"
 
 vm/install-user-config:
+	# Since git doesn't allow clone anonymously, we need to perform a set afterwards
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) root@$(NIXADDR) " \
 		cd / && \
 		nix shell nixpkgs#git --command git clone https://github.com/augustomelo/nixos-config.git && \
 		nixos-rebuild switch --flake \"/nixos-config#${NIXNAME}\" && \
+		nix shell nixpkgs#git --command git remote set-url origin git@github.com:augustomelo/nixos-config.git && \
 		mkdir -p /home/${NIXUSER}/workspace/{work,personal} && \
 		chown -R augusto: /home/${NIXUSER}/workspace && \
 		chown -R augusto: /nixos-config && \
