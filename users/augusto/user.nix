@@ -1,7 +1,15 @@
 { pkgs, ... }:
 {
-  programs.ssh.startAgent = true;
-  programs.zsh.enable = true;
+  ssh.startAgent = true;
+  zsh.enable = true;
+  programs = {
+    ssh.startAgent = true;
+    zsh = {
+      enable =  true;
+      histSize = 50000;
+      histFile="$XDG_STATE_HOME/zsh/history";
+    };
+  };
 
   users = {
     mutableUsers = false;
