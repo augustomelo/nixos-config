@@ -7,7 +7,7 @@ NIXNAME ?= vm-aarch64-fusion
 # reused a lot so we just store them up here.
 SSH_OPTIONS=-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
-vm/partitioning-formating-installing:
+vm/partition-format-install:
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) root@$(NIXADDR) " \
 		parted /dev/nvme0n1 --script -- \
 			mklabel gpt \
