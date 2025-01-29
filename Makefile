@@ -42,10 +42,11 @@ vm/install-user-config:
 		cd / && \
 		nix shell nixpkgs#git --command git clone https://github.com/augustomelo/nixos-config.git && \
 		nixos-rebuild switch --flake \"/nixos-config#${NIXNAME}\" && \
-		nix shell nixpkgs#git --command git remote set-url origin git@github.com:augustomelo/nixos-config.git && \
 		mkdir -p /home/${NIXUSER}/workspace/{work,personal} && \
 		chown -R augusto: /home/${NIXUSER}/workspace && \
 		chown -R augusto: /nixos-config && \
 		mv /nixos-config /home/${NIXUSER}/workspace/personal/ && \
+		cd /home/${NIXUSER}/workspace/personal/nixos-config && \
+		nix shell nixpkgs#git --command git remote set-url origin git@github.com:augustomelo/nixos-config.git && \
 		reboot; \
 	"
