@@ -5,16 +5,16 @@
   ...
 }: 
 let
+  dictSoure = pkgs.fetchFromGitHub {
+    owner = "wooorm";
+    repo = "dictionaries";
+    rev = "8cfea406b505e4d7df52d5a19bce525df98c54ab";
+    hash = "sha256-trItzxKmZcTSplDd27PhJRbd4rvefghxiY4d67QnsEE=";
+  };
+
   langs = [
     "br"
     "en"
-  ];
-  defaultCurlFlags = [
-    "--fail"
-    "--silent"
-    "--show-error"
-    "--location"
-    "--output"
   ];
 in
 {
@@ -35,9 +35,9 @@ in
       yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value "\"%s\" is a typo!" 'message' )
 
       for lang in ${toString langs}; do
-        $DRY_RUN_CMD echo "Dowlading dictionary: $lang"
-        ${pkgs.curl}/bin/curl ${toString defaultCurlFlags} "$dic_path/$lang.dic" "https://raw.githubusercontent.com/wooorm/dictionaries/refs/heads/main/dictionaries/$lang/index.dic"
-        ${pkgs.curl}/bin/curl ${toString defaultCurlFlags}  "$dic_path/$lang.aff" "https://raw.githubusercontent.com/wooorm/dictionaries/refs/heads/main/dictionaries/$lang/index.aff"
+        $DRY_RUN_CMD echo "Set up dictionary: $lang"
+        cp ${dictSoure}/dictionaries/$lang/index.dic "$dic_path/$lang.dic"
+        cp ${dictSoure}/dictionaries/$lang/index.aff "$dic_path/$lang.aff"
         yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value "$lang" 'dictionaries.[]')
       done
 
