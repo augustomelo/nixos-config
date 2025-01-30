@@ -2,7 +2,7 @@
 {
   programs = {
     ssh.startAgent = true;
-    zsh.enable =  true;
+    zsh.enable = true;
   };
 
   users = {

@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
 
   catppuccin = {
     bat.enable = true;
@@ -21,15 +22,21 @@
   };
 
   home = {
-    file."${config.xdg.configHome}" = { source = ./config; recursive = true; };
-    file."${config.xdg.dataHome}/zsh" = { source = ./zsh; recursive = true; };
+    file."${config.xdg.configHome}" = {
+      source = ./config;
+      recursive = true;
+    };
+    file."${config.xdg.dataHome}/zsh" = {
+      source = ./zsh;
+      recursive = true;
+    };
 
     stateVersion = "24.11";
     sessionVariables = {
-      BAT_THEME="Catppuccin Macchiato"; # this is needed for delta when running the command git blame
-      DICPATH="${config.xdg.dataHome}/dictionaries"; # used by vale as other resources to dictionaries
-      EDITOR="nvim";
-      KUBECONFIG="$HOME/.kube/config";
+      BAT_THEME = "Catppuccin Macchiato"; # this is needed for delta when running the command git blame
+      DICPATH = "${config.xdg.dataHome}/dictionaries"; # used by vale as other resources to dictionaries
+      EDITOR = "nvim";
+      KUBECONFIG = "$HOME/.kube/config";
     };
 
     packages = with pkgs; [
@@ -50,6 +57,7 @@
       kubectl
       kubelogin-oidc
       neovim
+      nixfmt-rfc-style
       ripgrep
       unzip
       vale
@@ -58,7 +66,6 @@
       zsh-fzf-tab
     ];
   };
-
 
   programs = {
     bat = {
@@ -161,13 +168,13 @@
         size = 50000;
       };
       shellAliases = {
-        g="git";
-        hms="home-manager switch";
-        k9s="k9s -c context";
-        k="kubectl";
-        la="eza --color=always --git --long --all";
-        ll="eza --color=always --git --long";
-        ls="eza --color=always --git";
+        g = "git";
+        hms = "home-manager switch";
+        k9s = "k9s -c context";
+        k = "kubectl";
+        la = "eza --color=always --git --long --all";
+        ll = "eza --color=always --git --long";
+        ls = "eza --color=always --git";
       };
       initExtra = ''
         bindkey -s "^Z" " fg^M"
@@ -231,7 +238,7 @@
     persistent = true;
     options = "--delete-older-than 15d";
   };
-  
+
   xdg.enable = true;
 
   xsession.windowManager.i3 = {

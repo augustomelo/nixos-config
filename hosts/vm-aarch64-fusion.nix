@@ -1,23 +1,22 @@
 { pkgs, ... }:
 
 {
-  imports =
-    [ 
-      ./vm-base.nix
-      ./hardware/vm-aarch64-fusion.nix
-    ];
+  imports = [
+    ./vm-base.nix
+    ./hardware/vm-aarch64-fusion.nix
+  ];
 
   hardware.graphics.enable = true;
   virtualisation = {
     docker.rootless = {
       enable = true;
       setSocketVariable = true;
-    }; 
-    vmware.guest.enable = true; 
+    };
+    vmware.guest.enable = true;
   };
 
   networking = {
-    hostName = "devbox"; 
+    hostName = "devbox";
     networkmanager.enable = true;
   };
 
@@ -42,8 +41,8 @@
 
     systemPackages = with pkgs; [
       (writeShellScriptBin "xrandr-auto" ''
-       xrandr --output Virtual-1 --auto
-       '')
+        xrandr --output Virtual-1 --auto
+      '')
     ];
   };
 

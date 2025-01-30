@@ -1,9 +1,9 @@
-{ 
+{
   config,
   lib,
-  pkgs, 
+  pkgs,
   ...
-}: 
+}:
 let
   dictSoure = pkgs.fetchFromGitHub {
     owner = "wooorm";
@@ -18,7 +18,7 @@ let
   ];
 in
 {
-  home.activation.valeActivation = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.valeActivation = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     (
       dic_path=${config.xdg.dataHome}/dictionaries
       if [[ ! -d $dic_path ]]; then
