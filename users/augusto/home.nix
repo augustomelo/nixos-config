@@ -22,11 +22,11 @@
   };
 
   home = {
-    file."${config.xdg.configHome}" = {
+    file.".config" = {
       source = ./config;
       recursive = true;
     };
-    file."${config.xdg.dataHome}/zsh" = {
+    file.".local/share/zsh" = {
       source = ./zsh;
       recursive = true;
     };
@@ -153,7 +153,7 @@
 
     zsh = {
       enable = true;
-      dotDir = "./config/zsh";
+      dotDir = ".config/zsh";
       defaultKeymap = "emacs";
       history = {
         expireDuplicatesFirst = true;
@@ -180,6 +180,7 @@
         bindkey -s "^Z" " fg^M"
 
         for func in ${config.xdg.dataHome}/zsh/functions/*(N:t); autoload $func
+
         CACHEFILE="${config.xdg.cacheHome}/zsh/.zcompcache"
         mkdir -p "$(dirname "$CACHEFILE")"
         zstyle ':completion:*' cache-path "$CACHEFILE"
