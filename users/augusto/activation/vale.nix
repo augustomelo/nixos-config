@@ -32,7 +32,8 @@ in
       fi
 
       yaml_content=$(echo "{}" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value 'spelling' 'extends')
-      yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value "\"%s\" is a typo!" 'message' )
+      yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value "Did you really mean: \"%s\" ?" 'message' )
+      yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value error 'level' )
 
       for lang in ${toString langs}; do
         $DRY_RUN_CMD echo "Set up dictionary: $lang"
