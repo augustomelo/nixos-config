@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 # vim: set filetype=zsh:
 
 # https://gist.github.com/mattmc3/804a8111c4feba7d95b6d7b984f12a53
