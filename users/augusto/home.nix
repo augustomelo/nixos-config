@@ -169,7 +169,8 @@
       };
       shellAliases = {
         g = "git";
-        hms = "home-manager switch";
+        nixswitch = "sudo nixos-rebuild switch --flake $HOME/workspace/personal/nixos-config/#vm-aarch64-fusion";
+        nixupdate = "nix flake update --flake $HOME/workspace/personal/nixos-config/#vm-aarch64-fusion";
         k9s = "k9s -c context";
         k = "kubectl";
         la = "eza --color=always --git --long --all";
