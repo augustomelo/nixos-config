@@ -97,7 +97,15 @@ require("mason-lspconfig").setup {
 
     -- https://github.com/oxalica/nil/blob/main/docs/configuration.md
     nil_ls = function ()
-      require("lspconfig").nil_ls.setup{}
+      require("lspconfig").nil_ls.setup{
+        settings = {
+          ['nil'] = {
+            formatting = {
+              command = { "nixfmt" },
+            },
+          },
+        },
+      }
     end,
 
 
