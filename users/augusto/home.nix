@@ -123,6 +123,7 @@
         jdt-language-server
         lua-language-server
         nil
+        nixfmt-rfc-style
         vale-ls
         yaml-language-server
       ];
