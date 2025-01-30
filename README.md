@@ -1,6 +1,7 @@
 # Nixos-config
 
-This is heavely inspired on [nixos-config](https://github.com/mitchellh/nixos-config) for my development  machcine.
+This is heavely inspired on [nixos-config](https://github.com/mitchellh/nixos-config) for my development  machine.
+adasda 
 
 ## Known issues
 
