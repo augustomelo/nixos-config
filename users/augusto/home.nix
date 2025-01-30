@@ -54,10 +54,11 @@
       go
       home-manager
       hurl
+      jdk
       kubectl
       kubelogin-oidc
-      neovim
       nixfmt-rfc-style
+      python314
       ripgrep
       unzip
       vale
@@ -111,6 +112,20 @@
 
     k9s = {
       enable = true;
+    };
+
+    neovim = {
+      enable = true;
+
+      extraPackages = with pkgs; [
+        gopls
+        helm-ls
+        jdt-language-server
+        lua-language-server
+        nil
+        vale-ls
+        yaml-language-server
+      ];
     };
 
     starship.enable = true;
