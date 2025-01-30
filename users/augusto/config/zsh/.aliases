@@ -1,9 +1,0 @@
-# vim: set filetype=zsh:
-
-alias g="git"
-alias hms="home-manager switch"
-alias k9s="k9s -c context"
-alias k="kubectl"
-alias la="eza --color=always --git --long --all"
-alias ll="eza --color=always --git --long"
-alias ls="eza --color=always --git"

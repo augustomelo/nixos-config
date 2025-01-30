@@ -2,11 +2,7 @@
 {
   programs = {
     ssh.startAgent = true;
-    zsh = {
-      enable =  true;
-      histSize = 50000;
-      histFile="$XDG_STATE_HOME/zsh/history";
-    };
+    zsh.enable =  true;
   };
 
   users = {
