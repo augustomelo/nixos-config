@@ -21,13 +21,13 @@
   };
 
   home = {
-    file.".config" = { source = ./config; recursive = true; };
+    file.${config.xdg.configHome} = { source = ./config; recursive = true; };
     file."${config.xdg.dataHome}/zsh" = { source = ./zsh; recursive = true; };
 
     stateVersion = "24.11";
     sessionVariables = {
       BAT_THEME="Catppuccin Macchiato"; # this is needed for delta when running the command git blame
-      DICPATH="$XDG_DATA_HOME/dictionaries"; # used by vale as other resources to dictionaries
+      DICPATH="${config.xdg.dataHome}/dictionaries"; # used by vale as other resources to dictionaries
       EDITOR="nvim";
       KUBECONFIG="$HOME/.kube/config";
     };
@@ -153,7 +153,7 @@
         ignoreAllDups = true;
         ignoreDups = true;
         ignoreSpace = true;
-        path = "$XDG_STATE_HOME/zsh/history";
+        path = "${config.xdg.stateHome}/zsh/history";
         save = 50000;
         saveNoDups = true;
         size = 50000;
@@ -170,9 +170,8 @@
       initExtra = ''
         bindkey -s "^Z" " fg^M"
 
-        for func in $XDG_DATA_HOME/zsh/functions/*(N:t); autoload $func
-
-        CACHEFILE="$XDG_CACHE_HOME/zsh/.zcompcache"
+        for func in ${config.xdg.dataHome}/zsh/functions/*(N:t); autoload $func
+        CACHEFILE="${config.xdg.cacheHome}/zsh/.zcompcache"
         mkdir -p "$(dirname "$CACHEFILE")"
         zstyle ':completion:*' cache-path "$CACHEFILE"
         zstyle ':completion:*' use-cache on
