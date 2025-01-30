@@ -180,6 +180,7 @@
       initExtra = ''
         bindkey -s "^Z" " fg^M"
 
+        fpath+="${config.xdg.dataHome}/zsh/functions"
         for func in ${config.xdg.dataHome}/zsh/functions/*(N:t); autoload $func
 
         CACHEFILE="${config.xdg.cacheHome}/zsh/.zcompcache"
