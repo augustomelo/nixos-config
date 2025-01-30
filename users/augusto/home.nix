@@ -22,7 +22,7 @@
 
   home = {
     file.".config" = { source = ./config; recursive = true; };
-    file."${config.xdg.dataHome}/zsh" = { source = ./zsh recursive = true; };
+    file."${config.xdg.dataHome}/zsh" = { source = ./zsh; recursive = true; };
 
     stateVersion = "24.11";
     sessionVariables = {
@@ -50,9 +50,7 @@
       kubectl
       kubelogin-oidc
       neovim
-      neovim 
       ripgrep
-      starship
       vale
       xsel
       zsh-fzf-tab
@@ -105,6 +103,8 @@
     k9s = {
       enable = true;
     };
+
+    starship.enable = true;
 
     tmux = {
       enable = true;
