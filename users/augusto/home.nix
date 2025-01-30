@@ -206,6 +206,7 @@
       plugins = [
         {
           name = "fzf-git-sh";
+          file = "fzf-git.sh";
           src = "${pkgs.fzf-git-sh}/share/fzf-git-sh";
         }
         {
