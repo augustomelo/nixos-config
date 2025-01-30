@@ -21,7 +21,7 @@
   };
 
   home = {
-    file.${config.xdg.configHome} = { source = ./config; recursive = true; };
+    file."${config.xdg.configHome}" = { source = ./config; recursive = true; };
     file."${config.xdg.dataHome}/zsh" = { source = ./zsh; recursive = true; };
 
     stateVersion = "24.11";
@@ -117,11 +117,11 @@
         set-option -g status-left ""
         set-option -g status-position top
         set-option -g window-status-separator ""
-        set-option -gF  status-right "#{@catppuccin_status_directory}"
+        set-option -gF  status-right "#{@catppuccin_status_session}"
 
-        bind-key r source-file ~/.config/tmux/tmux.conf \; display-message "~/.tmux.conf reloaded"
+        bind-key r source-file ${config.xdg.configHome}/tmux/tmux.conf \; display-message "~/.tmux.conf reloaded"
         bind-key o run-shell -b "tmux capture-pane -J -p | grep -oE '(https?):\/\/.*[^>]' | fzf-tmux -d20 --multi --bind alt-a:select-all,alt-d:deselect-all | xsel --clipboard"
-        bind-key s run-shell "tmux new-window ~/.config/zsh/functions/sessionizer"
+        bind-key s run-shell "tmux new-window ${config.xdg.dataHome}/zsh/functions/sessionizer"
         bind-key - split-window -v
         bind-key | split-window -h
         bind-key -T copy-mode-vi v send-keys -X begin-selection
@@ -144,7 +144,7 @@
 
     zsh = {
       enable = true;
-      dotDir = ".config/zsh";
+      dotDir = "./config/zsh";
       defaultKeymap = "emacs";
       history = {
         expireDuplicatesFirst = true;
