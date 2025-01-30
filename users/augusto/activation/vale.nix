@@ -5,7 +5,7 @@
   ...
 }:
 let
-  dictSoure = pkgs.fetchFromGitHub {
+  dictSource = pkgs.fetchFromGitHub {
     owner = "wooorm";
     repo = "dictionaries";
     rev = "8cfea406b505e4d7df52d5a19bce525df98c54ab";
@@ -36,8 +36,8 @@ in
 
       for lang in ${toString langs}; do
         $DRY_RUN_CMD echo "Set up dictionary: $lang"
-        ln -sf ${dictSoure}/dictionaries/$lang/index.dic "$dic_path/$lang.dic"
-        ln -sf ${dictSoure}/dictionaries/$lang/index.aff "$dic_path/$lang.aff"
+        ln -sf ${dictSource}/dictionaries/$lang/index.dic "$dic_path/$lang.dic"
+        ln -sf ${dictSource}/dictionaries/$lang/index.aff "$dic_path/$lang.aff"
         yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value "$lang" 'dictionaries.[]')
       done
 
