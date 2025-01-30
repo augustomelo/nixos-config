@@ -172,7 +172,9 @@
 
         for func in $XDG_DATA_HOME/zsh/functions/*(N:t); autoload $func
 
-        zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
+        CACHEFILE="$XDG_CACHE_HOME/zsh/.zcompcache"
+        mkdir -p "$(dirname "$CACHEFILE")"
+        zstyle ':completion:*' cache-path "$CACHEFILE"
         zstyle ':completion:*' use-cache on
 
         # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
