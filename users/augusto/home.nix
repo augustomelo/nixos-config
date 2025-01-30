@@ -54,6 +54,7 @@
       unzip
       vale
       xsel
+      zoxide
       zsh-fzf-tab
     ];
   };
