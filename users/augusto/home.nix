@@ -51,6 +51,7 @@
       kubelogin-oidc
       neovim
       ripgrep
+      unzip
       vale
       xsel
       zsh-fzf-tab
