@@ -185,7 +185,7 @@
       shellAliases = {
         g = "git";
         nixswitch = "sudo nixos-rebuild switch --flake $HOME/workspace/personal/nixos-config/#vm-aarch64-fusion";
-        nixupdate = "nix flake update --flake $HOME/workspace/personal/nixos-config/#vm-aarch64-fusion";
+        nixupdate = "nix flake update --flake $HOME/workspace/personal/nixos-config/";
         k9s = "k9s -c context";
         k = "kubectl";
         la = "eza --color=always --git --long --all";
