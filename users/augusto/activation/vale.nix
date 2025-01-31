@@ -18,16 +18,24 @@ let
   ];
 in
 {
+  # https://github.com/errata-ai/vale/discussions/375
+
   home.activation.valeActivation = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     (
-      dic_path=${config.xdg.dataHome}/dictionaries
-      if [[ ! -d $dic_path ]]; then
-        $DRY_RUN_CMD echo "Creating dictionary folder at: $dic_path"
-        $DRY_RUN_CMD mkdir -p $dic_path
+      vale_styles_path="${config.xdg.configHome}/vale/styles" 
+
+      vale_config_dictionaries="$vale_styles_path/config/dictionaries"
+      if [[ -d $vale_config_dictionaries ]]; then
+        $DRY_RUN_CMD echo "Removing previous dictionaries at: $vale_config_dictionaries"
+        $DRY_RUN_CMD rm -rf $vale_config_dictionaries
       fi
 
-      vale_styles_spelling="${config.xdg.configHome}/vale/styles/spelling" 
+      $DRY_RUN_CMD echo "Creating dictionary folder at: $vale_config_dictionaries"
+      $DRY_RUN_CMD mkdir -p $vale_config_dictionaries
+
+      vale_styles_spelling="$vale_styles_path/vale/styles/spelling" 
       if [[ ! -d $vale_styles_spelling ]]; then
+        $DRY_RUN_CMD echo "Creating dictionary folder at: $vale_styles_spelling"
         $DRY_RUN_CMD mkdir -p $vale_styles_spelling
       fi
 
@@ -37,12 +45,12 @@ in
 
       for lang in ${toString langs}; do
         $DRY_RUN_CMD echo "Set up dictionary: $lang"
-        ln -sf ${dictSource}/dictionaries/$lang/index.dic "$dic_path/$lang.dic"
-        ln -sf ${dictSource}/dictionaries/$lang/index.aff "$dic_path/$lang.aff"
+        ln -sf ${dictSource}/dictionaries/$lang/index.dic "$vale_config_dictionaries/$lang.dic"
+        ln -sf ${dictSource}/dictionaries/$lang/index.aff "$vale_config_dictionaries/$lang.aff"
         yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value "$lang" 'dictionaries.[]')
       done
 
-      $DRY_RUN_CMD echo "$yaml_content" > "$vale_styles_spelling/Spelling.yaml"
+      $DRY_RUN_CMD echo "$yaml_content" > "$vale_styles_spelling/Spelling.yml"
     )
   '';
 }

@@ -34,7 +34,6 @@
     stateVersion = "24.11";
     sessionVariables = {
       BAT_THEME = "Catppuccin Macchiato"; # this is needed for delta when running the command git blame
-      DICPATH = "${config.xdg.dataHome}/dictionaries"; # used by vale as other resources to dictionaries
       EDITOR = "nvim";
       KUBECONFIG = "$HOME/.kube/config";
     };
