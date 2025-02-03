@@ -36,6 +36,7 @@
       BAT_THEME = "Catppuccin Macchiato"; # this is needed for delta when running the command git blame
       EDITOR = "nvim";
       KUBECONFIG = "$HOME/.kube/config";
+      JAVA_TOOL_OPTIONS="-XX:UseSVE=0"; # use this until this PR is merged NixOS/nixpkgs#379073 or someone bump jdk version
     };
 
     packages = with pkgs; [
@@ -122,6 +123,7 @@
         lua-language-server
         nil
         nixfmt-rfc-style
+        python313Packages.python-lsp-server
         vale-ls
         yaml-language-server
       ];
@@ -190,13 +192,14 @@
       };
       shellAliases = {
         g = "git";
-        nixswitch = "sudo nixos-rebuild switch --flake $HOME/workspace/personal/nixos-config/#vm-aarch64-fusion";
-        nixupdate = "nix flake update --flake $HOME/workspace/personal/nixos-config/";
-        k9s = "k9s -c context";
         k = "kubectl";
+        k9s = "k9s -c context";
         la = "eza --color=always --git --long --all";
         ll = "eza --color=always --git --long";
         ls = "eza --color=always --git";
+        nixswitch = "sudo nixos-rebuild switch --flake $HOME/workspace/personal/nixos-config/#vm-aarch64-fusion";
+        nixupdate = "nix flake update --flake $HOME/workspace/personal/nixos-config/";
+        tmux = "tmux attach -dt nixos-config || tmux new-session -s nixos-config -c \"$HOME/workspace/personal/nixos-config/\"";
       };
       initExtra = ''
         bindkey -s "^Z" " fg^M"
