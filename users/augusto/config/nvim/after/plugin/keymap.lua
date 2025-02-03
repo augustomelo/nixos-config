@@ -11,7 +11,7 @@ vim.keymap.set("n", "<leader>q", "<Cmd>quit<CR>",
   { unpack(default_opts), desc = "Quit the current window." })
 vim.keymap.set("n", "<leader>w", "<Cmd>write<CR>",
   { unpack(default_opts), desc = "Write the whole buffer to the current file." })
-vim.keymap.set("n", "<leader>cfp", "<Cmd>let @* = expand(\"%:p\")<CR>",
+vim.keymap.set("n", "<leader>cfp", "<Cmd>let @+ = expand(\"%:p\")<CR>",
   { unpack(default_opts), desc = "Copy buffer full path into unnamed buffer" })
 
 vim.keymap.set("n", "j", function()
