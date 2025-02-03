@@ -62,7 +62,6 @@
       unzip
       vale
       xsel
-      zoxide
       zsh-fzf-tab
     ];
   };
@@ -164,6 +163,13 @@
       keyMode = "vi";
       mouse = true;
       prefix = "C-s";
+    };
+
+    zoxide = {
+      enable = true;
+      options = [
+        "--cmd cd"
+      ];
     };
 
     zsh = {
