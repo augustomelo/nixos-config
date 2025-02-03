@@ -23,4 +23,8 @@ return {
       "nvim-lua/plenary.nvim",
     },
   },
+  {
+    "shortcuts/no-neck-pain.nvim",
+    version = "*",
+  },
 }
