@@ -47,6 +47,7 @@
       docker-compose
       eza
       fd
+      firefox
       fzf-git-sh
       gcc
       git
