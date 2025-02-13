@@ -33,7 +33,7 @@ in
       $DRY_RUN_CMD echo "Creating dictionary folder at: $vale_config_dictionaries"
       $DRY_RUN_CMD mkdir -p $vale_config_dictionaries
 
-      vale_styles_spelling="$vale_styles_path/vale/styles/spelling" 
+      vale_styles_spelling="$vale_styles_path/spelling" 
       if [[ ! -d $vale_styles_spelling ]]; then
         $DRY_RUN_CMD echo "Creating dictionary folder at: $vale_styles_spelling"
         $DRY_RUN_CMD mkdir -p $vale_styles_spelling
