@@ -42,6 +42,7 @@
     packages = with pkgs; [
       cmake
       dasel
+      dbeaver-bin
       delta
       docker-buildx
       docker-compose
