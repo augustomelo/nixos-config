@@ -264,10 +264,10 @@
 
   nix.gc = {
     automatic = true;
-    frequency = "weekly";
+    frequency = "daily";
     randomizedDelaySec = "10m";
     persistent = true;
-    options = "--delete-older-than 15d";
+    options = "--delete-older-than 3d";
   };
 
   xdg.enable = true;
