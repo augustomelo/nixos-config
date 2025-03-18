@@ -5,7 +5,7 @@ return {
   },
   {
     "j-hui/fidget.nvim",
-    tag = "v1.4.5",
+    version = "1.6.x",
   },
   {
     "jellydn/hurl.nvim",
@@ -18,13 +18,13 @@ return {
   },
   {
     "epwalsh/obsidian.nvim",
-    version = "3.7.5",
+    version = "3.9.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
   },
   {
     "shortcuts/no-neck-pain.nvim",
-    version = "*",
+    version = "2.2.x",
   },
 }
