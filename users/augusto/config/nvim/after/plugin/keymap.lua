@@ -1,7 +1,9 @@
 local default_opts = { noremap = true, silent = true }
 
-vim.keymap.set("c", "<C-a>", "<home>", { unpack(default_opts), desc = "Move cursor to the beginning of the line." })
-vim.keymap.set("c", "<C-e>", "<end>", { unpack(default_opts), desc = "Move cursor to the ending of the line." })
+vim.keymap.set("c", "<C-a>", "<home>",
+  { unpack(default_opts), desc = "Move cursor to the beginning of the line." })
+vim.keymap.set("c", "<C-e>", "<end>",
+  { unpack(default_opts), desc = "Move cursor to the ending of the line." })
 
 vim.keymap.set("n", "<leader><leader>", "<C-^>",
   { unpack(default_opts), desc = "Edit the alternate file." })
@@ -21,11 +23,11 @@ end, { unpack(default_opts), desc = "Hover information" })
 vim.keymap.set("n", "j", function()
   if vim.v.count == 0 then return "gj" end
   return "j"
-end,  { expr = true, unpack(default_opts)})
+end, { expr = true, unpack(default_opts) })
 vim.keymap.set("n", "k", function()
   if vim.v.count == 0 then return "gk" end
   return "k"
-end, { expr = true, unpack(default_opts)})
+end, { expr = true, unpack(default_opts) })
 
 vim.keymap.set("n", "Y", "y$", default_opts)
 vim.keymap.set("n", "<C-h>", "<C-w>h", default_opts)
