@@ -1,17 +1,3 @@
-vim.loader.enable()
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    border = "single",
-  }
-)
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-  vim.lsp.handlers.signature_help, {
-    border = "single"
-  }
-)
-
 vim.opt.breakindent = true
 vim.opt.breakindentopt = "shift:2"
 vim.opt.cmdheight = 0
@@ -44,6 +30,7 @@ vim.opt.tabstop = 2
 vim.opt.termguicolors = true
 vim.opt.wildignorecase = true
 vim.opt.winbar = "%<» %-0.120f%m"
+vim.opt.winborder = "single"
 
 if vim.fn.executable("rg") then
   vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
