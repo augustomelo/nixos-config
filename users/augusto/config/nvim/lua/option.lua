@@ -13,6 +13,7 @@ vim.opt.listchars = {
   trail = "•",
 }
 vim.opt.magic = true
+vim.opt.messagesopt = "wait:2000,history:500"
 vim.opt.mouse = "a"
 vim.opt.number = true
 vim.opt.relativenumber = true
