@@ -30,7 +30,6 @@ vim.opt.tabstop = 2
 vim.opt.termguicolors = true
 vim.opt.wildignorecase = true
 vim.opt.winbar = "%<» %-0.120f%m"
-vim.opt.winborder = "single"
 
 if vim.fn.executable("rg") then
   vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
