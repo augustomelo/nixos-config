@@ -1,7 +1,7 @@
-local lsp = require("lspconfig")
+local lspconfig = require("lspconfig")
 local servers = {
   -- https://github.com/golang/tools/blob/master/gopls/doc/settings.md
-  lsp.gopls.setup {
+  gopls = {
     settings = {
       gopls = {
         analyses = {
@@ -23,7 +23,7 @@ local servers = {
   },
 
   -- https://github.com/mrjosh/helm-ls?tab=readme-ov-file#configuration-options
-  lsp.helm_ls.setup {
+  helm_ls = {
     settings = {
       ["helm-ls"] = {
         yamlls = {
@@ -34,7 +34,7 @@ local servers = {
   },
 
   -- https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
-  lsp.jdtls.setup {
+  jdtls = {
     settings = {
       java = {
         autobuild = {
@@ -50,7 +50,7 @@ local servers = {
   },
 
   -- https://github.com/LuaLS/lua-language-server/wiki/Settings#settings
-  lsp.lua_ls.setup {
+  lua_ls = {
     settings = {
       Lua = {
         diagnostics = {
@@ -75,7 +75,7 @@ local servers = {
   },
 
   -- https://github.com/oxalica/nil/blob/main/docs/configuration.md
-  lsp.nil_ls.setup{
+  nil_ls = {
     settings = {
       ['nil'] = {
         formatting = {
@@ -86,10 +86,10 @@ local servers = {
   },
 
   -- https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
-  lsp.pylsp.setup{},
+  pylsp = {},
 
   -- https://github.com/typescript-language-server/typescript-language-server/blob/master/docs/configuration.md
-  lsp.ts_ls.setup {
+  ts_ls = {
     settings = {
       javascript = {
         inlayHints = {
@@ -117,7 +117,7 @@ local servers = {
   },
 
   -- https://github.com/errata-ai/vale-ls/tree/main/doc/yml
-  lsp.vale_ls.setup {
+  vale_ls = {
     filetypes = { "gitcommit", "markdown", "text" },
     init_options = {
       installVale = false,
@@ -140,7 +140,7 @@ local servers = {
   },
 
   -- https://github.com/redhat-developer/yaml-language-server?tab=readme-ov-file#language-server-settings
-  lsp.yamlls.setup {
+  yamlls = {
     on_attach = function(client, _)
       client.server_capabilities.documentFormattingProvider = true
     end,
@@ -156,8 +156,8 @@ local servers = {
   },
 }
 
-for _, server in ipairs(servers) do
-  lsp[server].setup({
+for server, config in pairs(servers) do
+  lspconfig[server].setup( vim.tbl_extend("force", config, {
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
-  })
+  }))
 end
