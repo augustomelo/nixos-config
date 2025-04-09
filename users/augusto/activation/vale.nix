@@ -19,7 +19,6 @@ let
 in
 {
   # https://github.com/errata-ai/vale/discussions/375
-
   home.activation.valeActivation = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     (
       vale_styles_path="${config.xdg.configHome}/vale/styles" 
