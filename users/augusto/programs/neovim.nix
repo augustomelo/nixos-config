@@ -12,9 +12,17 @@
       lua-language-server
       nil
       nixfmt-rfc-style
-      python313Packages.python-lsp-server
       vale-ls
       yaml-language-server
+
+      (python313.withPackages (
+        ps: with ps; [
+          pylsp-mypy
+          pylsp-rope
+          python-lsp-ruff
+          python-lsp-server
+        ]
+      ))
     ];
   };
 }

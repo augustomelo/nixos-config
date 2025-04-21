@@ -86,7 +86,24 @@ local servers = {
   },
 
   -- https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
-  pylsp = {},
+  pylsp = {
+    settings = {
+      pylsp = {
+        plugins = {
+          pylsp_mypy = {
+            enabled = true,
+          },
+          rope_autoimport = {
+            enabled = true,
+          },
+          ruff = {
+            enabled = true,
+            extendSelect = { "I" },
+          },
+        },
+      },
+    },
+  },
 
   -- https://github.com/typescript-language-server/typescript-language-server/blob/master/docs/configuration.md
   ts_ls = {
@@ -157,7 +174,7 @@ local servers = {
 }
 
 for server, config in pairs(servers) do
-  lspconfig[server].setup( vim.tbl_extend("force", config, {
+  lspconfig[server].setup(vim.tbl_extend("force", config, {
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
   }))
 end
