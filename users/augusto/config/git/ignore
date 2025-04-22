@@ -49,10 +49,16 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# JDTLS
+# Java
 **/.classpath
 **/.factorypath
-**/.settings/
+**/.settings
+
+# Python
+.mypy_cache
+.ropeproject
+.venv
+__pycache__
 
 # Direnv https://github.com/direnv/direnv/wiki/Git
 .direnv
