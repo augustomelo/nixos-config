@@ -10,6 +10,7 @@
       helm-ls
       jdt-language-server
       lua-language-server
+      markdownlint-cli
       nil
       nixfmt-rfc-style
       vale-ls
