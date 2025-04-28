@@ -31,7 +31,7 @@
       BAT_THEME = "Catppuccin Macchiato"; # this is needed for delta when running the command git blame
       EDITOR = "nvim";
       KUBECONFIG = "$HOME/.kube/config";
-      JAVA_TOOL_OPTIONS="-javaagent:${pkgs.lombok}/share/java/lombok.jar -XX:UseSVE=0"; # use this until this PR is merged NixOS/nixpkgs#379073 or someone bump jdk version
+      JAVA_TOOL_OPTIONS="-javaagent:${pkgs.lombok}/share/java/lombok.jar";
     };
 
     packages = with pkgs; [

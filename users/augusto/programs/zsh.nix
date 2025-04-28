@@ -35,7 +35,7 @@
       nixupdate = "nix flake update --flake $HOME/workspace/personal/nixos-config/";
       tmux = "tmux attach -dt nixos-config || tmux new-session -s nixos-config -c \"$HOME/workspace/personal/nixos-config/\"";
     };
-    initExtra = ''
+    initContent = ''
       bindkey -s "^Z" " fg^M"
 
       fpath+="${config.xdg.dataHome}/zsh/functions"
