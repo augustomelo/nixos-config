@@ -98,7 +98,7 @@ local servers = {
           },
           ruff = {
             enabled = true,
-            extendSelect = { "I" },
+            extendSelect = { "I", "N" },
           },
         },
       },
