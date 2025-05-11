@@ -56,7 +56,7 @@
       kubelogin-oidc
       lombok
       nixfmt-rfc-style
-      nodejs_23
+      nodejs_22
       python314
       ripgrep
       unzip
