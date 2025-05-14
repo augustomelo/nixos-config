@@ -133,7 +133,7 @@ local servers = {
     },
   },
 
-  -- https://github.com/errata-ai/vale-ls/tree/main/doc/yml
+  -- https://vale.sh/docs/guides/lsp
   vale_ls = {
     filetypes = { "gitcommit", "markdown", "text" },
     init_options = {
