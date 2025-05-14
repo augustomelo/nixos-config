@@ -90,7 +90,7 @@ local lsp_name = function()
 
   if buff_clients ~=nil then
     for _, client in pairs(buff_clients) do
-      if table_contains(client.config.filetypes, vim.bo.filetype) then
+      if client.config and client.config.filetypes and table_contains(client.config.filetypes, vim.bo.filetype) then
         return client.name
       end
     end
