@@ -17,7 +17,7 @@
       set-option -gF  status-right "#{@catppuccin_status_session}"
 
       bind-key r source-file ${config.xdg.configHome}/tmux/tmux.conf \; display-message "~/.tmux.conf reloaded"
-      bind-key o run-shell -b "tmux capture-pane -J -p | grep -oE '(https?):\/\/.*[^>]' | fzf-tmux -d20 --multi --bind alt-a:select-all,alt-d:deselect-all | xsel --clipboard"
+      bind-key o run-shell -b "tmux capture-pane -J -p | grep -oE '(https?):\/\/.*[^>]' | fzf-tmux -d20 --multi | xargs xdg-open"
       bind-key s run-shell "tmux new-window ${config.xdg.dataHome}/zsh/functions/sessionizer"
       bind-key - split-window -v
       bind-key | split-window -h
