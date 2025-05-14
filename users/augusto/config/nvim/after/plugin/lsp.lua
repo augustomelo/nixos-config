@@ -138,21 +138,16 @@ local servers = {
     filetypes = { "gitcommit", "markdown", "text" },
     init_options = {
       installVale = false,
-      syncOnStartup = false,
+      syncOnStartup = true,
+      configPath = vim.env.XDG_CONFIG_HOME .. "/vale/vale.ini"
     },
     root_dir = function(_)
       return vim.fn.getcwd()
     end,
     on_new_config = function(new_config, _)
-      local config_path = vim.fn.findfile(".vale.ini", ".;")
-
-      if config_path == "" then
-        config_path = vim.env.XDG_CONFIG_HOME .. "/vale/vale.ini"
-      else
-        config_path = vim.fn.getcwd() .. "/.vale.ini"
+      if vim.fn.findfile(".vale.ini", ".;") ~= "" then
+        new_config.init_options.configPath = vim.fn.getcwd() .. "/.vale.ini"
       end
-
-      new_config.init_options.configPath = config_path
     end,
   },
 
