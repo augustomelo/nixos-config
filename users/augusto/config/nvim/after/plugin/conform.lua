@@ -6,9 +6,9 @@ require("conform").setup({
 
 vim.o.formatexpr = "v:lua.require(\"conform\").formatexpr()"
 
-vim.keymap.set("n", "<leader>f", function()
+vim.keymap.set("n", "grf", function()
   require("conform").format({
     async = true,
     lsp_format = "fallback",
   })
-end, { noremap = true, silent = true, desc = "Format buffer, defaults to lsp format." })
+end, { noremap = true, silent = true, desc = "conform.format" })
