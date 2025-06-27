@@ -1,38 +1,53 @@
-require("nvim-treesitter.configs").setup({
-  ensure_installed = {
-    "c",
-    "go",
-    "gomod",
-    "java",
-    "javascript",
-    "json",
-    "lua",
-    "markdown",
-    "markdown_inline",
-    "python",
-    "query",
-    "vim",
-    "vimdoc",
-    "yaml",
-  },
+local ensure_installed = {
+  "bash",
+  "c",
+  "diff",
+  "dockerfile",
+  "editorconfig",
+  "git_config",
+  "git_rebase",
+  "gitcommit",
+  "gitignore",
+  "go",
+  "gomod",
+  "helm",
+  "hurl",
+  "ini",
+  "java",
+  "javascript",
+  "json",
+  "kotlin",
+  "lua",
+  "make",
+  "markdown",
+  "markdown_inline",
+  "nix",
+  "properties",
+  "python",
+  "query",
+  "requirements",
+  "sql",
+  "toml",
+  "vim",
+  "vimdoc",
+  "xml",
+  "yaml",
+}
+local already_installed = require("nvim-treesitter.config").get_installed()
+local to_install = vim.iter(ensure_installed)
+    :filter(function(parser) return not vim.tbl_contains(already_installed, parser) end)
+    :totable()
 
-  sync_install = false,
-  auto_install = true,
+require("nvim-treesitter").install(to_install)
 
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "vim.treesitter.start v:lua.require'nvim-treesitter'.indentexpr v:lua.vim.treesitter.foldexpr",
+  callback = function()
+    local has_started = pcall(vim.treesitter.start)
 
-  indent = {
-    true
-  },
+    if has_started then
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    end
+  end,
 })
-
--- Fold is currently broken:
--- https://github.com/nvim-treesitter/nvim-treesitter/issues/1424
--- https://github.com/nvim-treesitter/nvim-treesitter/issues/1337
--- https://github.com/neovim/neovim/issues/14977
---vim.opt.foldmethod = "expr"
---vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldmethod = "indent"

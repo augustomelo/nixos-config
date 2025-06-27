@@ -13,6 +13,7 @@
       markdownlint-cli
       nil
       nixfmt-rfc-style
+      tree-sitter
       typescript-language-server
       vale-ls
       yaml-language-server
