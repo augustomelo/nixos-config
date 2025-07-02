@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   ...
 }:
 {
@@ -31,13 +32,12 @@
       BAT_THEME = "Catppuccin Macchiato"; # this is needed for delta when running the command git blame
       EDITOR = "nvim";
       KUBECONFIG = "$HOME/.kube/config";
-      JAVA_TOOL_OPTIONS="-javaagent:${pkgs.lombok}/share/java/lombok.jar";
+      JAVA_TOOL_OPTIONS = "-javaagent:${pkgs.lombok}/share/java/lombok.jar";
     };
 
     packages = with pkgs; [
       cmake
       dasel
-      dbeaver-bin
       delta
       docker-buildx
       docker-compose
@@ -63,6 +63,8 @@
       vale
       xsel
       zsh-fzf-tab
+    ] ++ [
+      pkgs-stable.dbeaver-bin
     ];
   };
 
