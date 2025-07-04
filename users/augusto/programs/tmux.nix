@@ -37,5 +37,6 @@
     keyMode = "vi";
     mouse = true;
     prefix = "C-s";
+    terminal = "screen-256color";
   };
 }
