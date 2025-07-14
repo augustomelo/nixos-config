@@ -1,13 +1,12 @@
 {
   pkgs,
-  pkgs-stable,
   ...
 }:
 {
-
   catppuccin = {
-    bat.enable = true;
     flavor = "macchiato";
+
+    bat.enable = true;
     fzf.enable = true;
     k9s.enable = true;
     kvantum.enable = false;
@@ -38,6 +37,7 @@
     packages = with pkgs; [
       cmake
       dasel
+      dbeaver-bin
       delta
       docker-buildx
       docker-compose
@@ -52,6 +52,7 @@
       home-manager
       hurl
       jdk
+      jujutsu
       kubectl
       kubelogin-oidc
       lombok
@@ -63,8 +64,6 @@
       vale
       xsel
       zsh-fzf-tab
-    ] ++ [
-      pkgs-stable.dbeaver-bin
     ];
   };
 
