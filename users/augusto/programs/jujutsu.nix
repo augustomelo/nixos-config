@@ -11,7 +11,10 @@
       };
       "--scope" = [
         {
-          "--when"."commands" = [ "status" ];
+          "--when"."commands" = [
+            "log"
+            "status"
+          ];
           ui.paginate = "never";
         }
         {
