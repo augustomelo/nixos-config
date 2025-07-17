@@ -8,7 +8,6 @@ local servers = {
           unusedparams = true,
           ST1000 = false,
         },
-        gofumpt = true,
         hints = {
           assignVariableTypes = true,
           compositeLiteralFields = true,
