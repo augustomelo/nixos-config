@@ -9,6 +9,7 @@
         email = "4723788+augustomelo@users.noreply.github.com";
         name = "Augusto Melo";
       };
+      ui.default-command = [ "log" ];
       "--scope" = [
         {
           "--when"."commands" = [
