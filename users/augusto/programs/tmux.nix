@@ -18,7 +18,7 @@
 
       bind-key r source-file ${config.xdg.configHome}/tmux/tmux.conf \; display-message "~/.tmux.conf reloaded"
       bind-key o run-shell -b "tmux capture-pane -J -p | grep -oE '(https?):\/\/.*[^>]' | fzf-tmux -d20 --multi | xargs xdg-open"
-      bind-key s run-shell "tmux new-window ${config.xdg.dataHome}/zsh/functions/sessionizer"
+      bind-key s display-popup -E "zsh ${config.xdg.dataHome}/zsh/functions/sessionizer"
       bind-key - split-window -v
       bind-key | split-window -h
       bind-key -T copy-mode-vi v send-keys -X begin-selection
