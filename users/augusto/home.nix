@@ -52,7 +52,6 @@
       home-manager
       hurl
       jdk
-      jujutsu
       kubectl
       kubelogin-oidc
       lombok

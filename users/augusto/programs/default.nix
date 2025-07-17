@@ -7,6 +7,7 @@
     ./direnv.nix
     ./fzf.nix
     ./ghostty.nix
+    ./jujutsu.nix
     ./neovim.nix
     ./tmux.nix
     ./zoxide.nix
