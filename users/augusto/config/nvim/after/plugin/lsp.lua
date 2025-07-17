@@ -1,11 +1,12 @@
 local lspconfig = require("lspconfig")
 local servers = {
-  -- https://github.com/golang/tools/blob/master/gopls/doc/settings.md
+  -- https://pkg.go.dev/golang.org/x/tools/gopls#readme-configuration
   gopls = {
     settings = {
       gopls = {
         analyses = {
           unusedparams = true,
+          ST1000 = false,
         },
         gofumpt = true,
         hints = {
