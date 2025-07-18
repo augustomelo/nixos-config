@@ -11,10 +11,16 @@
     escapeTime = 5;
     extraConfig = ''
       set-option -g display-time 4000
-      set-option -g status-left ""
+      set-option -g status-left "  "
       set-option -g status-position top
-      set-option -g window-status-separator ""
-      set-option -gF  status-right "#{@catppuccin_status_session}"
+      set-option -g window-status-separator "  "
+      set-option -g window-status-format "●"
+      set-option -g window-status-current-format "●"
+
+      # https://github.com/catppuccin/tmux/blob/main/themes/catppuccin_macchiato_tmux.conf
+      set-option -gF  status-right "#[fg=#{@{thm_bg},nobold}]#S"
+      set-option -g window-status-current-style "#{?window_zoomed_flag,fg=#{@thm_yellow},fg=#{@thm_mauve},nobold}"
+      set-option -g window-status-bell-style "fg=#{@thm_red},nobold"
 
       bind-key r source-file ${config.xdg.configHome}/tmux/tmux.conf \; display-message "~/.tmux.conf reloaded"
       bind-key o run-shell -b "tmux capture-pane -J -p | grep -oE '(https?):\/\/.*[^>]' | fzf-tmux -d20 --multi | xargs xdg-open"
