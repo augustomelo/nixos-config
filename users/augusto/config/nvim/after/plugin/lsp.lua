@@ -135,7 +135,7 @@ local servers = {
 
   -- https://vale.sh/docs/guides/lsp
   vale_ls = {
-    filetypes = { "gitcommit", "markdown", "text" },
+    filetypes = { "gitcommit", "jjdescription" ,"markdown", "text" },
     init_options = {
       installVale = false,
       syncOnStartup = true,
