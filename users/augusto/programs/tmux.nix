@@ -12,13 +12,13 @@
     extraConfig = ''
       set-option -g display-time 4000
       set-option -g status-left "  "
-      set-option -g status-position top
       set-option -g window-status-separator "  "
       set-option -g window-status-format "●"
       set-option -g window-status-current-format "●"
+      set-option -gF status-right "#S"
 
       # https://github.com/catppuccin/tmux/blob/main/themes/catppuccin_macchiato_tmux.conf
-      set-option -gF  status-right "#[fg=#{@{thm_bg},nobold}]#S"
+      set-option -gF status-style "bg=#{@thm_surface_1},fg=#{@thm_fg}"
       set-option -g window-status-current-style "#{?window_zoomed_flag,fg=#{@thm_yellow},fg=#{@thm_mauve},nobold}"
       set-option -g window-status-bell-style "fg=#{@thm_red},nobold"
 
