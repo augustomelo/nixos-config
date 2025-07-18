@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   ...
 }:
 {
@@ -31,10 +32,7 @@
       bind-key | split-window -h
       bind-key -T copy-mode-vi v send-keys -X begin-selection
       bind-key -T copy-mode-vi y send-keys -X copy-selection
-      bind-key -n M-h select-pane -L
-      bind-key -n M-j select-pane -D
-      bind-key -n M-k select-pane -U
-      bind-key -n M-l select-pane -R
+      bind C-l send-keys 'C-l' # since I am usin C-l to move windos this is needed
 
       unbind-key -T copy-mode-vi MouseDragEnd1Pane
       unbind-key '"'
@@ -45,6 +43,9 @@
     keyMode = "vi";
     mouse = true;
     prefix = "C-s";
+    plugins = with pkgs; [
+      tmuxPlugins.vim-tmux-navigator
+    ];
     terminal = "screen-256color";
   };
 }

@@ -30,10 +30,6 @@ vim.keymap.set("n", "k", function()
 end, { expr = true, unpack(default_opts) })
 
 vim.keymap.set("n", "Y", "y$", default_opts)
-vim.keymap.set("n", "<C-h>", "<C-w>h", default_opts)
-vim.keymap.set("n", "<C-j>", "<C-w>j", default_opts)
-vim.keymap.set("n", "<C-k>", "<C-w>k", default_opts)
-vim.keymap.set("n", "<C-l>", "<C-w>l", default_opts)
 
 vim.keymap.set({ "n", "i" }, "<f1>", "<nop>", default_opts)
 

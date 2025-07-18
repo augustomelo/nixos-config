@@ -17,14 +17,15 @@ return {
     ft = "hurl",
   },
   {
+    "shortcuts/no-neck-pain.nvim",
+    version = "2.2.x",
+  },
+  { "alexghergh/nvim-tmux-navigation" },
+  {
     "epwalsh/obsidian.nvim",
     version = "3.9.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-  },
-  {
-    "shortcuts/no-neck-pain.nvim",
-    version = "2.2.x",
   },
 }
