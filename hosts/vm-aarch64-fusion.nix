@@ -7,13 +7,7 @@
   ];
 
   hardware.graphics.enable = true;
-  virtualisation = {
-    docker.rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
-    vmware.guest.enable = true;
-  };
+  virtualisation.vmware.guest.enable = true;
 
   networking = {
     hostName = "devbox";

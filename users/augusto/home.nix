@@ -39,8 +39,6 @@
       dasel
       dbeaver-bin
       delta
-      docker-buildx
-      docker-compose
       eza
       fd
       firefox
@@ -57,6 +55,8 @@
       lombok
       nixfmt-rfc-style
       nodejs_22
+      podman
+      podman-compose
       python314
       ripgrep
       unzip
