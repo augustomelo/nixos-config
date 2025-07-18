@@ -8,7 +8,7 @@
     aggressiveResize = true;
     baseIndex = 1;
     clock24 = true;
-    escapeTime = 5;
+    escapeTime = 0;
     extraConfig = ''
       set-option -g display-time 4000
       set-option -g status-left "  "
