@@ -3,6 +3,7 @@ log/
 
 # Needed by nvim telescope to ignore it
 .git/
+.jj/
 
 # Swap https://github.com/github/gitignore/blob/main/Global/Vim.gitignore
 [._]*.s[a-v][a-z]
