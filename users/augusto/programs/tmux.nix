@@ -26,7 +26,7 @@
 
       bind-key r source-file ${config.xdg.configHome}/tmux/tmux.conf \; display-message "~/.tmux.conf reloaded"
       bind-key o run-shell -b "tmux capture-pane -J -p | grep -oE '(https?):\/\/.*[^>]' | fzf-tmux -d20 --multi | xargs xdg-open"
-      bind-key C-s display-popup -E "zsh ${config.xdg.dataHome}/zsh/functions/sessionizer"
+      bind-key s display-popup -E "zsh ${config.xdg.dataHome}/zsh/functions/sessionizer"
       bind-key C-t display-popup -d "#{pane_current_path}" -E "zsh"
       bind-key - split-window -v
       bind-key | split-window -h
