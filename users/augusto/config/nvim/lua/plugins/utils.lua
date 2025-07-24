@@ -18,7 +18,7 @@ return {
   },
   {
     "shortcuts/no-neck-pain.nvim",
-    version = "2.2.x",
+    version = "2.4.x",
   },
   { "alexghergh/nvim-tmux-navigation" },
   {
