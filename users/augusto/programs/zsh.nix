@@ -10,7 +10,7 @@
   };
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     defaultKeymap = "emacs";
     history = {
       expireDuplicatesFirst = true;
