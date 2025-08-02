@@ -1,5 +1,10 @@
 local lspconfig = require("lspconfig")
 local servers = {
+  -- https://github.com/olrtg/emmet-language-server
+  emmet_language_server = {
+    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },
+  },
+
   -- https://pkg.go.dev/golang.org/x/tools/gopls#readme-configuration
   gopls = {
     settings = {

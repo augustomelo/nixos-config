@@ -1,5 +1,6 @@
 vim.filetype.add {
   extension = {
+    htmx = "html",
     hurl = "hurl",
   },
   filename = {

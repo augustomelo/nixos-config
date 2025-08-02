@@ -6,6 +6,7 @@
   programs.neovim = {
     enable = true;
     extraPackages = with pkgs; [
+      emmet-language-server
       gopls
       helm-ls
       jdt-language-server
