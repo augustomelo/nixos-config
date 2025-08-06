@@ -3,6 +3,7 @@
 }:
 {
   imports = [
+    ./bash.nix
     ./bat.nix
     ./direnv.nix
     ./fzf.nix
@@ -11,7 +12,6 @@
     ./neovim.nix
     ./tmux.nix
     ./zoxide.nix
-    ./zsh.nix
   ];
 
   programs = {

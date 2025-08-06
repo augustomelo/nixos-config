@@ -62,7 +62,6 @@
       unzip
       vale
       xsel
-      zsh-fzf-tab
     ];
   };
 
