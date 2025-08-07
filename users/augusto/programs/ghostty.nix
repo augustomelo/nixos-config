@@ -4,7 +4,6 @@
 {
   programs.ghostty = {
     enable = true;
-    enableZshIntegration = true;
     settings = {
       font-size = 22;
       cursor-style = "block";
