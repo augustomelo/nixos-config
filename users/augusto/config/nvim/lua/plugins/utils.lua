@@ -23,10 +23,7 @@ return {
   },
   { "alexghergh/nvim-tmux-navigation" },
   {
-    "epwalsh/obsidian.nvim",
-    version = "3.9.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
+    "obsidian-nvim/obsidian.nvim",
+    version = "3.13.x",
   },
 }
