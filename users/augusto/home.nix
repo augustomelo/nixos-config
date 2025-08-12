@@ -32,7 +32,6 @@
       EDITOR = "nvim";
       KUBECONFIG = "$HOME/.kube/config";
       JAVA_TOOL_OPTIONS = "-javaagent:${pkgs.lombok}/share/java/lombok.jar";
-      NOTES = "$HOME/workspace/personal/notes";
     };
 
     packages = with pkgs; [
