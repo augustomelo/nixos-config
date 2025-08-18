@@ -1,9 +1,9 @@
-.PHONY: partition-format-install install-user-config
+.PHONY: check-env partition-format-install install-user-config
 
+HOSTNAME ?= unset
 NIXADDR ?= unset
 NIXPORT ?= 22
 NIXUSER ?= augusto
-NIXNAME ?= vm-aarch64-fusion
 
 # SSH options that are used. These aren't meant to be overridden but are
 # reused a lot so we just store them up here.
@@ -38,13 +38,20 @@ partition-format-install:
 		reboot; \
 	"
 
-install-user-config:
+check-env:
+	@echo "Check if the enviroment variables are installed";
+	@if [ "$(HOSTNAME)" == "unset" ]; then \
+		echo "HOSTNAME is not set. Availble options are: devbox or home-server"; \
+		exit 1; \
+	fi
+
+install-user-config: check-env
 	# Since git doesn't allow clone anonymously using ssh, we need to perform a set afterwards
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) root@$(NIXADDR) " \
 		cd / && \
 		nix shell nixpkgs#git --command git clone https://github.com/augustomelo/nixos-config.git && \
 		cd /nixos-config && \
-		nixos-rebuild switch --flake \".#${NIXNAME}\" && \
+		nixos-rebuild switch --flake \".#${HOSTNAME}\" && \
 		nix shell nixpkgs#git --command git remote set-url origin git@github.com:augustomelo/nixos-config.git && \
 		mkdir -p /home/${NIXUSER}/workspace/{work,personal} && \
 		mv /nixos-config /home/${NIXUSER}/workspace/personal/ && \

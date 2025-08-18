@@ -20,16 +20,15 @@
       ...
     }:
     let
-      host = "vm-aarch64-fusion";
       system = "aarch64-linux";
       username = "augusto";
     in
     {
       nixosConfigurations = {
-        ${host} = nixpkgs.lib.nixosSystem {
+        devbox = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/${host}.nix
+            ./hosts/vm-aarch64-fusion.nix
             ./users/${username}/user.nix
             home-manager.nixosModules.home-manager
             {

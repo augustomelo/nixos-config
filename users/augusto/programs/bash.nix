@@ -42,7 +42,7 @@
       ll = "eza --color=always --git --long";
       ls = "eza --color=always --git";
       nfu = "nix flake update --flake $HOME/workspace/personal/nixos-config/";
-      nrs = "sudo nixos-rebuild switch --flake $HOME/workspace/personal/nixos-config/#vm-aarch64-fusion";
+      nrs = "sudo nixos-rebuild switch --flake $HOME/workspace/personal/nixos-config/#";
       tmux = "tmux attach -dt nixos-config || tmux new-session -s nixos-config -c \"$HOME/workspace/personal/nixos-config/\"";
     };
     shellOptions = [
