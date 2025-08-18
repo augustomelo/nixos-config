@@ -1,3 +1,5 @@
+.PHONY: partition-format-install install-user-config
+
 NIXADDR ?= unset
 NIXPORT ?= 22
 NIXUSER ?= augusto
@@ -7,7 +9,7 @@ NIXNAME ?= vm-aarch64-fusion
 # reused a lot so we just store them up here.
 SSH_OPTIONS=-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
-vm/partition-format-install:
+partition-format-install:
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) root@$(NIXADDR) " \
 		parted /dev/nvme0n1 --script -- \
 			mklabel gpt \
@@ -36,7 +38,7 @@ vm/partition-format-install:
 		reboot; \
 	"
 
-vm/install-user-config:
+install-user-config:
 	# Since git doesn't allow clone anonymously using ssh, we need to perform a set afterwards
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) root@$(NIXADDR) " \
 		cd / && \
@@ -46,6 +48,6 @@ vm/install-user-config:
 		nix shell nixpkgs#git --command git remote set-url origin git@github.com:augustomelo/nixos-config.git && \
 		mkdir -p /home/${NIXUSER}/workspace/{work,personal} && \
 		mv /nixos-config /home/${NIXUSER}/workspace/personal/ && \
-		chown -R augusto: /home/${NIXUSER}/workspace && \
+		chown -R ${NIXUSER}: /home/${NIXUSER}/workspace && \
 		reboot; \
 	"
