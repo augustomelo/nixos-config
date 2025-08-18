@@ -29,7 +29,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"

@@ -26,7 +26,7 @@
       recursive = true;
     };
 
-    stateVersion = "24.11";
+    stateVersion = "25.05";
     sessionVariables = {
       BAT_THEME = "Catppuccin Macchiato"; # this is needed for delta when running the command git blame
       EDITOR = "nvim";
