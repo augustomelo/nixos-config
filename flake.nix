@@ -20,13 +20,12 @@
       ...
     }:
     let
-      system = "aarch64-linux";
       username = "augusto";
     in
     {
       nixosConfigurations = {
         devbox = nixpkgs.lib.nixosSystem {
-          inherit system;
+          system = "aarch64-linux";
           modules = [
             ./hosts/vm-aarch64-fusion.nix
             ./users/${username}/user.nix
@@ -36,7 +35,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
                 pkgs-stable = import nixpkgs-stable {
-                  inherit system;
+                  system = "aarch64-linux";
                 };
               };
               home-manager.users.${username} = {
