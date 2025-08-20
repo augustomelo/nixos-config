@@ -9,6 +9,9 @@ NIXUSER ?= augusto
 # reused a lot so we just store them up here.
 SSH_OPTIONS=-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
+# Is mandatory to set the password to be able to ssh
+# sudu su
+# passwd
 partition-format-install:
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) root@$(NIXADDR) " \
 		parted /dev/nvme0n1 --script -- \
