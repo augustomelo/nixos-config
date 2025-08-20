@@ -19,16 +19,13 @@
       nixpkgs-stable,
       ...
     }:
-    let
-      username = "augusto";
-    in
     {
       nixosConfigurations = {
         devbox = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
             ./hosts/vm-aarch64-fusion.nix
-            ./users/${username}/user.nix
+            ./users/augusto/user.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -38,9 +35,9 @@
                   system = "aarch64-linux";
                 };
               };
-              home-manager.users.${username} = {
+              home-manager.users.augusto = {
                 imports = [
-                  ./users/${username}/home.nix
+                  ./users/augusto/home.nix
                   catppuccin.homeModules.catppuccin
                 ];
               };
