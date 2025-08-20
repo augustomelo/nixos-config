@@ -8,8 +8,6 @@
     efi.canTouchEfiVariables = true;
   };
 
-  time.timeZone = "Europe/Lisbon";
-
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
@@ -25,13 +23,25 @@
     };
   };
 
-  security.sudo.wheelNeedsPassword = false;
+  hardware.graphics.enable = true;
+  networking.networkmanager.enable = true;
+
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "daily";
+      randomizedDelaySec = "10m";
+      persistent = true;
+      options = "--delete-older-than 7d";
+    };
+
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
 
   nixpkgs.config.allowUnfree = true;
-
   system.stateVersion = "25.05";
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  time.timeZone = "Europe/Lisbon";
 }

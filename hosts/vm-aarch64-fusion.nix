@@ -1,18 +1,12 @@
 { pkgs, ... }:
-
 {
   imports = [
-    ./vm-base.nix
+    ./shared.nix
     ./hardware/vm-aarch64-fusion.nix
   ];
 
-  hardware.graphics.enable = true;
   virtualisation.vmware.guest.enable = true;
-
-  networking = {
-    hostName = "devbox";
-    networkmanager.enable = true;
-  };
+  networking.hostName = "devbox";
 
   fileSystems."/mnt/shared" = {
     device = ".host:/";
@@ -39,6 +33,8 @@
       '')
     ];
   };
+
+  security.sudo.wheelNeedsPassword = false;
 
   services = {
     xserver = {

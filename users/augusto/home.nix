@@ -70,14 +70,6 @@
     ./programs
   ];
 
-  nix.gc = {
-    automatic = true;
-    frequency = "daily";
-    randomizedDelaySec = "10m";
-    persistent = true;
-    options = "--delete-older-than 3d";
-  };
-
   xdg.enable = true;
 
   xsession.windowManager.i3 = {
