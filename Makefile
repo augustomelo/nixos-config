@@ -1,9 +1,11 @@
-.PHONY: check-env partition-format-install install-user-config
+.PHONY: check-env copy partition-format-install install-user-config
 
 HOSTNAME ?= unset
 NIXADDR ?= unset
 NIXPORT ?= 22
 NIXUSER ?= augusto
+
+MAKEFILE_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 # SSH options that are used. These aren't meant to be overridden but are
 # reused a lot so we just store them up here.
@@ -40,6 +42,10 @@ partition-format-install:
 		swapoff -a && \
 		reboot; \
 	"
+
+copy:
+	rsync -av -e 'ssh $(SSH_OPTIONS) -p$(NIXPORT)' \
+		$(MAKEFILE_DIR)/transfer/ root@$(NIXADDR):/etc/nixos
 
 check-env:
 	@echo "Check if the enviroment variables are installed";
