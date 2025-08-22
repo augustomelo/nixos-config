@@ -1,4 +1,4 @@
-.PHONY: check-env copy partition-format-install install-user-config
+.PHONY: check-env copy partition-format-install install-user-config sync-config
 
 HOSTNAME ?= unset
 NIXADDR ?= unset
@@ -46,6 +46,14 @@ partition-format-install:
 copy:
 	rsync -av -e 'ssh $(SSH_OPTIONS) -p$(NIXPORT)' \
 		$(MAKEFILE_DIR)/transfer/ root@$(NIXADDR):/etc/nixos
+
+sync-config:
+	rsync -av -e 'ssh $(SSH_OPTIONS) -p$(NIXPORT)' \
+		--exclude='.git/' \
+		--exclude='.jj/' \
+		--exclude='transfer/' \
+		--exclude='.envrc' \
+		$(MAKEFILE_DIR)/ root@$(NIXADDR):/nixos-config
 
 check-env:
 	@echo "Check if the enviroment variables are installed";
