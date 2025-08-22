@@ -11,6 +11,17 @@ MAKEFILE_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 # reused a lot so we just store them up here.
 SSH_OPTIONS=-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
+check-env:
+	@echo "Check if the enviroment variables are installed";
+	@if [ "$(HOSTNAME)" == "unset" ]; then \
+		echo "HOSTNAME is not set. Availble options are: devbox or home-server"; \
+		exit 1; \
+	fi
+
+copy:
+	rsync -av -e 'ssh $(SSH_OPTIONS) -p$(NIXPORT)' \
+		$(MAKEFILE_DIR)/transfer/ root@$(NIXADDR):/etc/nixos
+
 # Is mandatory to set the password to be able to ssh
 # sudu su
 # passwd
@@ -42,26 +53,7 @@ partition-format-install:
 		swapoff -a && \
 		reboot; \
 	"
-
-copy:
-	rsync -av -e 'ssh $(SSH_OPTIONS) -p$(NIXPORT)' \
-		$(MAKEFILE_DIR)/transfer/ root@$(NIXADDR):/etc/nixos
-
-sync-config:
-	rsync -av -e 'ssh $(SSH_OPTIONS) -p$(NIXPORT)' \
-		--exclude='.git/' \
-		--exclude='.jj/' \
-		--exclude='transfer/' \
-		--exclude='.envrc' \
-		$(MAKEFILE_DIR)/ root@$(NIXADDR):/nixos-config
-
-check-env:
-	@echo "Check if the enviroment variables are installed";
-	@if [ "$(HOSTNAME)" == "unset" ]; then \
-		echo "HOSTNAME is not set. Availble options are: devbox or home-server"; \
-		exit 1; \
-	fi
-
+ 
 install-user-config: check-env
 	# Since git doesn't allow clone anonymously using ssh, we need to perform a set afterwards
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) root@$(NIXADDR) " \
@@ -73,5 +65,12 @@ install-user-config: check-env
 		mkdir -p /home/${NIXUSER}/workspace/{work,personal} && \
 		mv /nixos-config /home/${NIXUSER}/workspace/personal/ && \
 		chown -R ${NIXUSER}: /home/${NIXUSER}/workspace && \
-		reboot; \
+		reboot;
 	"
+sync-config:
+	rsync -av -e 'ssh $(SSH_OPTIONS) -p$(NIXPORT)' \
+		--exclude='.git/' \
+		--exclude='.jj/' \
+		--exclude='transfer/' \
+		--exclude='.envrc' \
+		$(MAKEFILE_DIR)/ root@$(NIXADDR):/nixos-config
