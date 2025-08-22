@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
   };
@@ -15,6 +16,7 @@
     {
       catppuccin,
       home-manager,
+      nixos-hardware,
       nixpkgs,
       nixpkgs-stable,
       ...
@@ -47,7 +49,9 @@
         home-server = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            ./hosts/gmktec-nucbox-g3-plus.nix 
             ./users/jb/user.nix
+            nixos-hardware.nixosModules.gmktec-nucbox-g3-plus
           ];
         };
       };
