@@ -11,6 +11,11 @@
     ssh.startAgent = true;
   };
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 8080 ];
+  };
+
   users = {
     mutableUsers = false;
     users.jb = {
