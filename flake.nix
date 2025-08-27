@@ -49,9 +49,19 @@
         home-server = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hosts/gmktec-nucbox-g3-plus.nix 
+            ./hosts/gmktec-nucbox-g3-plus.nix
             ./users/jb/user.nix
             nixos-hardware.nixosModules.gmktec-nucbox-g3-plus
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.jb = {
+                imports = [
+                  ./users/jb/home.nix
+                ];
+              };
+            }
           ];
         };
       };
