@@ -1,5 +1,9 @@
-{  ... }:
+{ ... }:
 {
+  imports = [
+    ./containers
+  ];
+
   home = {
     stateVersion = "25.05";
   };
