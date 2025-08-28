@@ -1,4 +1,7 @@
-{ ... }:
+{
+  config,
+  ...
+}:
 {
   systemd.user.tmpfiles.rules = [
     "d /home/jb/home-server/containers/servarr/config/qbittorrent 0755 - - -"
@@ -12,14 +15,7 @@
     privoxy = {
       image = "docker.io/qmcgaw/gluetun:v3.40";
 
-      environment = {
-        TZ = "Etc/UTC";
-        UPDATER_PERIOD = "24h";
-        VPN_SERVICE_PROVIDER = "mullvad";
-        VPN_TYPE = "wireguard";
-        WIREGUARD_ADDRESSES = "";
-        WIREGUARD_PRIVATE_KEY = "";
-      };
+      environmentFile =  [ "${config.sops.templates."containers/privoxy".path}" ];
       addCapabilities = [ "NET_ADMIN" ];
       devices = [ "/dev/net/tun:/dev/net/tun" ];
     };
@@ -39,6 +35,24 @@
         "/home/jb/home-server/containers/servarr/config/qbittorrent:/config"
         "/home/jb/home-server/containers/servarr/storage/qbittorrent:/downloads"
       ];
+    };
+  };
+
+  sops = {
+    secrets = {
+      "containers/privoxy/wireguard_addresses" = { };
+      "containers/privoxy/wireguard_private_key" = { };
+    };
+    templates = {
+      "containers/privoxy".content = ''
+        SERVER_COUNTRIES=Singapore
+        TZ=Etc/UTC
+        UPDATER_PERIOD=24h
+        VPN_SERVICE_PROVIDER=mullvad
+        VPN_TYPE=wireguard
+        WIREGUARD_ADDRESSES=${config.sops.placeholder."containers/privoxy/wireguard_addresses"}
+        WIREGUARD_PRIVATE_KEY=${config.sops.placeholder."containers/privoxy/wireguard_private_key"}
+      '';
     };
   };
 }
