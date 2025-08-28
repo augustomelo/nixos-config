@@ -15,9 +15,10 @@
     privoxy = {
       image = "docker.io/qmcgaw/gluetun:v3.40";
 
-      environmentFile =  [ "${config.sops.templates."containers/privoxy".path}" ];
       addCapabilities = [ "NET_ADMIN" ];
       devices = [ "/dev/net/tun:/dev/net/tun" ];
+      environmentFile =  [ "${config.sops.templates."containers/privoxy".path}" ];
+      ports = [ "8080:8080" ];
     };
 
     # https://docs.linuxserver.io/images/docker-qbittorrent
@@ -27,8 +28,7 @@
       environment = {
         TZ = "Etc/UTC";
       };
-      network = [ "servarr" ];
-      ports = [ "8080:8080" ];
+      network = [ "container:privoxy" ];
       user = "jb";
       userNS = "keep-id";
       volumes = [
