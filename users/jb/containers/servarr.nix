@@ -4,6 +4,7 @@
 }:
 {
   systemd.user.tmpfiles.rules = [
+    "d /home/jb/home-server/containers/servarr/config/prowlarr 0755 - - -"
     "d /home/jb/home-server/containers/servarr/config/qbittorrent 0755 - - -"
     "d /home/jb/home-server/containers/servarr/storage/qbittorrent 0755 - - -"
   ];
@@ -18,7 +19,24 @@
       addCapabilities = [ "NET_ADMIN" ];
       devices = [ "/dev/net/tun:/dev/net/tun" ];
       environmentFile =  [ "${config.sops.templates."containers/privoxy".path}" ];
+      network = [ "servarr" ];
       ports = [ "8080:8080" ];
+    };
+
+    # https://docs.linuxserver.io/images/docker-prowlarr
+    prowlarr = {
+      image = "docker.io/linuxserver/prowlarr:latest";
+
+      environment = {
+        TZ = "Etc/UTC";
+      };
+      network = [ "servarr" ];
+      ports = [ "9696:9696" ];
+      user = "jb";
+      userNS = "keep-id";
+      volumes = [
+        "/home/jb/home-server/containers/servarr/config/prowlarr:/config"
+      ];
     };
 
     # https://docs.linuxserver.io/images/docker-qbittorrent
@@ -45,6 +63,7 @@
     };
     templates = {
       "containers/privoxy".content = ''
+        HTTPPROXY=on
         SERVER_COUNTRIES=Singapore
         TZ=Etc/UTC
         UPDATER_PERIOD=24h

@@ -13,7 +13,10 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 8080 ];
+    allowedTCPPorts = [
+      8080
+      9696
+    ];
   };
 
   users = {
