@@ -11,6 +11,15 @@
 
   services.podman.networks.servarr = { };
   services.podman.containers = {
+    flaresolverr = {
+      image = "docker.io/flaresolverr/flaresolverr:v3.4.0";
+
+      environment = {
+        TZ = "Etc/UTC";
+      };
+      network = [ "servarr" ];
+    };
+
     # https://github.com/qdm12/gluetun
     # https://github.com/qdm12/gluetun-wiki
     privoxy = {
