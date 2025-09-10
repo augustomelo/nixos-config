@@ -28,7 +28,7 @@
 
       addCapabilities = [ "NET_ADMIN" ];
       devices = [ "/dev/net/tun:/dev/net/tun" ];
-      environmentFile =  [ "${config.sops.templates."containers/privoxy".path}" ];
+      environmentFile = [ "${config.sops.templates."containers/privoxy".path}" ];
       network = [ "servarr" ];
       ports = [ "8080:8080" ];
     };
@@ -55,6 +55,13 @@
 
       environment = {
         TZ = "Etc/UTC";
+      };
+      extraConfig = {
+        Unit = {
+          After = "podman-privoxy.service";
+          Requires = "podman-privoxy.service";
+          PartOf = "podman-privoxy.service";
+        };
       };
       network = [ "container:privoxy" ];
       user = "jb";
