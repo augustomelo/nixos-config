@@ -11,6 +11,7 @@
 
   services.podman.networks.servarr = { };
   services.podman.containers = {
+    # https://github.com/FlareSolverr/FlareSolverr
     flaresolverr = {
       image = "docker.io/flaresolverr/flaresolverr:v3.4.0";
 
