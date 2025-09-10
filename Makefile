@@ -65,7 +65,7 @@ install-user-config: check-env
 		mkdir -p /home/${NIXUSER}/workspace/{work,personal} && \
 		mv /nixos-config /home/${NIXUSER}/workspace/personal/ && \
 		chown -R ${NIXUSER}: /home/${NIXUSER}/workspace && \
-		reboot;
+		reboot; \
 	"
 sync-config:
 	rsync -av -e 'ssh $(SSH_OPTIONS) -p$(NIXPORT)' \
