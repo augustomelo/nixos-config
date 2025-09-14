@@ -28,6 +28,7 @@
     mutableUsers = false;
     users.jb = {
       home = "/home/jb";
+      linger = true;
       isNormalUser = true;
       shell = pkgs.bash;
       extraGroups = [ "wheel" ];
