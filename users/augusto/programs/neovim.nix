@@ -14,6 +14,7 @@
       markdownlint-cli
       nil
       nixfmt-rfc-style
+      terraform-ls
       tree-sitter
       typescript-language-server
       vale-ls

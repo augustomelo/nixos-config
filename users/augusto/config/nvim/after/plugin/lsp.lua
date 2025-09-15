@@ -90,6 +90,9 @@ local servers = {
     },
   },
 
+  -- https://github.com/hashicorp/terraform-ls/blob/main/docs/SETTINGS.md
+  terraformls = {},
+
   -- https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
   pylsp = {
     settings = {
@@ -140,7 +143,7 @@ local servers = {
 
   -- https://vale.sh/docs/guides/lsp
   vale_ls = {
-    filetypes = { "gitcommit", "jjdescription" ,"markdown", "text" },
+    filetypes = { "gitcommit", "jjdescription", "markdown", "text" },
     init_options = {
       installVale = false,
       syncOnStartup = true,

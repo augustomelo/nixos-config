@@ -59,6 +59,7 @@
       podman-compose
       python314
       ripgrep
+      terraform
       unzip
       vale
       xsel
