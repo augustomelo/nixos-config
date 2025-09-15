@@ -6,7 +6,11 @@
   ];
 
   virtualisation.vmware.guest.enable = true;
-  networking.hostName = "devbox";
+
+  networking = {
+    hostName = "devbox";
+    networkmanager.enable = true;
+  };
 
   fileSystems."/mnt/shared" = {
     device = ".host:/";

@@ -24,7 +24,6 @@
   };
 
   hardware.graphics.enable = true;
-  networking.networkmanager.enable = true;
 
   nix = {
     gc = {

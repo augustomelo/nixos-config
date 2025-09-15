@@ -5,7 +5,10 @@
     ./hardware/gmktec-nucbox-g3-plus.nix
   ];
 
-  networking.hostName = "home-server";
+  networking = {
+    hostName = "home-server";
+    useDHCP = false;
+  };
 
   services = {
     fail2ban.enable = true;
