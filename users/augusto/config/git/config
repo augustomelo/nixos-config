@@ -69,6 +69,7 @@
 [core]
   editor = nvim
   excludesFile = ~/.config/git/ignore
+  hooksPath = ~/.config/git/hooks
   pager = delta
 
 [delta]

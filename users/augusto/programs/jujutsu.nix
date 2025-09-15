@@ -5,6 +5,9 @@
   programs.jujutsu = {
     enable = true;
     settings = {
+      git = {
+        private-commits = "description(glob:'private:*')";
+      };
       user = {
         email = "4723788+augustomelo@users.noreply.github.com";
         name = "Augusto Melo";
