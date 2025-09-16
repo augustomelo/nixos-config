@@ -35,6 +35,7 @@
     };
 
     packages = with pkgs; [
+      sops
       cmake
       dasel
       dbeaver-bin
@@ -59,7 +60,7 @@
       podman-compose
       python314
       ripgrep
-      terraform
+      tfswitch
       unzip
       vale
       xsel
