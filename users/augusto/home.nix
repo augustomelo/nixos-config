@@ -35,7 +35,7 @@
     };
 
     packages = with pkgs; [
-      sops
+      awscli2
       cmake
       dasel
       dbeaver-bin
