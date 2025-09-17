@@ -60,6 +60,7 @@
       podman-compose
       python314
       ripgrep
+      sops
       tfswitch
       unzip
       vale
