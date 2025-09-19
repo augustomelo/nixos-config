@@ -29,6 +29,9 @@
       "ls"
     ];
     initExtra = ''
+      # After each command, append to the history file and reread it
+      PROMPT_COMMAND="history -a; history -c; history -r;$PROMPT_COMMAND"
+
       bind 'set show-all-if-ambiguous on'
       bind 'TAB:menu-complete'
 
