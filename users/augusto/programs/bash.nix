@@ -46,6 +46,7 @@
       ls = "eza --color=always --git";
       nfu = "nix flake update --flake $HOME/workspace/personal/nixos-config/";
       nrs = "sudo nixos-rebuild switch --flake $HOME/workspace/personal/nixos-config/#";
+      t = "terraform";
       tmux = "tmux attach -dt nixos-config || tmux new-session -s nixos-config -c \"$HOME/workspace/personal/nixos-config/\"";
     };
     shellOptions = [
