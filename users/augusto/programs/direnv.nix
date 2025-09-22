@@ -10,6 +10,7 @@
       whitelist = {
         prefix = [ "~/workspace" ];
       };
+      strict_env = true;
     };
   };
 }
