@@ -6,8 +6,8 @@ else
   selected_cwd=$({ fd . --type d --max-depth 1 ~/workspace/personal; fd . --type d --max-depth 1 ~/workspace/work; } | fzf --preview "eza --tree --color=always {}")
 fi
 
-if [[ -z $selected_cwd ]]; then
-  return 0
+if [[ -z "$selected_cwd" ]]; then
+   exit 0
 fi
 
 selected_name=$(basename "$selected_cwd" | tr . _)
