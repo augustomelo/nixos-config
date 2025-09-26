@@ -148,8 +148,8 @@ local servers = {
       syncOnStartup = true,
       configPath = vim.env.XDG_CONFIG_HOME .. "/vale/vale.ini"
     },
-    root_dir = function(_)
-      return vim.fn.getcwd()
+    root_dir = function(_, on_dir)
+      on_dir(vim.fn.getcwd())
     end,
     on_new_config = function(new_config, _)
       if vim.fn.findfile(".vale.ini", ".;") ~= "" then
