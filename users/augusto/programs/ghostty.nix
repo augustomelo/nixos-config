@@ -10,7 +10,7 @@
       link-url = true;
       mouse-hide-while-typing = true;
       shell-integration-features = "no-cursor";
-      theme = "catppuccin-macchiato";
+      theme = "Catppuccin Macchiato";
       title = "ghostty";
       window-decoration = false;
     };

@@ -12,6 +12,7 @@ local ensure_installed = {
   "gomod",
   "helm",
   "hurl",
+  "hurl",
   "ini",
   "java",
   "javascript",
