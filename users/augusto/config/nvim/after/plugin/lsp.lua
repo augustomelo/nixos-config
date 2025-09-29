@@ -1,4 +1,3 @@
-local lspconfig = require("lspconfig")
 local servers = {
   -- https://github.com/olrtg/emmet-language-server
   emmet_language_server = {
@@ -177,7 +176,6 @@ local servers = {
 }
 
 for server, config in pairs(servers) do
-  lspconfig[server].setup(vim.tbl_extend("force", config, {
-    capabilities = require('blink.cmp').get_lsp_capabilities(),
-  }))
+  vim.lsp.config(server, config)
+  vim.lsp.enable(server)
 end
