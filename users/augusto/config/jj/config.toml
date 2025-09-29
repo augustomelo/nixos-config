@@ -1,0 +1,20 @@
+[user]
+email = "4723788+augustomelo@users.noreply.github.com"
+name = "Augusto Melo"
+
+[git]
+private-commits = "description(glob:'private:*')"
+
+[ui]
+default-command = ["log"]
+
+[[--scope]]
+--when.commands = ["log", "status"]
+[--scope.ui]
+paginate = "never"
+
+[[--scope]]
+--when.commands = ["diff", "show"]
+[--scope.ui]
+diff-formatter = ":git"
+pager = "delta"
