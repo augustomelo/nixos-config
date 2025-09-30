@@ -8,7 +8,6 @@
 
     bat.enable = true;
     fzf.enable = true;
-    k9s.enable = true;
     kvantum.enable = false;
     tmux = {
       enable = true;
@@ -30,12 +29,9 @@
     sessionVariables = {
       BAT_THEME = "Catppuccin Macchiato"; # this is needed for delta when running the command git blame
       EDITOR = "nvim";
-      KUBECONFIG = "$HOME/.kube/config";
-      JAVA_TOOL_OPTIONS = "-javaagent:${pkgs.lombok}/share/java/lombok.jar";
     };
 
     packages = with pkgs; [
-      awscli2
       cmake
       dasel
       dbeaver-bin
@@ -50,18 +46,13 @@
       go
       home-manager
       hurl
-      jdk
-      kubectl
-      kubelogin-oidc
-      lombok
       nixfmt-rfc-style
       nodejs_22
       podman
       podman-compose
-      python314
+      python313
       ripgrep
       sops
-      tfswitch
       unzip
       vale
       xsel
