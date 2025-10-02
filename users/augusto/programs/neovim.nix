@@ -6,6 +6,7 @@
   programs.neovim = {
     enable = true;
     extraPackages = with pkgs; [
+      bash-language-server
       emmet-language-server
       gopls
       helm-ls
@@ -14,6 +15,8 @@
       markdownlint-cli
       nil
       nixfmt-rfc-style
+      shellcheck
+      shfmt
       terraform-ls
       tree-sitter
       typescript-language-server
