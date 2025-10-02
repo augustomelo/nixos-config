@@ -1,6 +1,6 @@
 local servers = {
   -- https://github.com/bash-lsp/bash-language-server/blob/main/server/src/config.ts
-  shellcheck = {},
+  bashls = {},
 
   -- https://github.com/olrtg/emmet-language-server
   emmet_language_server = {

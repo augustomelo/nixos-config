@@ -39,6 +39,7 @@
     '';
     shellAliases = {
       g = "git";
+      jjc = "jj git init --colocate";
       la = "eza --color=always --git --long --all";
       ll = "eza --color=always --git --long";
       ls = "eza --color=always --git";
