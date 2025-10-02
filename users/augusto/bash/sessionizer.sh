@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
   selected_cwd=$1
 else
-  selected_cwd=$({ fd . --type d --max-depth 1 ~/workspace/personal; fd . --type d --max-depth 1 ~/workspace/work; } | fzf --preview "eza --tree --color=always {}")
+  selected_cwd=$(fd . --type d --max-depth 2 ~/workspace | fzf --preview "eza --tree --color=always {}")
 fi
 
 if [[ -z "$selected_cwd" ]]; then
