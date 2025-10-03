@@ -4,14 +4,22 @@
   ...
 }:
 {
-  home.file."${config.xdg.dataHome}/bash" = {
-    source = ../bash;
-    recursive = true;
+  home = {
+    file."${config.xdg.dataHome}/bash" = {
+      source = ../bash;
+      recursive = true;
+    };
+
+    sessionPath = [
+      "${config.xdg.dataHome}/bash"
+    ];
+
+    shell.enableBashIntegration = true;
+
+    packages = with pkgs; [
+      complete-alias
+    ];
   };
-  home.sessionPath = [
-    "${config.xdg.dataHome}/bash"
-  ];
-  home.shell.enableBashIntegration = true;
   programs.bash = {
     enable = true;
     enableVteIntegration = true;
@@ -35,7 +43,10 @@
       bind 'set show-all-if-ambiguous on'
       bind 'TAB:menu-complete'
 
-      source "${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh";
+      source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
+      source ${pkgs.complete-alias}/bin/complete_alias
+
+      complete -F _complete_alias "''${!BASH_ALIASES[@]}"
     '';
     shellAliases = {
       g = "git";
