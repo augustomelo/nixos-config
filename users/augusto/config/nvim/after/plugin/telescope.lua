@@ -9,6 +9,7 @@ require("telescope").setup({
       mappings = {
         i = {
           ["<A-e>"] = require("telescope").extensions.file_browser.actions.rename,
+          ["<C-h>"] = require("telescope").extensions.file_browser.actions.toggle_respect_gitignore,
         },
       },
     },
