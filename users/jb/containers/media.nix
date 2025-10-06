@@ -8,6 +8,10 @@
     "d /home/jb/home-server/containers/media/config/jellyfin 0755 - - -"
     "d /home/jb/home-server/containers/media/storage/immich-database 0755 - - -"
     "d /home/jb/home-server/containers/media/storage/immich-server 0755 - - -"
+    "d /home/jb/home-server/containers/media/storage/paperless-ngx-server/consume 0755 - - -"
+    "d /home/jb/home-server/containers/media/storage/paperless-ngx-server/data 0755 - - -"
+    "d /home/jb/home-server/containers/media/storage/paperless-ngx-server/export 0755 - - -"
+    "d /home/jb/home-server/containers/media/storage/paperless-ngx-server/media 0755 - - -"
     "d /home/jb/home-server/containers/shared/media/movies 0755 - - -"
     "d /home/jb/home-server/containers/shared/media/tv 0755 - - -"
   ];
@@ -103,6 +107,7 @@
       ];
     };
 
+
     # https://docs.linuxserver.io/images/docker-jellyfin
     jellyfin = {
       image = "docker.io/linuxserver/jellyfin:latest";
@@ -122,6 +127,37 @@
         "/home/jb/home-server/containers/media/config/jellyfin:/config"
         "/home/jb/home-server/containers/shared/media/movies:/data/movies"
         "/home/jb/home-server/containers/shared/media/tv:/data/tvshows"
+      ];
+    };
+
+    # https://docs.paperless-ngx.com/setup/#docker
+    paperless-ngx-broker = {
+      image = "docker.io/library/redis:8";
+
+      network = [
+        "media"
+      ];
+    };
+
+    # https://docs.paperless-ngx.com/setup/#docker
+    paperless-ngx-server = {
+      image = "ghcr.io/paperless-ngx/paperless-ngx:latest";
+
+      environment = {
+        PAPERLESS_OCR_LANGUAGE = "por+eng";
+        PAPERLESS_REDIS = "redis://paperless-ngx-broker:6379";
+        PAPERLESS_TIME_ZONE = "Etc/UTC";
+      };
+      network = [
+        "media"
+      ];
+      ports = [ "8000:8000" ];
+      userNS = "keep-id";
+      volumes = [
+        "/home/jb/home-server/containers/media/storage/paperless-ngx-server/consume:/usr/src/paperless/consume"
+        "/home/jb/home-server/containers/media/storage/paperless-ngx-server/data:/usr/src/paperless/data"
+        "/home/jb/home-server/containers/media/storage/paperless-ngx-server/export:/usr/src/paperless/export"
+        "/home/jb/home-server/containers/media/storage/paperless-ngx-server/media:/usr/src/paperless/media"
       ];
     };
   };
