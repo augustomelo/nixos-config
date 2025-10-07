@@ -19,8 +19,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
       { unpack(default_opts), desc = "vim.lsp.buf.declaration" })
     vim.keymap.set("n", "grdf", vim.lsp.buf.definition,
       { unpack(default_opts), desc = "vim.lsp.buf.definition" })
-    vim.keymap.set("n", "grtd", vim.lsp.buf.type_definition,
-      { unpack(default_opts), desc = "vim.lsp.buf.type_definition" })
     vim.keymap.set("n", "grih",
       function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf, })) end,
       { unpack(default_opts), desc = "vim.lsp.inlay_hint" })
