@@ -36,6 +36,7 @@
       dasel
       dbeaver-bin
       delta
+      docker-compose
       eza
       fd
       firefox
@@ -48,7 +49,6 @@
       hurl
       nixfmt-rfc-style
       nodejs_22
-      podman-compose
       python313
       ripgrep
       sops
