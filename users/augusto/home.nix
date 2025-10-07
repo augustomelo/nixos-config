@@ -48,7 +48,6 @@
       hurl
       nixfmt-rfc-style
       nodejs_22
-      podman
       podman-compose
       python313
       ripgrep

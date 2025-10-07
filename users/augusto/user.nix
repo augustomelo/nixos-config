@@ -4,6 +4,14 @@
     ssh.startAgent = true;
   };
 
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+
   boot.binfmt = {
     emulatedSystems = [ "x86_64-linux" ];
     preferStaticEmulators = true;
@@ -36,7 +44,10 @@
       home = "/home/augusto";
       isNormalUser = true;
       shell = pkgs.bash;
-      extraGroups = [ "wheel" ];
+      extraGroups = [
+        "podman"
+        "wheel"
+      ];
       hashedPassword = "$y$j9T$5qUofB6UibbNyT6gQ7nDX/$QpaTGYmim85ItVepaLalPmtPg1D/A6eFJj6YsCWMQfB";
       # https://docs.podman.io/en/latest/markdown/podman.1.html#rootless-mode
       subUidRanges = [
