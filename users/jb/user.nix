@@ -5,8 +5,8 @@
     bash.shellAliases = {
       la = "ls -la ";
       ll = "ls -l";
-      nfu = "nix flake update --flake $HOME/workspace/personal/nixos-config/";
-      nrs = "sudo nixos-rebuild switch --flake $HOME/workspace/personal/nixos-config/#";
+      nfu = "nix flake update --flake /nixos-config/";
+      nrs = "sudo nixos-rebuild switch --flake /nixos-config/#";
     };
     ssh.startAgent = true;
   };
