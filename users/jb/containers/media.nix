@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   ...
 }:
 {
@@ -17,6 +18,25 @@
   ];
 
   services.podman.networks.media = { };
+
+  services.podman.builds.paperless-ngx = {
+    file =
+      let
+        containerFile = pkgs.writeTextFile {
+          name = "Containerfile";
+          text = ''
+            FROM ghcr.io/paperless-ngx/paperless-ngx:latest
+
+            # Workaround to avoid running as root
+            # https://github.com/paperless-ngx/paperless-ngx/discussions/4019#discussioncomment-10722684
+            RUN apt-get update && apt-get install -y tesseract-ocr-por
+          '';
+        };
+      in
+      "${containerFile}";
+    tags = [ "localhost/paperless-ngx:latest" ];
+  };
+
   services.podman.containers = {
     # https://immich.app/docs/overview/welcome
     immich-server = {
@@ -107,7 +127,6 @@
       ];
     };
 
-
     # https://docs.linuxserver.io/images/docker-jellyfin
     jellyfin = {
       image = "docker.io/linuxserver/jellyfin:latest";
@@ -141,8 +160,15 @@
 
     # https://docs.paperless-ngx.com/setup/#docker
     paperless-ngx-server = {
-      image = "ghcr.io/paperless-ngx/paperless-ngx:latest";
+      image = "paperless-ngx.build";
 
+      extraConfig = {
+        Unit = {
+          After = "podman-paperless-ngx-broker.service";
+          Requires = "podman-paperless-ngx-broker.service";
+          PartOf = "podman-paperless-ngx-broker.service";
+        };
+      };
       environment = {
         PAPERLESS_OCR_LANGUAGE = "por+eng";
         PAPERLESS_REDIS = "redis://paperless-ngx-broker:6379";
