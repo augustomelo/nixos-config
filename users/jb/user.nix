@@ -19,11 +19,25 @@
   };
 
   networking = {
-    nftables.enable = true;
+    nftables = {
+      enable = true;
+      tables = {
+        forward-ports = {
+          family = "inet";
+          content = ''
+            chain prerouting {
+              type nat hook prerouting priority dstnat; policy accept;
+              tcp dport 445 redirect to :4445
+            }
+          '';
+        };
+      };
+    };
     firewall = {
       enable = true;
       allowedTCPPorts = [
         2283
+        4445
         5055
         6767
         7878

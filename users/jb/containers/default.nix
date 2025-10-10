@@ -1,8 +1,9 @@
 { ... }:
 {
   imports = [
-    ./podman.nix
     ./media.nix
+    ./nas.nix
+    ./podman.nix
     ./servarr.nix
   ];
 }
