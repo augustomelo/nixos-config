@@ -55,6 +55,7 @@
         "media"
       ];
       ports = [ "2283:2283" ];
+      userNS = "keep-id";
       volumes = [
         "/home/jb/home-server/containers/media/config/immich:/config"
         "/home/jb/home-server/containers/media/storage/immich-server:/data"
@@ -75,7 +76,7 @@
       ];
       volumes = [
         "/dev/bus/usb:/dev/bus/usb"
-        "model-cache:/cache"
+        "immich-model-cache:/cache"
       ];
     };
 
@@ -83,12 +84,6 @@
     immich-cache = {
       image = "docker.io/valkey/valkey:8-bookworm@sha256:fea8b3e67b15729d4bb70589eb03367bab9ad1ee89c876f54327fc7c6e618571";
 
-      # Container.HealthCmd redis-cli ping || exit 1
-
-      devices = [
-        "/dev/bus/usb:/dev/bus/usb"
-        "/dev/dri:/dev/dri"
-      ];
       environment = {
         TZ = "Etc/UTC";
       };
@@ -99,10 +94,6 @@
       };
       network = [
         "media"
-      ];
-      volumes = [
-        "/dev/bus/usb:/dev/bus/usb"
-        "model-cache:/cache"
       ];
     };
 
