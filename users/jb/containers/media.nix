@@ -5,8 +5,12 @@
 }:
 {
   systemd.user.tmpfiles.rules = [
+    "d /home/jb/home-server/containers/media/config/audiobookshelf 0755 - - -"
     "d /home/jb/home-server/containers/media/config/immich 0755 - - -"
     "d /home/jb/home-server/containers/media/config/jellyfin 0755 - - -"
+    "d /home/jb/home-server/containers/media/storage/audiobookshelf/audiobooks 0755 - - -"
+    "d /home/jb/home-server/containers/media/storage/audiobookshelf/podcasts 0755 - - -"
+    "d /home/jb/home-server/containers/media/storage/audiobookshelf/metadata 0755 - - -"
     "d /home/jb/home-server/containers/media/storage/immich-database 0755 - - -"
     "d /home/jb/home-server/containers/media/storage/immich-server 0755 - - -"
     "d /home/jb/home-server/containers/media/storage/paperless-ngx-server/consume 0755 - - -"
@@ -38,6 +42,27 @@
   };
 
   services.podman.containers = {
+    # https://www.audiobookshelf.org/docs/
+    audiobookshelf = {
+      image = "ghcr.io/advplyr/audiobookshelf:latest";
+
+      environment = {
+        TZ = "Etc/UTC";
+        PORT = "8888";
+      };
+      network = [
+        "media"
+      ];
+      ports = [ "8888:8888" ];
+      userNS = "keep-id";
+      volumes = [
+        "/home/jb/home-server/containers/media/config/audiobookshelf:/config"
+        "/home/jb/home-server/containers/media/storage/audiobookshelf/audiobooks:/audiobooks"
+        "/home/jb/home-server/containers/media/storage/audiobookshelf/podcasts:/podcasts"
+        "/home/jb/home-server/containers/media/storage/audiobookshelf/metadata:/metadata"
+      ];
+    };
+
     # https://immich.app/docs/overview/welcome
     immich-server = {
       image = "ghcr.io/immich-app/immich-server:v2.0.1";
