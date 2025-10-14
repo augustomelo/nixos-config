@@ -5,14 +5,10 @@
 }:
 {
   home = {
-    file."${config.xdg.dataHome}/bash" = {
+    file.".local/bin" = {
       source = ../bash;
       recursive = true;
     };
-
-    sessionPath = [
-      "${config.xdg.dataHome}/bash"
-    ];
 
     shell.enableBashIntegration = true;
 

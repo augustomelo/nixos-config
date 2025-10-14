@@ -26,6 +26,7 @@
   };
 
   environment = {
+    localBinInPath = true;
     variables = {
       QT_AUTO_SCREEN_SCALE_FACTOR = 1;
       QT_ENABLE_HIGHDPI_SCALING = 1;
