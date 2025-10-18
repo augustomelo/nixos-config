@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 {
   programs = {
     git.enable = true;
@@ -79,6 +83,18 @@
         linkConfig.RequiredForOnline = "routable";
       };
     };
+  };
+
+  services.tailscale = {
+    enable = true;
+    authKeyFile = config.sops.secrets.tailscaleAuthKey.path;
+  };
+
+  sops = {
+    age.keyFile = "/etc/nixos/key.txt";
+    defaultSopsFile = ../../secrets/home-server.yaml;
+    defaultSopsFormat = "yaml";
+    secrets.tailscaleAuthKey = { };
   };
 
   users = {
