@@ -68,7 +68,9 @@
               home-manager.users.jb = {
                 imports = [
                   ./users/jb/home.nix
+                  ./users/jb/containers
                 ];
+                home-server.containers.enable = true;
               };
             }
           ];
