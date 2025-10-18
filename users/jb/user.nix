@@ -27,7 +27,10 @@
           content = ''
             chain prerouting {
               type nat hook prerouting priority dstnat; policy accept;
+              tcp dport 53 redirect to :5353
+              tcp dport 80 redirect to :8008
               tcp dport 445 redirect to :4445
+              udp dport 53 redirect to :5353
             }
           '';
         };
@@ -35,13 +38,18 @@
     };
     firewall = {
       enable = true;
+      allowedUDPPorts = [
+        5353
+      ];
       allowedTCPPorts = [
         2283
         4445
         5055
+        5353
         6767
         7878
         8000
+        8008
         8080
         8888
         8989
