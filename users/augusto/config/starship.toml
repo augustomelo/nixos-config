@@ -4,9 +4,17 @@ add_newline = true
 palette = 'catppuccin_macchiato'
 
 format = '''
-[┌─$username$hostname─$directory](overlay2)$fill[$time](overlay2)
-[└─$git_branch$git_state$git_status─$character](overlay2)
+[┌─$username$hostname$directory$git_branch$git_state$git_status$aws$kubernetes](overlay2)$fill[$time](overlay2)
+[└─$character](overlay2)
 '''
+
+[aws]
+format = '─\([$region-$profile$symbol]($style)\)'
+symbol = ' '
+style = 'blue'
+
+[aws.region_aliases]
+eu-west-1 = 'ew1'
 
 [fill]
 symbol = ' '
@@ -16,14 +24,14 @@ success_symbol = '[❯](text)'
 error_symbol = '[❯](text)'
 
 [directory]
-format = '\([$path]($style)[$read_only]($read_only_style)\)'
+format = '─\([$path]($style)[$read_only]($read_only_style)\)'
 read_only_style = 'red'
 style = 'blue'
 truncation_length = 7
 truncation_symbol = '…/'
 
 [git_branch]
-format = '\([$branch$symbol]($style) '
+format = '─\([$branch$symbol]($style) '
 style = 'blue'
 symbol = ' '
 
@@ -38,6 +46,12 @@ style = 'blue'
 format = '[@$hostname]($style)\)'
 ssh_only = false
 style = 'blue'
+
+[kubernetes]
+format = '─\([$context$symbol]($style)\)'
+symbol = ' ☸ '
+style = 'blue'
+disabled = false
 
 [time]
 disabled = false
