@@ -11,6 +11,7 @@
       gopls
       helm-ls
       jdt-language-server
+      jsonnet-language-server
       lua-language-server
       markdownlint-cli
       nil

@@ -55,6 +55,7 @@
       unzip
       vale
       xsel
+      jsonnet
     ];
   };
 

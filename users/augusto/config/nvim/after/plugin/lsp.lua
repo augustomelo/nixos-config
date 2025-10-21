@@ -56,6 +56,9 @@ local servers = {
     },
   },
 
+  -- https://github.com/grafana/jsonnet-language-server
+  jsonnet_ls = {},
+
   -- https://github.com/LuaLS/lua-language-server/wiki/Settings#settings
   lua_ls = {
     settings = {
