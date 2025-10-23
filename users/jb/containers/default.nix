@@ -5,19 +5,23 @@
 }:
 {
   imports = [
-    ./media.nix
-    ./nas.nix
-    ./network.nix
+    ./media
+    ./nas
+    ./network
     ./podman.nix
-    ./servarr.nix
+    ./servarr
   ];
 
   options.home-server.containers = {
     enable = lib.mkEnableOption "Enable home-server containers";
-    root = {
+    directory = {
       config = lib.mkOption {
         type = lib.types.path;
         default = "${config.home.homeDirectory}/containers/config";
+      };
+      share = lib.mkOption {
+        type = lib.types.path;
+        default = "${config.home.homeDirectory}/containers/share";
       };
       storage = lib.mkOption {
         type = lib.types.path;
