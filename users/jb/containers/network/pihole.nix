@@ -26,8 +26,8 @@ in
         "network"
       ];
       ports = [
-        "5353:53/tcp"
-        "5353:53/udp"
+        "5454:53/tcp"
+        "5454:53/udp"
         "8008:80/tcp"
       ];
       volumes = [

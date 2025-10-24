@@ -31,7 +31,7 @@
           content = ''
             chain prerouting {
               type nat hook prerouting priority dstnat; policy accept;
-              tcp dport 53 redirect to :5353
+              tcp dport 53 redirect to :5454
               tcp dport 80 redirect to :8008
               tcp dport 445 redirect to :4445
               udp dport 53 redirect to :5353
@@ -43,7 +43,7 @@
     firewall = {
       enable = true;
       allowedUDPPorts = [
-        5353
+        5454
       ];
       allowedTCPPorts = [
         2283
