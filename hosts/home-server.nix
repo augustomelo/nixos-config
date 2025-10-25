@@ -125,6 +125,7 @@
     containers.enable = true;
     podman = {
       enable = true;
+      autoPrune.enable = true;
     };
   };
 }
