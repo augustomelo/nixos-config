@@ -5,11 +5,18 @@
     ./hardware/vm-aarch64-fusion.nix
   ];
 
-  virtualisation.vmware.guest.enable = true;
+  environment = {
+    localBinInPath = true;
+    variables = {
+      QT_AUTO_SCREEN_SCALE_FACTOR = 1;
+      QT_ENABLE_HIGHDPI_SCALING = 1;
+    };
 
-  networking = {
-    hostName = "devbox";
-    networkmanager.enable = true;
+    systemPackages = with pkgs; [
+      (writeShellScriptBin "xrandr-auto" ''
+        xrandr --output Virtual-1 --auto
+      '')
+    ];
   };
 
   fileSystems."/mnt/shared" = {
@@ -25,19 +32,12 @@
     ];
   };
 
-  environment = {
-    localBinInPath = true;
-    variables = {
-      QT_AUTO_SCREEN_SCALE_FACTOR = 1;
-      QT_ENABLE_HIGHDPI_SCALING = 1;
-    };
-
-    systemPackages = with pkgs; [
-      (writeShellScriptBin "xrandr-auto" ''
-        xrandr --output Virtual-1 --auto
-      '')
-    ];
+  networking = {
+    hostName = "devbox";
+    networkmanager.enable = true;
   };
+
+  programs. ssh.startAgent = true;
 
   security.sudo.wheelNeedsPassword = false;
 
@@ -52,4 +52,20 @@
       defaultSession = "none+i3";
     };
   };
+
+  users = {
+    mutableUsers = false;
+    users.augusto = {
+      home = "/home/augusto";
+      isNormalUser = true;
+      shell = pkgs.bash;
+      extraGroups = [
+        "docker"
+        "wheel"
+      ];
+      hashedPassword = "$y$j9T$5qUofB6UibbNyT6gQ7nDX/$QpaTGYmim85ItVepaLalPmtPg1D/A6eFJj6YsCWMQfB";
+    };
+  };
+
+  virtualisation.vmware.guest.enable = true;
 }
