@@ -5,7 +5,7 @@
 }:
 let
   cfg = config.homeServer.containers.stack.media;
-  configFolder = "${config.homeServer.containers.directory.storage}/media/jellyfin";
+  configFolder = "${config.homeServer.containers.directory.config}/media/jellyfin";
   shareFolder = "${config.homeServer.containers.directory.share}/media";
 in
 {
@@ -22,6 +22,8 @@ in
 
       devices = [ "/dev/dri:/dev/dri" ];
       environment = {
+        PUID = 1000;
+        PGID = 100;
         TZ = "Etc/UTC";
       };
       network = [
@@ -29,8 +31,6 @@ in
         "servarr"
       ];
       ports = [ "8096:8096" ];
-      user = "augusto";
-      userNS = "keep-id";
       volumes = [
         "${configFolder}:/config"
         "${shareFolder}/movies:/data/movies"

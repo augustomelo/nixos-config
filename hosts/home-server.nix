@@ -24,6 +24,7 @@
         8000
         8008
         8080
+        8096
         8888
         8989
         9696
@@ -57,7 +58,7 @@
       la = "ls -la ";
       ll = "ls -l";
       nfu = "nix flake update --flake /nixos-config/";
-      nrs = "sudo nixos-rebuild switch --flake /nixos-config/#";
+      nrs = "sudo nixos-rebuild switch --flake $HOME/workspace/personal/nixos-config/#";
     };
     ssh.startAgent = true;
   };

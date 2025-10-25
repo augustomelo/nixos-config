@@ -66,7 +66,7 @@ install-user-config: check-env
 		nixos-rebuild switch --flake \".#${HOSTNAME}\" && \
 		nix shell nixpkgs#git --command git remote set-url origin git@github.com:augustomelo/nixos-config.git && \
 		mv /nixos-config /home/${NIXUSER}/workspace/personal/ && \
-		chown -R ${NIXUSER}: /home/${NIXUSER}/workspace && \
+		chown -R ${NIXUSER}: /home/${NIXUSER}/workspace/personal/nixos-config && \
 		reboot; \
 	"
 sync-config:
