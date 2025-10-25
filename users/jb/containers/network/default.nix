@@ -4,7 +4,7 @@
   ...
 }:
 let
-  cfg = config.home-server.containers.stack.network;
+  cfg = config.homeServer.containers.stack.network;
 in
 {
   imports = [

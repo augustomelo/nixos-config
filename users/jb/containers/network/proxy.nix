@@ -4,8 +4,8 @@
   ...
 }:
 let
-  cfg = config.home-server.containers.stack.network;
-  configFolder = "${config.home-server.containers.directory.config}/network/gluetun";
+  cfg = config.homeServer.containers.stack.network;
+  configFolder = "${config.homeServer.containers.directory.config}/network/gluetun";
 in
 {
   config = lib.mkIf cfg.enable {

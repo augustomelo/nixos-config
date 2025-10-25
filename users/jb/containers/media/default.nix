@@ -4,7 +4,7 @@
   ...
 }:
 let
-  cfg = config.home-server.containers.stack.media;
+  cfg = config.homeServer.containers.stack.media;
 in
 {
   imports = [

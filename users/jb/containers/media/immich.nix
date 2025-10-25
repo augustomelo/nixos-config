@@ -4,9 +4,9 @@
   ...
 }:
 let
-  cfg = config.home-server.containers.stack.media;
-  configFolder = "${config.home-server.containers.directory.config}/media";
-  storageFolder = "${config.home-server.containers.directory.storage}/media";
+  cfg = config.homeServer.containers.stack.media;
+  configFolder = "${config.homeServer.containers.directory.config}/media";
+  storageFolder = "${config.homeServer.containers.directory.storage}/media";
 in
 {
   config = lib.mkIf cfg.enable {

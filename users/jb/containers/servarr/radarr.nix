@@ -4,9 +4,9 @@
   ...
 }:
 let
-  cfg = config.home-server.containers.stack.servarr;
-  configFolder = "${config.home-server.containers.directory.config}/servarr/radarr";
-  shareFolder = "${config.home-server.containers.directory.share}/media";
+  cfg = config.homeServer.containers.stack.servarr;
+  configFolder = "${config.homeServer.containers.directory.config}/servarr/radarr";
+  shareFolder = "${config.homeServer.containers.directory.share}/media";
 in
 {
   config = lib.mkIf cfg.enable {
@@ -29,7 +29,7 @@ in
       userNS = "keep-id";
       volumes = [
         "${configFolder}:/config"
-        "${config.home-server.containers.directory.storage}/servarr/qbittorrent:/downloads"
+        "${config.homeServer.containers.directory.storage}/servarr/qbittorrent:/downloads"
         "${shareFolder}/movies:/movies"
       ];
     };

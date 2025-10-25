@@ -4,9 +4,9 @@
   ...
 }:
 let
-  cfg = config.home-server.containers.stack.media;
-  configFolder = "${config.home-server.containers.directory.storage}/media/jellyfin";
-  shareFolder = "${config.home-server.containers.directory.share}/media";
+  cfg = config.homeServer.containers.stack.media;
+  configFolder = "${config.homeServer.containers.directory.storage}/media/jellyfin";
+  shareFolder = "${config.homeServer.containers.directory.share}/media";
 in
 {
   config = lib.mkIf cfg.enable {

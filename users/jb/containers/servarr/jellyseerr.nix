@@ -4,8 +4,8 @@
   ...
 }:
 let
-  cfg = config.home-server.containers.stack.servarr;
-  configFolder = "${config.home-server.containers.directory.config}/servarr/jellyseerr";
+  cfg = config.homeServer.containers.stack.servarr;
+  configFolder = "${config.homeServer.containers.directory.config}/servarr/jellyseerr";
 in
 {
   config = lib.mkIf cfg.enable {

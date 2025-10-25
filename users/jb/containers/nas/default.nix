@@ -4,7 +4,7 @@
   ...
 }:
 let
-  cfg = config.home-server.containers.stack.nas;
+  cfg = config.homeServer.containers.stack.nas;
 in
 {
   imports = [

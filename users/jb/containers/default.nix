@@ -12,7 +12,7 @@
     ./servarr
   ];
 
-  options.home-server.containers = {
+  options.homeServer.containers = {
     enable = lib.mkEnableOption "Enable home-server containers";
     directory = {
       config = lib.mkOption {
@@ -36,10 +36,10 @@
     };
   };
 
-  config = lib.mkIf config.home-server.containers.enable {
-    home-server.containers.stack.media.enable = true;
-    home-server.containers.stack.nas.enable = true;
-    home-server.containers.stack.network.enable = true;
-    home-server.containers.stack.servarr.enable = true;
+  config = lib.mkIf config.homeServer.containers.enable {
+    homeServer.containers.stack.media.enable = true;
+    homeServer.containers.stack.nas.enable = true;
+    homeServer.containers.stack.network.enable = true;
+    homeServer.containers.stack.servarr.enable = true;
   };
 }

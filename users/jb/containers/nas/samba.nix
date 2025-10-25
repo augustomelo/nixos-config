@@ -4,8 +4,8 @@
   ...
 }:
 let
-  cfg = config.home-server.containers.stack.nas;
-  shareFolder = "${config.home-server.containers.directory.share}/nas";
+  cfg = config.homeServer.containers.stack.nas;
+  shareFolder = "${config.homeServer.containers.directory.share}/nas";
 in
 {
   config = lib.mkIf cfg.enable {

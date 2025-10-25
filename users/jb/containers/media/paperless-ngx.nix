@@ -5,9 +5,9 @@
   ...
 }:
 let
-  cfg = config.home-server.containers.stack.media;
-  shareFolder = "${config.home-server.containers.directory.share}/nas/paperless-ngx-server";
-  storageFolder = "${config.home-server.containers.directory.storage}/media/paperless-ngx-server";
+  cfg = config.homeServer.containers.stack.media;
+  shareFolder = "${config.homeServer.containers.directory.share}/nas/paperless-ngx-server";
+  storageFolder = "${config.homeServer.containers.directory.storage}/media/paperless-ngx-server";
 in
 {
   config = lib.mkIf cfg.enable {

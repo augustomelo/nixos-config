@@ -3,7 +3,7 @@
 }:
 {
   imports = [
-    ./modules/developer-tools
+    ./modules/developerTools
   ];
 
   home.stateVersion = "25.05";

@@ -69,7 +69,7 @@
                   ./users/jb/home-manager.nix
                   ./users/jb/containers
                 ];
-                home-server.containers.enable = true;
+                homeServer.containers.enable = true;
               };
             }
           ];

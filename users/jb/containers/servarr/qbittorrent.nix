@@ -4,9 +4,9 @@
   ...
 }:
 let
-  cfg = config.home-server.containers.stack.servarr;
-  configFolder = "${config.home-server.containers.directory.config}/servarr/qbittorrent";
-  storageFolder = "${config.home-server.containers.directory.storage}/servarr/qbittorrent";
+  cfg = config.homeServer.containers.stack.servarr;
+  configFolder = "${config.homeServer.containers.directory.config}/servarr/qbittorrent";
+  storageFolder = "${config.homeServer.containers.directory.storage}/servarr/qbittorrent";
 in
 {
   config = lib.mkIf cfg.enable {

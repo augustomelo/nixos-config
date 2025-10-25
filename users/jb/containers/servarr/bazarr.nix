@@ -4,9 +4,9 @@
   ...
 }:
 let
-  cfg = config.home-server.containers.stack.servarr;
-  configFolder = "${config.home-server.containers.directory.config}/servarr/bazarr";
-  shareFolder = "${config.home-server.containers.directory.share}/media";
+  cfg = config.homeServer.containers.stack.servarr;
+  configFolder = "${config.homeServer.containers.directory.config}/servarr/bazarr";
+  shareFolder = "${config.homeServer.containers.directory.share}/media";
 in
 {
   config = lib.mkIf cfg.enable {

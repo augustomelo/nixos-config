@@ -4,7 +4,7 @@
   ...
 }:
 let
-  cfg = config.home-server.containers.stack.servarr;
+  cfg = config.homeServer.containers.stack.servarr;
 in
 {
   config = lib.mkIf cfg.enable {
