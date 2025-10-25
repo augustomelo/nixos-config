@@ -39,6 +39,7 @@
   services = {
     xserver = {
       enable = true;
+      dpi = 220;
       windowManager.i3.enable = true;
       xkb.layout = "us";
     };
