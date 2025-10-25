@@ -33,9 +33,13 @@
           modules = [
             ./hosts/devbox.nix
             home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.sharedModules = [
+                sops-nix.homeManagerModules.sops
+              ];
               home-manager.extraSpecialArgs = {
                 pkgs-stable = import nixpkgs-stable {
                   system = "aarch64-linux";
@@ -71,12 +75,13 @@
               home-manager.users.augusto = {
                 imports = [
                   ./users/augusto/home-manager.nix
+                  catppuccin.homeModules.catppuccin
                 ];
                 homeServer.containers.enable = true;
 
                 sops = {
                   age.keyFile = "/etc/nixos/key.txt";
-                  defaultSopsFile = ../../secrets/home-server.yaml;
+                  defaultSopsFile = ./secrets/home-server.yaml;
                   defaultSopsFormat = "yaml";
                 };
 
