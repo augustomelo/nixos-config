@@ -31,7 +31,7 @@
         devbox = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
-            ./hosts/vm-aarch64-fusion.nix
+            ./hosts/devbox.nix
             ./users/augusto/user.nix
             home-manager.nixosModules.home-manager
             {
@@ -54,7 +54,7 @@
         home-server = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hosts/gmktec-nucbox-g3-plus.nix
+            ./hosts/home-server.nix
             nixos-hardware.nixosModules.gmktec-nucbox-g3-plus
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
