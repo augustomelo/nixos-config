@@ -11,12 +11,6 @@
       QT_AUTO_SCREEN_SCALE_FACTOR = 1;
       QT_ENABLE_HIGHDPI_SCALING = 1;
     };
-
-    systemPackages = with pkgs; [
-      (writeShellScriptBin "xrandr-auto" ''
-        xrandr --output Virtual-1 --auto
-      '')
-    ];
   };
 
   fileSystems."/mnt/shared" = {
