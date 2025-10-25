@@ -44,7 +44,7 @@
               };
               home-manager.users.augusto = {
                 imports = [
-                  ./users/augusto/home.nix
+                  ./users/augusto/home-manager.nix
                   catppuccin.homeModules.catppuccin
                 ];
               };
@@ -66,7 +66,7 @@
               ];
               home-manager.users.jb = {
                 imports = [
-                  ./users/jb/home.nix
+                  ./users/jb/home-manager.nix
                   ./users/jb/containers
                 ];
                 home-server.containers.enable = true;
