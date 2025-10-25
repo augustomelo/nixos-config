@@ -65,7 +65,6 @@ install-user-config: check-env
 		cd /nixos-config && \
 		nixos-rebuild switch --flake \".#${HOSTNAME}\" && \
 		nix shell nixpkgs#git --command git remote set-url origin git@github.com:augustomelo/nixos-config.git && \
-		mkdir -p /home/${NIXUSER}/workspace/{work,personal} && \
 		mv /nixos-config /home/${NIXUSER}/workspace/personal/ && \
 		chown -R ${NIXUSER}: /home/${NIXUSER}/workspace && \
 		reboot; \
