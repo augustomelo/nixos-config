@@ -47,7 +47,10 @@
                   catppuccin.homeModules.catppuccin
                 ];
 
-                developerTools.enable = true;
+                developerTools = {
+                  enable = true;
+                  windowManager.i3.enable =  true;
+                };
               };
             }
           ];

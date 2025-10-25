@@ -11,11 +11,15 @@
     ./tools/direnv
     ./tools/fzf
     ./tools/ghostty
+    ./tools/git
     ./tools/jujutsu
     ./tools/neovim
+    ./tools/podman
+    ./tools/starship
     ./tools/tmux
     ./tools/vale
     ./tools/zoxide
+    ./windowManager/i3
   ];
 
   options.developerTools = {

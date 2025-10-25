@@ -8,11 +8,9 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    home = {
-      file.".config/git" = {
-        source = ./git;
-        recursive = true;
-      };
+    home.file.".config/git" = {
+      source = ./git;
+      recursive = true;
     };
 
     programs.git = {

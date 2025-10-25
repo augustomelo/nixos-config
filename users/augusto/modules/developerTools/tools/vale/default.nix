@@ -18,10 +18,10 @@ in
         source = ./vale;
         recursive = true;
       };
-    };
 
-    packages = with pkgs; [
-      vale
-    ];
+      packages = with pkgs; [
+        vale
+      ];
+    };
   };
 }

@@ -12,6 +12,7 @@ in
     home = {
       file.".local/bin" = {
         source = ./bin;
+        executable = true;
         recursive = true;
       };
 

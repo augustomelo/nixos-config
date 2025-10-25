@@ -8,11 +8,9 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    home = {
-      file.".config/containers" = {
-        source = ./containers;
-        recursive = true;
-      };
+    home.file.".config/containers" = {
+      source = ./containers;
+      recursive = true;
     };
   };
 }

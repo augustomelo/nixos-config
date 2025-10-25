@@ -9,11 +9,9 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    home = {
-      file.".config/nvim" = {
-        source = ./nvim;
-        recursive = true;
-      };
+    home.file.".config/nvim" = {
+      source = ./nvim;
+      recursive = true;
     };
 
     programs.neovim = {

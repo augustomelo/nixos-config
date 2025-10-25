@@ -8,11 +8,9 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    home = {
-      file.".config/jj" = {
-        source = ./jj;
-        recursive = true;
-      };
+    home.file.".config/jj" = {
+      source = ./jj;
+      recursive = true;
     };
 
     programs.jujutsu = {

@@ -8,11 +8,8 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    home = {
-      file.".config/starship.toml" = {
-        source = ./starship.toml;
-        recursive = true;
-      };
+    home.file.".config/starship.toml" = {
+      source = ./starship.toml;
     };
 
     programs.starship = {
