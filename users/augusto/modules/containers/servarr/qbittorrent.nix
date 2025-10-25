@@ -30,7 +30,7 @@ in
         };
       };
       network = [ "container:privoxy" ];
-      user = "jb";
+      user = "augusto";
       userNS = "keep-id";
       volumes = [
         "${configFolder}:/config"

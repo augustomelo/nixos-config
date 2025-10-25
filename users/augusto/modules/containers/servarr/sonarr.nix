@@ -5,7 +5,7 @@
 }:
 let
   cfg = config.homeServer.containers.stack.servarr;
-  configFolder = "${config.homeServer.containers.directory.config}/servarr/radarr";
+  configFolder = "${config.homeServer.containers.directory.config}/servarr/sonarr";
   shareFolder = "${config.homeServer.containers.directory.share}/media";
 in
 {
@@ -16,21 +16,21 @@ in
       "d ${shareFolder}/tvshows 0755 - - -"
     ];
 
-    # https://docs.linuxserver.io/images/docker-radarr
-    services.podman.containers.radarr = {
-      image = "docker.io/linuxserver/radarr:latest";
+    # https://docs.linuxserver.io/images/docker-sonarr
+    services.podman.containers.sonarr = {
+      image = "docker.io/linuxserver/sonarr:latest";
 
       environment = {
         TZ = "Etc/UTC";
       };
       network = [ "servarr" ];
-      ports = [ "7878:7878" ];
-      user = "jb";
+      ports = [ "8989:8989" ];
+      user = "augusto";
       userNS = "keep-id";
       volumes = [
         "${configFolder}:/config"
         "${config.homeServer.containers.directory.storage}/servarr/qbittorrent:/downloads"
-        "${shareFolder}/movies:/movies"
+        "${shareFolder}/tvshows:/data/tvshows"
       ];
     };
   };

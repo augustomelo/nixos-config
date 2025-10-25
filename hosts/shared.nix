@@ -1,4 +1,7 @@
-{ ... }:
+{
+  pkgs,
+  ...
+}:
 {
   boot.loader = {
     systemd-boot = {
@@ -43,4 +46,17 @@
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "25.05";
   time.timeZone = "Europe/Lisbon";
+
+  users = {
+    mutableUsers = false;
+    users.augusto = {
+      home = "/home/augusto";
+      isNormalUser = true;
+      shell = pkgs.bash;
+      extraGroups = [
+        "wheel"
+      ];
+      hashedPasswordFile = "/etc/nixos/passwd";
+    };
+  };
 }

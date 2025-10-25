@@ -49,7 +49,7 @@
 
                 developerTools = {
                   enable = true;
-                  windowManager.i3.enable =  true;
+                  windowManager.i3.enable = true;
                 };
               };
             }
@@ -68,12 +68,19 @@
               home-manager.sharedModules = [
                 sops-nix.homeManagerModules.sops
               ];
-              home-manager.users.jb = {
+              home-manager.users.augusto = {
                 imports = [
-                  ./users/jb/home-manager.nix
-                  ./users/jb/containers
+                  ./users/augusto/home-manager.nix
                 ];
                 homeServer.containers.enable = true;
+
+                sops = {
+                  age.keyFile = "/etc/nixos/key.txt";
+                  defaultSopsFile = ../../secrets/home-server.yaml;
+                  defaultSopsFormat = "yaml";
+                };
+
+                systemd.user.services.mbsync.unitConfig.After = [ "sops-nix.service" ];
               };
             }
           ];

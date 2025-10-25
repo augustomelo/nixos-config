@@ -23,7 +23,7 @@ in
       };
       network = [ "servarr" ];
       ports = [ "6767:6767" ];
-      user = "jb";
+      user = "augusto";
       userNS = "keep-id";
       volumes = [
         "${configFolder}:/config"

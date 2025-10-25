@@ -90,7 +90,7 @@ in
         network = [
           "media"
         ];
-        user = "jb";
+        user = "augusto";
         userNS = "keep-id";
         volumes = [
           "${storageFolder}/immich-database:/var/lib/postgresql/data"

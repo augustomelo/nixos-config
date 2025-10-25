@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   ...
 }:
 {
@@ -72,7 +71,7 @@
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
         PermitRootLogin = "no";
-        AllowUsers = [ "jb" ];
+        AllowUsers = [ "augusto" ];
       };
     };
     tailscale = {
@@ -111,17 +110,11 @@
   systemd.targets.network-online.wantedBy = [ "multi-user.target" ];
 
   users = {
-    mutableUsers = false;
-    users.jb = {
-      home = "/home/jb";
+    users.augusto = {
       linger = true;
-      isNormalUser = true;
-      shell = pkgs.bash;
       extraGroups = [
         "podman"
-        "wheel"
       ];
-      hashedPasswordFile = "/etc/nixos/passwd";
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEGL2rZ4htp01YDa9Q6iqwcmtpkawn6VdCu25idKDHKm jb@home-server"
       ];

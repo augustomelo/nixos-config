@@ -29,7 +29,7 @@ in
         "servarr"
       ];
       ports = [ "8096:8096" ];
-      user = "jb";
+      user = "augusto";
       userNS = "keep-id";
       volumes = [
         "${configFolder}:/config"
