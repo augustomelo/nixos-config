@@ -27,6 +27,7 @@
   };
 
   networking = {
+    firewall.enable = false;
     hostName = "devbox";
     networkmanager.enable = true;
   };
