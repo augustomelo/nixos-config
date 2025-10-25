@@ -47,6 +47,8 @@
                   ./users/augusto/home-manager.nix
                   catppuccin.homeModules.catppuccin
                 ];
+
+                developerTools.enable = true;
               };
             }
           ];
