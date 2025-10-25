@@ -55,7 +55,6 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/gmktec-nucbox-g3-plus.nix
-            ./users/jb/user.nix
             nixos-hardware.nixosModules.gmktec-nucbox-g3-plus
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
