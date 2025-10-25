@@ -11,6 +11,9 @@ MAKEFILE_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 # reused a lot so we just store them up here.
 SSH_OPTIONS=-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
+backup:
+	rsync -av $(HOSTNAME):/etc/nixos/ $(MAKEFILE_DIR)/transfer/
+
 check-env:
 	@echo "Check if the enviroment variables are installed";
 	@if [ "$(HOSTNAME)" == "unset" ]; then \
