@@ -7,6 +7,7 @@ let
   cfg = config.homeServer.containers.stack.media;
   configFolder = "${config.homeServer.containers.directory.config}/media";
   storageFolder = "${config.homeServer.containers.directory.storage}/media";
+  shareFolder = "${config.homeServer.containers.directory.share}/nas/gallery";
 in
 {
   config = lib.mkIf cfg.enable {
@@ -14,6 +15,7 @@ in
       "d ${configFolder}/immich-server 0755 - - -"
       "d ${storageFolder}/immich-database 0755 - - -"
       "d ${storageFolder}/immich-server 0755 - - -"
+      "d ${shareFolder} 0755 - - -"
     ];
 
     services.podman.containers = {
@@ -38,6 +40,7 @@ in
         volumes = [
           "${configFolder}/immich-server:/config"
           "${storageFolder}/immich-server:/data"
+          "${shareFolder}:/mnt/media/gallery"
           "/etc/localtime:/etc/localtime:ro"
         ];
       };
