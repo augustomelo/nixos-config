@@ -11,8 +11,8 @@ in
 {
   config = lib.mkIf cfg.enable {
     systemd.user.tmpfiles.rules = [
-      "d ${configFolder} - - -"
-      "d ${storageFolder} - - -"
+      "d ${configFolder} 0755 - - -"
+      "d ${storageFolder} 0755 - - -"
     ];
 
     # https://docs.linuxserver.io/images/docker-qbittorrent

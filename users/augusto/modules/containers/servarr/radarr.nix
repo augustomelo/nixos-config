@@ -11,7 +11,7 @@ in
 {
   config = lib.mkIf cfg.enable {
     systemd.user.tmpfiles.rules = [
-      "d ${configFolder} - - -"
+      "d ${configFolder} 0755 - - -"
       "d ${shareFolder}/movies 0755 - - -"
       "d ${shareFolder}/tvshows 0755 - - -"
     ];

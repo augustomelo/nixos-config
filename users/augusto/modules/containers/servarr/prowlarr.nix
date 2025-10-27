@@ -10,7 +10,7 @@ in
 {
   config = lib.mkIf cfg.enable {
     systemd.user.tmpfiles.rules = [
-      "d ${configFolder} - - -"
+      "d ${configFolder} 0755 - - -"
     ];
 
     # https://docs.linuxserver.io/images/docker-prowlarr
