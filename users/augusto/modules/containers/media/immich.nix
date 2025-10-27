@@ -19,7 +19,7 @@ in
     services.podman.containers = {
       # https://immich.app/docs/overview/welcome
       immich-server = {
-        image = "ghcr.io/immich-app/immich-server:v2.0.1";
+        image = "ghcr.io/immich-app/immich-server:v2.1.0";
 
         devices = [ "/dev/dri:/dev/dri" ];
         environmentFile = [ "${config.sops.templates."containers/immich-server".path}" ];
@@ -44,7 +44,7 @@ in
 
       # https://immich.app/docs/overview/welcome
       immich-machine-learning = {
-        image = "ghcr.io/immich-app/immich-machine-learning:v2.0.1";
+        image = "ghcr.io/immich-app/immich-machine-learning:v2.1.0";
 
         devices = [ "/dev/dri:/dev/dri" ];
         environment = {
