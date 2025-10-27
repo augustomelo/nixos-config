@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }:
 let
@@ -18,24 +17,6 @@ in
       "d ${storageFolder}/media 0755 - - -"
     ];
 
-    services.podman.builds.paperless-ngx = {
-      file =
-        let
-          containerFile = pkgs.writeTextFile {
-            name = "Containerfile";
-            text = ''
-              FROM ghcr.io/paperless-ngx/paperless-ngx:latest
-
-              # Workaround to avoid running as root
-              # https://github.com/paperless-ngx/paperless-ngx/discussions/4019#discussioncomment-10722684
-              RUN apt-get update && apt-get install -y tesseract-ocr-por
-            '';
-          };
-        in
-        "${containerFile}";
-      tags = [ "localhost/paperless-ngx:latest" ];
-    };
-
     services.podman.containers = {
       # https://docs.paperless-ngx.com/setup/#docker
       paperless-ngx-broker = {
@@ -48,7 +29,7 @@ in
 
       # https://docs.paperless-ngx.com/setup/#docker
       paperless-ngx-server = {
-        image = "paperless-ngx.build";
+        image = "ghcr.io/paperless-ngx/paperless-ngx:latest";
 
         extraConfig = {
           Unit = {
@@ -59,14 +40,16 @@ in
         };
         environment = {
           PAPERLESS_OCR_LANGUAGE = "por+eng";
+          PAPERLESS_OCR_LANGUAGES = "por";
           PAPERLESS_REDIS = "redis://paperless-ngx-broker:6379";
           PAPERLESS_TIME_ZONE = "Etc/UTC";
+          USERMAP_GID = 100;
+          USERMAP_UID = 1000;
         };
         network = [
           "media"
         ];
         ports = [ "8000:8000" ];
-        userNS = "keep-id";
         volumes = [
           "${shareFolder}/consume:/usr/src/paperless/consume"
           "${shareFolder}/export:/usr/src/paperless/export"
