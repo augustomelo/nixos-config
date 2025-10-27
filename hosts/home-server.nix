@@ -18,7 +18,7 @@
         2283
         4445
         5055
-        5353
+        5454
         6767
         7878
         8000
@@ -43,7 +43,7 @@
               tcp dport 53 redirect to :5454
               tcp dport 80 redirect to :8008
               tcp dport 445 redirect to :4445
-              udp dport 53 redirect to :5353
+              udp dport 53 redirect to :5454
             }
           '';
         };
