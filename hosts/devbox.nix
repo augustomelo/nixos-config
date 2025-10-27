@@ -57,5 +57,8 @@
     };
   };
 
-  virtualisation.vmware.guest.enable = true;
+  virtualisation = {
+    docker.enable = true;
+    vmware.guest.enable = true;
+  };
 }
