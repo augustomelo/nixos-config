@@ -18,6 +18,7 @@ in
     services.podman.containers.bazarr = {
       image = "docker.io/linuxserver/bazarr:latest";
 
+      autoUpdate = "registry";
       environment = {
         TZ = "Etc/UTC";
       };

@@ -17,6 +17,7 @@ in
     services.podman.containers.prowlarr = {
       image = "docker.io/linuxserver/prowlarr:latest";
 
+      autoUpdate = "registry";
       environment = {
         TZ = "Etc/UTC";
       };

@@ -17,6 +17,7 @@ in
     services.podman.containers.samba = {
       image = "docker.io/dockurr/samba:latest";
 
+      autoUpdate = "registry";
       environmentFile = [ "${config.sops.templates."containers/samba".path}" ];
       network = [
         "nas"

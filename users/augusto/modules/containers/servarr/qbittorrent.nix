@@ -19,6 +19,7 @@ in
     services.podman.containers.qbittorrent = {
       image = "docker.io/linuxserver/qbittorrent:latest";
 
+      autoUpdate = "registry";
       environment = {
         TZ = "Etc/UTC";
       };

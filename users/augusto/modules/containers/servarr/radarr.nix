@@ -20,6 +20,7 @@ in
     services.podman.containers.radarr = {
       image = "docker.io/linuxserver/radarr:latest";
 
+      autoUpdate = "registry";
       environment = {
         TZ = "Etc/UTC";
       };

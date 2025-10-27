@@ -21,6 +21,7 @@ in
     services.podman.containers.audiobookshelf = {
       image = "ghcr.io/advplyr/audiobookshelf:latest";
 
+      autoUpdate = "registry";
       environment = {
         TZ = "Etc/UTC";
         PORT = "8888";

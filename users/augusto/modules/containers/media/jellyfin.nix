@@ -20,6 +20,7 @@ in
     services.podman.containers.jellyfin = {
       image = "docker.io/linuxserver/jellyfin:latest";
 
+      autoUpdate = "registry";
       devices = [ "/dev/dri:/dev/dri" ];
       environment = {
         PUID = 1000;

@@ -20,6 +20,7 @@ in
     services.podman.containers.sonarr = {
       image = "docker.io/linuxserver/sonarr:latest";
 
+      autoUpdate = "registry";
       environment = {
         TZ = "Etc/UTC";
       };
