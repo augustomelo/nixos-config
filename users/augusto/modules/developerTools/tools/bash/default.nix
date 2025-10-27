@@ -19,6 +19,7 @@ in
       sessionVariables = {
         BAT_THEME = "Catppuccin Macchiato"; # this is needed for delta when running the command git blame
         EDITOR = "nvim";
+        IGNOREEOF = "3";
       };
 
       shell.enableBashIntegration = true;
