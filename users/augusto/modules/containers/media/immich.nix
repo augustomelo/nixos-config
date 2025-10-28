@@ -5,20 +5,31 @@
 }:
 let
   cfg = config.homeServer.containers.stack.media;
-  configFolder = "${config.homeServer.containers.directory.config}/media";
   storageFolder = "${config.homeServer.containers.directory.storage}/media";
   shareFolder = "${config.homeServer.containers.directory.share}/nas/gallery";
 in
 {
   config = lib.mkIf cfg.enable {
     systemd.user.tmpfiles.rules = [
-      "d ${configFolder}/immich-server 0755 - - -"
       "d ${storageFolder}/immich-database 0755 - - -"
       "d ${storageFolder}/immich-server 0755 - - -"
       "d ${shareFolder} 0755 - - -"
     ];
 
     services.podman.containers = {
+      immich-folder-album-creator = {
+        image = "ghcr.io/salvoxia/immich-folder-album-creator:0.22.0";
+
+        environmentFile = [ "${config.sops.templates."containers/immich-folder-album-creator".path}" ];
+        network = [
+          "media"
+        ];
+        userNS = "keep-id";
+        volumes = [
+          "${shareFolder}:/mnt/media/gallery"
+        ];
+      };
+
       # https://immich.app/docs/overview/welcome
       immich-server = {
         image = "ghcr.io/immich-app/immich-server:v2.1.0";
@@ -38,7 +49,6 @@ in
         ports = [ "2283:2283" ];
         userNS = "keep-id";
         volumes = [
-          "${configFolder}/immich-server:/config"
           "${storageFolder}/immich-server:/data"
           "${shareFolder}:/mnt/media/gallery"
           "/etc/localtime:/etc/localtime:ro"
@@ -103,9 +113,18 @@ in
 
     sops = {
       secrets = {
+        "containers/immich/immich_folder_album_creator" = { };
         "containers/immich/postgres_password" = { };
       };
       templates = {
+        "containers/immich-folder-album-creator".content = ''
+          API_KEY=${config.sops.placeholder."containers/immich/immich_folder_album_creator"}
+          API_URL=http://immich-server:2283/api
+          CRON_EXPRESSION="0 * * * *"
+          ROOT_PATH=/mnt/media/gallery
+          TZ=Etc/UTC
+        '';
+
         "containers/immich-server".content = ''
           TZ=Etc/UTC
           DB_HOSTNAME=immich-database
