@@ -23,6 +23,10 @@
         type = lib.types.path;
         default = "${config.home.homeDirectory}/containers/share";
       };
+      state = lib.mkOption {
+        type = lib.types.path;
+        default = "${config.home.homeDirectory}/containers/state";
+      };
       storage = lib.mkOption {
         type = lib.types.path;
         default = "${config.home.homeDirectory}/containers/storage";
