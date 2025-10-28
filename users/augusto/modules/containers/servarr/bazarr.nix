@@ -28,8 +28,8 @@ in
       userNS = "keep-id";
       volumes = [
         "${configFolder}:/config"
-        "${shareFolder}/movies:/data/movies"
-        "${shareFolder}/tvshows:/data/tv"
+        "${shareFolder}/movies:/movies"
+        "${shareFolder}/tvshows:/tv"
       ];
     };
   };

@@ -31,7 +31,7 @@ in
       volumes = [
         "${configFolder}:/config"
         "${config.homeServer.containers.directory.storage}/servarr/qbittorrent:/downloads"
-        "${shareFolder}/tvshows:/data/tvshows"
+        "${shareFolder}/tvshows:/tv"
       ];
     };
   };
