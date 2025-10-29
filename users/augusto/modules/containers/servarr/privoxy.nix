@@ -17,7 +17,11 @@ in
       devices = [ "/dev/net/tun:/dev/net/tun" ];
       environmentFile = [ "${config.sops.templates."containers/privoxy".path}" ];
       network = [ "servarr" ];
-      ports = [ "8080:8080" ];
+      ports = [
+        "6881:6881/tcp"
+        "6881:6881/udp"
+        "8080:8080"
+      ];
     };
 
     sops = {

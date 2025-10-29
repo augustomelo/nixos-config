@@ -13,6 +13,7 @@
       enable = true;
       allowedUDPPorts = [
         5454
+        6881
       ];
       allowedTCPPorts = [
         2283
@@ -21,6 +22,7 @@
         5055
         5454
         6767
+        6881
         7878
         8000
         8008
