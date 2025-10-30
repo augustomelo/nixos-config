@@ -19,6 +19,10 @@ in
 
       autoUpdate = "registry";
       environmentFile = [ "${config.sops.templates."containers/samba".path}" ];
+      extraPodmanArgs = [
+        "--uidmap=1000:0"
+        "--uidmap=0:1000"
+      ];
       network = [
         "nas"
       ];
@@ -34,9 +38,8 @@ in
       };
       templates = {
         "containers/samba".content = ''
-          GID=100
           UID=1000
-          USER=transfer
+          USER=samba
           PASS=${config.sops.placeholder."containers/samba/password"}
         '';
       };
