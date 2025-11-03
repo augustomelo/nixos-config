@@ -15,8 +15,9 @@ in
 
     # https://github.com/Fallenbagel/jellyseerr
     services.podman.containers.jellyseerr = {
-      image = "docker.io/fallenbagel/jellyseerr:2.7.3";
+      image = "docker.io/fallenbagel/jellyseerr:latest";
 
+      autoUpdate = "registry";
       network = [ "servarr" ];
       ports = [ "5055:5055" ];
       volumes = [
