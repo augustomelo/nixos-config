@@ -11,12 +11,47 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    systemd.user.tmpfiles.rules = [
-      "d ${cacheFolder} 0755 - - -"
-      "d ${configFolder} 0755 - - -"
-      "d ${shareFolder}/movies 0755 - - -"
-      "d ${shareFolder}/tvshows 0755 - - -"
-    ];
+    systemd.user.tmpfiles.settings = {
+      "jellyfin-state" = {
+        rules."${cacheFolder}".d = {
+          mode = "0755";
+          user = "-";
+          group = "-";
+          age = "-";
+        };
+        purgeOnChange = false;
+      };
+
+      "jellyfin-config" = {
+        rules."${configFolder}".d = {
+          mode = "0755";
+          user = "-";
+          group = "-";
+          age = "-";
+        };
+        purgeOnChange = false;
+      };
+
+      "jellyfin-share-movies" = {
+        rules."${shareFolder}/movies".d = {
+          mode = "0755";
+          user = "-";
+          group = "-";
+          age = "-";
+        };
+        purgeOnChange = false;
+      };
+
+      "jellyfin-share-tvshows" = {
+        rules."${shareFolder}/tvshows".d = {
+          mode = "0755";
+          user = "-";
+          group = "-";
+          age = "-";
+        };
+        purgeOnChange = false;
+      };
+    };
 
     # https://docs.linuxserver.io/images/docker-jellyfin
     services.podman.containers.jellyfin = {

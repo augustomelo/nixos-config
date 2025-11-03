@@ -9,9 +9,17 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    systemd.user.tmpfiles.rules = [
-      "d ${configFolder} 0755 - - -"
-    ];
+    systemd.user.tmpfiles.settings = {
+      "jellyseerr-config" = {
+        rules."${configFolder}".d = {
+          mode = "0755";
+          user = "-";
+          group = "-";
+          age = "-";
+        };
+        purgeOnChange = false;
+      };
+    };
 
     # https://github.com/Fallenbagel/jellyseerr
     services.podman.containers.jellyseerr = {

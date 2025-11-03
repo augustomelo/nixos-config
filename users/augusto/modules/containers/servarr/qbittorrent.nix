@@ -10,10 +10,27 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    systemd.user.tmpfiles.rules = [
-      "d ${configFolder} 0755 - - -"
-      "d ${storageFolder} 0755 - - -"
-    ];
+    systemd.user.tmpfiles.settings = {
+      "qbittorrent-config" = {
+        rules."${configFolder}".d = {
+          mode = "0755";
+          user = "-";
+          group = "-";
+          age = "-";
+        };
+        purgeOnChange = false;
+      };
+
+      "qbittorrent-share" = {
+        rules."${storageFolder}".d = {
+          mode = "0755";
+          user = "-";
+          group = "-";
+          age = "-";
+        };
+        purgeOnChange = false;
+      };
+    };
 
     # https://docs.linuxserver.io/images/docker-qbittorrent
     services.podman.containers.qbittorrent = {

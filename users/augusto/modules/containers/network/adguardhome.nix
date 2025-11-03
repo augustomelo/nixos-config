@@ -10,10 +10,27 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    systemd.user.tmpfiles.rules = [
-      "d ${configFolder} 0755 - - -"
-      "d ${stateFolder} 0755 - - -"
-    ];
+    systemd.user.tmpfiles.settings = {
+      "adguardhome-config" = {
+        rules."${configFolder}".d = {
+          mode = "0755";
+          user = "-";
+          group = "-";
+          age = "-";
+        };
+        purgeOnChange = false;
+      };
+
+      "adguardhome-state" = {
+        rules."${configFolder}".d = {
+          mode = "0755";
+          user = "-";
+          group = "-";
+          age = "-";
+        };
+        purgeOnChange = false;
+      };
+    };
 
     # https://github.com/AdguardTeam/AdGuardHome/wiki
     services.podman.containers.adguardhome = {

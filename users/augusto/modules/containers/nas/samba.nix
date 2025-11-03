@@ -9,9 +9,17 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    systemd.user.tmpfiles.rules = [
-      "d ${shareFolder} 0755 - - -"
-    ];
+    systemd.user.tmpfiles.settings = {
+      "samba-share" = {
+        rules."${shareFolder}".d = {
+          mode = "0755";
+          user = "-";
+          group = "-";
+          age = "-";
+        };
+        purgeOnChange = false;
+      };
+    };
 
     # https://github.com/dockur/samba/
     services.podman.containers.samba = {

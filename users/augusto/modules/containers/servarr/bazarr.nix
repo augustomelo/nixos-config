@@ -10,9 +10,17 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    systemd.user.tmpfiles.rules = [
-      "d ${configFolder} 0755 - - -"
-    ];
+    systemd.user.tmpfiles.settings = {
+      "bazarr-config" = {
+        rules."${configFolder}".d = {
+          mode = "0755";
+          user = "-";
+          group = "-";
+          age = "-";
+        };
+        purgeOnChange = false;
+      };
+    };
 
     # https://docs.linuxserver.io/images/docker-bazarr
     services.podman.containers.bazarr = {

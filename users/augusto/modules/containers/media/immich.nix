@@ -10,11 +10,37 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    systemd.user.tmpfiles.rules = [
-      "d ${storageFolder}/immich-database 0755 - - -"
-      "d ${storageFolder}/immich-server 0755 - - -"
-      "d ${shareFolder} 0755 - - -"
-    ];
+    systemd.user.tmpfiles.settings = {
+      "immich-database-storage" = {
+        rules."${storageFolder}/immich-database".d = {
+          mode = "0755";
+          user = "-";
+          group = "-";
+          age = "-";
+        };
+        purgeOnChange = false;
+      };
+
+      "immich-server-storage" = {
+        rules."${storageFolder}/immich-server".d = {
+          mode = "0755";
+          user = "-";
+          group = "-";
+          age = "-";
+        };
+        purgeOnChange = false;
+      };
+
+      "immich-external-library" = {
+        rules."${shareFolder}".d = {
+          mode = "0755";
+          user = "-";
+          group = "-";
+          age = "-";
+        };
+        purgeOnChange = false;
+      };
+    };
 
     services.podman.containers = {
       # https://github.com/Salvoxia/immich-folder-album-creator
