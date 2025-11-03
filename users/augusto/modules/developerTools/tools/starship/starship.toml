@@ -4,7 +4,7 @@ add_newline = true
 palette = 'catppuccin_macchiato'
 
 format = '''
-[┌─$username$hostname$directory$git_branch$git_state$git_status$aws](overlay2)$fill[$time](overlay2)
+[┌─$username$hostname─\($directory$git_branch\)$aws](overlay2)$fill[$time](overlay2)
 [└─$character](overlay2)
 '''
 
@@ -24,23 +24,16 @@ success_symbol = '[❯](text)'
 error_symbol = '[❯](text)'
 
 [directory]
-format = '─\([$path]($style)[$read_only]($read_only_style)\)'
+format = '[$path]($style)[$read_only]($read_only_style)'
 read_only_style = 'red'
 style = 'blue'
 truncation_length = 7
 truncation_symbol = '…/'
 
 [git_branch]
-format = '─\([$branch$symbol]($style) '
+format = '[$symbol]($style)'
 style = 'blue'
 symbol = ' '
-
-[git_state]
-style = 'blue'
-
-[git_status]
-format = '([\[$all_status$ahead_behind\]]($style))\)'
-style = 'blue'
 
 [hostname]
 format = '[@$hostname]($style)\)'
