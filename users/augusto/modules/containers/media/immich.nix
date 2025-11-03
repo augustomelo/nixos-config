@@ -51,7 +51,6 @@ in
         network = [
           "media"
         ];
-        userNS = "keep-id";
         volumes = [
           "${shareFolder}:/mnt/media/gallery"
         ];
