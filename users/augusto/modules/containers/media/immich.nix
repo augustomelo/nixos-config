@@ -17,6 +17,7 @@ in
     ];
 
     services.podman.containers = {
+      # https://github.com/Salvoxia/immich-folder-album-creator
       immich-folder-album-creator = {
         image = "ghcr.io/salvoxia/immich-folder-album-creator:0.22.0";
 
@@ -32,8 +33,9 @@ in
 
       # https://immich.app/docs/overview/welcome
       immich-server = {
-        image = "ghcr.io/immich-app/immich-server:v2.1.0";
+        image = "ghcr.io/immich-app/immich-server:v2";
 
+        autoUpdate = "registry";
         devices = [ "/dev/dri:/dev/dri" ];
         environmentFile = [ "${config.sops.templates."containers/immich-server".path}" ];
         extraConfig = {
@@ -57,8 +59,9 @@ in
 
       # https://immich.app/docs/overview/welcome
       immich-machine-learning = {
-        image = "ghcr.io/immich-app/immich-machine-learning:v2.1.0";
+        image = "ghcr.io/immich-app/immich-machine-learning:v2";
 
+        autoUpdate = "registry";
         devices = [ "/dev/dri:/dev/dri" ];
         environment = {
           TZ = "Etc/UTC";
