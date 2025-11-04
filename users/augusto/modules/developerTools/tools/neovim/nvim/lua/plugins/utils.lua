@@ -3,7 +3,6 @@ return {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
   },
-  { "olrtg/nvim-emmet" },
   {
     "j-hui/fidget.nvim",
     version = "1.6.x",
@@ -21,9 +20,11 @@ return {
     "shortcuts/no-neck-pain.nvim",
     version = "2.4.x",
   },
+  { "olrtg/nvim-emmet" },
   { "alexghergh/nvim-tmux-navigation" },
   {
     "obsidian-nvim/obsidian.nvim",
     version = "3.13.x",
   },
+  { "chaoren/vim-wordmotion" },
 }
