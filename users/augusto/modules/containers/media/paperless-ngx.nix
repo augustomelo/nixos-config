@@ -10,47 +10,12 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    systemd.user.tmpfiles.settings = {
-      "paperless-ngx-share-consume" = {
-        rules."${shareFolder}/consume".d = {
-          mode = "0755";
-          user = "-";
-          group = "-";
-          age = "-";
-        };
-        purgeOnChange = false;
-      };
-
-      "paperless-ngx-share-export" = {
-        rules."${shareFolder}/export".d = {
-          mode = "0755";
-          user = "-";
-          group = "-";
-          age = "-";
-        };
-        purgeOnChange = false;
-      };
-
-      "paperless-ngx-storage-data" = {
-        rules."${storageFolder}/data".d = {
-          mode = "0755";
-          user = "-";
-          group = "-";
-          age = "-";
-        };
-        purgeOnChange = false;
-      };
-
-      "paperless-ngx-storage-media" = {
-        rules."${storageFolder}/consume".d = {
-          mode = "0755";
-          user = "-";
-          group = "-";
-          age = "-";
-        };
-        purgeOnChange = false;
-      };
-    };
+    systemd.user.tmpfiles.rules = [
+      "d ${shareFolder}/consume 0755 - - -"
+      "d ${shareFolder}/export 0755 - - -"
+      "d ${storageFolder}/data 0755 - - -"
+      "d ${storageFolder}/media 0755 - - -"
+    ];
 
     services.podman.containers = {
       # https://docs.paperless-ngx.com/setup/#docker

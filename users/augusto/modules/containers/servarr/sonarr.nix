@@ -10,27 +10,11 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    systemd.user.tmpfiles.settings = {
-      "sonarr-config" = {
-        rules."${configFolder}".d = {
-          mode = "0755";
-          user = "-";
-          group = "-";
-          age = "-";
-        };
-        purgeOnChange = false;
-      };
-
-      "sonarr-tvshows" = {
-        rules."${shareFolder}/tvshows".d = {
-          mode = "0755";
-          user = "-";
-          group = "-";
-          age = "-";
-        };
-        purgeOnChange = false;
-      };
-    };
+    systemd.user.tmpfiles.rules = [
+      "d ${configFolder} 0755 - - -"
+      "d ${shareFolder}/movies 0755 - - -"
+      "d ${shareFolder}/tvshows 0755 - - -"
+    ];
 
     # https://docs.linuxserver.io/images/docker-sonarr
     services.podman.containers.sonarr = {
