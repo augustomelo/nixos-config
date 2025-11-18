@@ -70,9 +70,5 @@ install-user-config: check-env
 		reboot; \
 	"
 sync-config:
-	rsync -av -e 'ssh $(SSH_OPTIONS) -p$(NIXPORT)' \
-		--exclude='.git/' \
-		--exclude='.jj/' \
-		--exclude='transfer/' \
-		--exclude='.envrc' \
-		$(MAKEFILE_DIR)/ root@$(NIXADDR):/nixos-config
+	rsync -av --exclude='transfer/' --exclude='.envrc' \
+		$(MAKEFILE_DIR)/ $(NIXUSER)@$(HOSTNAME):/home/$(NIXUSER)/workspace/personal/nixos-config
