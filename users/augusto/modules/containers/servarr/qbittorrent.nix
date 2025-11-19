@@ -17,7 +17,7 @@ in
 
     # https://docs.linuxserver.io/images/docker-qbittorrent
     services.podman.containers.qbittorrent = {
-      image = "docker.io/linuxserver/qbittorrent:latest";
+      image = "docker.io/linuxserver/qbittorrent:libtorrentv1";
 
       autoUpdate = "registry";
       environment = {
