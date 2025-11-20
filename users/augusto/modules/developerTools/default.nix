@@ -33,7 +33,6 @@
 
       bat.enable = true;
       fzf.enable = true;
-      kvantum.enable = false;
       tmux = {
         enable = true;
         extraConfig = ''
