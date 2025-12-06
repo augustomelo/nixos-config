@@ -19,12 +19,14 @@ in
     services.podman.containers = {
       # https://github.com/Salvoxia/immich-folder-album-creator
       immich-folder-album-creator = {
-        image = "ghcr.io/salvoxia/immich-folder-album-creator:0.22.0";
+        image = "ghcr.io/salvoxia/immich-folder-album-creator:latest";
 
+        autoUpdate = "registry";
         environmentFile = [ "${config.sops.templates."containers/immich-folder-album-creator".path}" ];
         network = [
           "media"
         ];
+        userNS = "keep-id";
         volumes = [
           "${shareFolder}:/mnt/media/gallery"
         ];
@@ -122,7 +124,7 @@ in
         "containers/immich-folder-album-creator".content = ''
           API_KEY=${config.sops.placeholder."containers/immich/immich_folder_album_creator"}
           API_URL=http://immich-server:2283/api
-          CRON_EXPRESSION="0 * * * *"
+          CRON_EXPRESSION=0 * * * *
           ROOT_PATH=/mnt/media/gallery
           TZ=Etc/UTC
         '';
