@@ -26,7 +26,7 @@ in
 
         # https://github.com/catppuccin/tmux/blob/main/themes/catppuccin_macchiato_tmux.conf
         set-option -gF status-style "bg=#{@thm_surface_1},fg=#{@thm_fg}"
-        set-option -g window-status-current-style "#{?window_zoomed_flag,fg=#{@thm_yellow},fg=#{@thm_mauve},nobold}"
+        set-option -g window-status-current-style "#{?window_zoomed_flag,fg=#{@thm_yellow},fg=#{@thm_mauve}}"
         set-option -g window-status-bell-style "fg=#{@thm_red},nobold"
 
         bind-key r source-file ${config.xdg.configHome}/tmux/tmux.conf \; display-message "~/.tmux.conf reloaded"
