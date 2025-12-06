@@ -18,6 +18,7 @@ in
     services.podman.containers.proxy = {
       image = "docker.io/qmcgaw/gluetun:v3.40";
 
+      autoUpdate = "registry";
       addCapabilities = [ "NET_ADMIN" ];
       devices = [ "/dev/net/tun:/dev/net/tun" ];
       environmentFile = [ "${config.sops.templates."containers/proxy".path}" ];
