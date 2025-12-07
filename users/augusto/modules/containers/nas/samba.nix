@@ -13,34 +13,40 @@ in
       "d ${shareFolder} 0755 - - -"
     ];
 
-    # https://github.com/dockur/samba/
-    services.podman.containers.samba = {
-      image = "docker.io/dockurr/samba:latest";
+    # https://github.com/9001/copyparty
+    services.podman.containers.copyparty = {
+      image = "docker.io/copyparty/iv:latest";
 
       autoUpdate = "registry";
-      environmentFile = [ "${config.sops.templates."containers/samba".path}" ];
-      extraPodmanArgs = [
-        "--uidmap=1000:0"
-        "--uidmap=0:1000"
-      ];
       network = [
         "nas"
       ];
-      ports = [ "4445:445" ];
+      ports = [ "3923:3923" ];
+      userNS = "keep-id";
       volumes = [
-        "${shareFolder}:/storage"
+        "${shareFolder}:/w"
+        "${config.sops.templates."containers/copyparty".path}:/cfg/copyparty.conf"
       ];
     };
 
     sops = {
       secrets = {
-        "containers/samba/password" = { };
+        "containers/copyparty/admin" = { };
       };
       templates = {
-        "containers/samba".content = ''
-          UID=1000
-          USER=samba
-          PASS=${config.sops.placeholder."containers/samba/password"}
+        "containers/copyparty".content = ''
+          [global]
+            e2dsa  # enable file indexing and filesystem scanning
+            e2ts   # enable multimedia indexing
+            ansi   # enable colors in log messages (both in logfiles and stdout)
+
+          [accounts]
+            copyparty: ${config.sops.placeholder."containers/copyparty/admin"}
+
+          [/]            # create a volume at "/" (the webroot), which will
+            /w           # share /w (the container data volume)
+            accs:
+              rwmda: copyparty  # the user "copyparty" gets read-write-move-delete-admin
         '';
       };
     };
