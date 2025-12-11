@@ -1,7 +1,18 @@
 # Nixos-config
 
 This is heavely inspired on [nixos-config](https://github.com/mitchellh/nixos-config) for my development  machine.
-adasda 
+
+## Home-server hardware
+
+[GMKtec NucBox G3 Plus Intel® Twin Lake N150](https://de.gmktec.com/en/products/gmktec-nucbox-g3-plus-intel%C2%AE-twin-lake-n150)
+
+| Item         | Description |
+| ------------ | ----------- |
+| CPU          | [Intel® Twin Lake N-150](https://www.intel.com/content/www/us/en/products/sku/241636/intel-processor-n150-6m-cache-up-to-3-60-ghz/specifications.html) | 
+| GPU          | Intel® UHD Grafik (UP 1000 MHz) |
+| Memory       | 32GB (max supported) - DDR4 3200 MT/s, SO-DIMM*1 |
+| Storage      | M.2 2280 PCIe expandable up to 2TB; M.2 2242 SATA expandable up to 2TB - PCI being used |
+| Connectivity | WiFi 6, Realtek 8852BE 802.11a/b/g/n/ac/ax, transmission speed 1201Mbps, supports up to 12 devices. BT 5.2 |
 
 ## Known issues
 
