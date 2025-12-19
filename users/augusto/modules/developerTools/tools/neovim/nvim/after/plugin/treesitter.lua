@@ -10,6 +10,7 @@ local ensure_installed = {
   "gitignore",
   "go",
   "gomod",
+  "gotmpl",
   "helm",
   "hurl",
   "hurl",

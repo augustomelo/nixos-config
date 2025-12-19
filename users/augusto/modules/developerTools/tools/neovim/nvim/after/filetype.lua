@@ -1,5 +1,6 @@
 vim.filetype.add {
   extension = {
+    gotmpl = "gotmpl",
     htmx = "html",
     hurl = "hurl",
   },
@@ -7,7 +8,10 @@ vim.filetype.add {
     ["Jenkinsfile"] = "groovy"
   },
   pattern = {
-    [".*/templates/.*%.yaml"] = "helm",
-    [".*/templates/.*%.yml"] = "helm",
+    [".*/templates/.*%.tpl"] = "helm",
+    [".*/templates/.*%.ya?ml"] = "helm",
+    ["helmfile.*%.ya?ml"] = "helm",
+    ["helmfile.*%.ya?ml.gotmpl"] = "helm",
+    ["values.*%.ya?ml.gotmpl"] = "helm",
   },
 }
