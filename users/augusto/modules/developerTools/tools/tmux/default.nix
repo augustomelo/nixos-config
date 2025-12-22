@@ -29,19 +29,21 @@ in
         set-option -g window-status-current-style "#{?window_zoomed_flag,fg=#{@thm_yellow},fg=#{@thm_mauve}}"
         set-option -g window-status-bell-style "fg=#{@thm_red},nobold"
 
-        bind-key r source-file ${config.xdg.configHome}/tmux/tmux.conf \; display-message "~/.tmux.conf reloaded"
-        bind-key o run-shell -b "tmux capture-pane -J -p | grep -oE '(https?):\/\/.*[^>]' | fzf-tmux -d20 --multi | xargs xdg-open"
-        bind-key s display-popup -E "sessionizer.sh"
-        bind-key C-t display-popup -d "#{pane_current_path}" -E "bash -i"
+        unbind-key %
+        unbind-key '"'
+        unbind-key -T copy-mode-vi MouseDragEnd1Pane
+        unbind-key [
+
         bind-key - split-window -v
-        bind-key | split-window -h
         bind-key -T copy-mode-vi v send-keys -X begin-selection
         bind-key -T copy-mode-vi y send-keys -X copy-selection
-        bind C-l send-keys 'C-l' # since I am usin C-l to move windos this is needed
-
-        unbind-key -T copy-mode-vi MouseDragEnd1Pane
-        unbind-key '"'
-        unbind-key %
+        bind-key C-l send-keys 'C-l' # since I am usin C-l to move windos this is needed
+        bind-key C-t display-popup -d "#{pane_current_path}" -E "bash -i"
+        bind-key [ run-shell "copy_mode_with_line_numbers.sh"
+        bind-key o run-shell -b "tmux capture-pane -J -p | grep -oE '(https?):\/\/.*[^>]' | fzf-tmux -d20 --multi | xargs xdg-open"
+        bind-key r source-file ${config.xdg.configHome}/tmux/tmux.conf \; display-message "~/.tmux.conf reloaded"
+        bind-key s display-popup -E "sessionizer.sh"
+        bind-key | split-window -h
       '';
       focusEvents = true;
       historyLimit = 50000;
