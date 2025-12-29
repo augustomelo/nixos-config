@@ -11,7 +11,7 @@ in
     # https://github.com/qdm12/gluetun
     # https://github.com/qdm12/gluetun-wiki
     services.podman.containers.privoxy = {
-      image = "docker.io/qmcgaw/gluetun:v3.40";
+      image = "docker.io/qmcgaw/gluetun:v3.41";
 
       autoUpdate = "registry";
       addCapabilities = [ "NET_ADMIN" ];
