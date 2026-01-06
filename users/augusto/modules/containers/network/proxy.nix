@@ -19,7 +19,10 @@ in
       image = "docker.io/qmcgaw/gluetun:v3.41";
 
       autoUpdate = "registry";
-      addCapabilities = [ "NET_ADMIN" ];
+      addCapabilities = [
+        "NET_ADMIN"
+        "NET_RAW"
+      ];
       devices = [ "/dev/net/tun:/dev/net/tun" ];
       environmentFile = [ "${config.sops.templates."containers/proxy".path}" ];
       network = [ "network" ];
