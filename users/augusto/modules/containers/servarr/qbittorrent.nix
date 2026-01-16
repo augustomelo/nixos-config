@@ -29,15 +29,15 @@ in
           Requires = "podman-privoxy.service";
           PartOf = "podman-privoxy.service";
         };
-        X-Container = {
-          HealthCmd = "curl -s http://localhost:8080/api/v2/transfer/info | jq -e '.connection_status == \"connected\"' || exit 1";
-          HealthInterval = "30s";
-          HealthOnFailure = "stop";
-          HealthRetries = "3";
-          HealthStartPeriod = "60s";
-          HealthTimeout = "10s";
-        };
       };
+      extraPodmanArgs = [
+        ''--health-cmd="curl -s http://localhost:8080/api/v2/transfer/info | jq -e '.connection_status == \"connected\"' || exit 1"''
+        "--health-interval=30s"
+        "--health-on-failure=stop"
+        "--health-retries=3"
+        "--health-start-period=60s"
+        "--health-timeout=10s"
+      ];
       network = [ "container:privoxy" ];
       user = "augusto";
       userNS = "keep-id";
