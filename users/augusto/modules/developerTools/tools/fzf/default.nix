@@ -16,6 +16,7 @@ in
       ];
       defaultCommand = "fd --hidden --strip-cwd-prefix --exclude .git";
       defaultOptions = [
+        "--ansi"
         "--bind 'ctrl-u:preview-up,ctrl-d:preview-down'"
       ];
       fileWidgetCommand = "fd --type=f --hidden --strip-cwd-prefix --exclude .git";
