@@ -26,7 +26,7 @@ in
         lua-language-server
         markdownlint-cli
         nil
-        nixfmt-rfc-style
+        nixfmt
         shellcheck
         shfmt
         terraform-ls

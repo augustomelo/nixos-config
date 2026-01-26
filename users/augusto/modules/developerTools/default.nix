@@ -57,7 +57,6 @@
       go
       home-manager
       hurl
-      nixfmt-rfc-style
       nodejs_22
       python313
       ripgrep
