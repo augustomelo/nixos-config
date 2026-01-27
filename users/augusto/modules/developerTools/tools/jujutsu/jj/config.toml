@@ -1,5 +1,7 @@
 [git]
+fetch = ["upstream", "origin"]
 private-commits = "description(glob:'private:*')"
+push = "origin"
 sign-on-push = true
 
 [signing]
