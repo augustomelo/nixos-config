@@ -4,6 +4,9 @@ private-commits = "description(glob:'private:*')"
 push = "origin"
 sign-on-push = true
 
+[remotes.origin]
+auto-track-created-bookmarks = "*"
+
 [signing]
 behavior = "drop"
 backend = "ssh"
