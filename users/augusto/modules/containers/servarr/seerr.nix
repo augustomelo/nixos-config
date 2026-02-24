@@ -5,7 +5,7 @@
 }:
 let
   cfg = config.homeServer.containers.stack.servarr;
-  configFolder = "${config.homeServer.containers.directory.config}/servarr/jellyseerr";
+  configFolder = "${config.homeServer.containers.directory.config}/servarr/seerr";
 in
 {
   config = lib.mkIf cfg.enable {
@@ -13,13 +13,14 @@ in
       "d ${configFolder} 0755 - - -"
     ];
 
-    # https://github.com/Fallenbagel/jellyseerr
-    services.podman.containers.jellyseerr = {
-      image = "docker.io/fallenbagel/jellyseerr:latest";
+    # https://github.com/seerr-team/seerr
+    services.podman.containers.seerr = {
+      image = "ghcr.io/seerr-team/seerr:latest";
 
       autoUpdate = "registry";
       network = [ "servarr" ];
       ports = [ "5055:5055" ];
+      userNS = "keep-id";
       volumes = [
         "${configFolder}:/app/config"
       ];

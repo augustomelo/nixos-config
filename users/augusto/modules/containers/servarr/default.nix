@@ -11,7 +11,7 @@ in
   imports = [
     ./bazarr.nix
     ./flaresolverr.nix
-    ./jellyseerr.nix
+    ./seerr.nix
     ./privoxy.nix
     ./prowlarr.nix
     ./qbittorrent.nix
