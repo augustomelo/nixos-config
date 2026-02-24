@@ -14,6 +14,7 @@ in
 
       autoUpdate = "registry";
       environment = {
+        PROXY_URL = "http://privoxy:8888";
         TZ = "Etc/UTC";
       };
       network = [ "servarr" ];
