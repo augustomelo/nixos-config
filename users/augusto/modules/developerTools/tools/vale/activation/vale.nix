@@ -40,15 +40,13 @@ in
           $DRY_RUN_CMD mkdir -p $vale_styles_spelling
         fi
 
-        yaml_content=$(echo "{}" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value 'spelling' 'extends')
-        yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value "Did you really mean: \"%s\" ?" 'message' )
-        yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value error 'level' )
+        yaml_content=$(${pkgs.dasel}/bin/dasel --out yaml '{"extends": "spelling", "message": "Did you really mean: \"%s\" ?", "level": "error", "dictionaries":[]}')
 
         for lang in ${toString langs}; do
           $DRY_RUN_CMD echo "Set up dictionary: $lang"
           ln -sf ${dictSource}/dictionaries/$lang/index.dic "$vale_config_dictionaries/$lang.dic"
           ln -sf ${dictSource}/dictionaries/$lang/index.aff "$vale_config_dictionaries/$lang.aff"
-          yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel put --read yaml --type string --value "$lang" 'dictionaries.[]')
+          yaml_content=$(echo "$yaml_content" | ${pkgs.dasel}/bin/dasel --in yaml --out yaml --root "dictionaries = [dictionaries..., '$lang']")
         done
 
         $DRY_RUN_CMD echo "$yaml_content" > "$vale_styles_spelling/Spelling.yml"
