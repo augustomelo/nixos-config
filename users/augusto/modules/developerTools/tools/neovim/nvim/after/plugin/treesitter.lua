@@ -1,3 +1,5 @@
+-- https://github.com/nvim-treesitter/nvim-treesitter
+
 local ensure_installed = {
   "bash",
   "c",

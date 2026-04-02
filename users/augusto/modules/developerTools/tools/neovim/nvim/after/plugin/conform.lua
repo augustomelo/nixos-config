@@ -12,3 +12,10 @@ vim.keymap.set("n", "grf", function()
     lsp_format = "fallback",
   })
 end, { noremap = true, silent = true, desc = "conform.format" })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function(args)
+    require("conform").format({ bufnr = args.buf })
+  end,
+})

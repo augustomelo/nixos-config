@@ -1,3 +1,5 @@
+-- https://github.com/saghen/blink.cmp
+
 require('blink.cmp').setup({
   completion = {
     menu = { border = 'single' },

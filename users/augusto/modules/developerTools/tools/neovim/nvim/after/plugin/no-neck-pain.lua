@@ -1,4 +1,5 @@
--- https://github.com/shortcuts/no-neck-pain.nvim?tab=readme-ov-file#-configuration
+-- https://github.com/shortcuts/no-neck-pain.nvim
+--
 require("no-neck-pain").setup({
   width = 150,
   mappings = {

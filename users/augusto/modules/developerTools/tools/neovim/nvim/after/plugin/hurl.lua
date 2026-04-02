@@ -1,6 +1,6 @@
 require("hurl").setup({
   formatters = {
-    json = { "dasel", "--read", "json" },
+    json = { "dasel", "--in=json"},
     html = {}
   }
 })
