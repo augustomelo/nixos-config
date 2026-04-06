@@ -7,7 +7,7 @@ vim.keymap.set("c", "<C-e>", "<end>",
 
 vim.keymap.set("n", "<leader><leader>", "<C-^>",
   { unpack(default_opts), desc = "Edit the alternate file." })
-vim.keymap.set("n", "<leader>n", "<Cmd>let @/ = \"\"<CR>",
+vim.keymap.set("n", "<leader>sh", "<Cmd>let @/ = \"\"<CR>",
   { unpack(default_opts), desc = "Stop the highlighting for the 'hlsearch'." })
 vim.keymap.set("n", "<leader>q", "<Cmd>quit<CR>",
   { unpack(default_opts), desc = "Quit the current window." })
