@@ -16,13 +16,14 @@ in
       clock24 = true;
       escapeTime = 0;
       extraConfig = ''
+        set-option -g allow-passthrough
         set-option -g display-time 4000
         set-option -g renumber-windows on
         set-option -g status-left "  "
+        set-option -g status-right " #S "
         set-option -g window-status-current-format "●"
         set-option -g window-status-format "●"
         set-option -g window-status-separator "  "
-        set-option -g status-right " #S "
 
         # https://github.com/catppuccin/tmux/blob/main/themes/catppuccin_macchiato_tmux.conf
         set-option -gF status-style "bg=#{@thm_surface_1},fg=#{@thm_fg}"

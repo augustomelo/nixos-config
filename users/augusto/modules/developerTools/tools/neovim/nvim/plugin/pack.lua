@@ -16,7 +16,6 @@ vim.pack.add({
   "https://github.com/tpope/vim-surround",
   "https://github.com/windwp/nvim-autopairs",
   { src = "https://github.com/catppuccin/nvim",               name = "catppuccin" },
-  { src = "https://github.com/j-hui/fidget.nvim",             version = vim.version.range("1.x") },
   { src = "https://github.com/nvim-telescope/telescope.nvim", version = vim.version.range("0.2.x") },
   { src = "https://github.com/obsidian-nvim/obsidian.nvim",   version = vim.version.range("3.x") },
   { src = "https://github.com/saghen/blink.cmp",              version = vim.version.range("1.x") },
