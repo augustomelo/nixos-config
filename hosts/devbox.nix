@@ -8,7 +8,6 @@
   environment = {
     localBinInPath = true;
     variables = {
-      QT_AUTO_SCREEN_SCALE_FACTOR = 1;
       QT_ENABLE_HIGHDPI_SCALING = 1;
     };
   };
@@ -38,8 +37,9 @@
 
   services = {
     xserver = {
+      dpi = 270;
       enable = true;
-      dpi = 220;
+      upscaleDefaultCursor = true;
       windowManager.i3.enable = true;
       xkb.layout = "us";
     };

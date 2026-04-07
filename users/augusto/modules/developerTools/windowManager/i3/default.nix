@@ -14,7 +14,7 @@ in
         terminal = "ghostty";
         modifier = "Mod4";
         startup = [
-          { command = "exec xrandr --dpi 220"; }
+          { command = "exec xrandr --dpi 270"; }
         ];
       };
     };
