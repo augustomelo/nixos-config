@@ -16,10 +16,6 @@ vim.keymap.set("n", "<leader>w", "<Cmd>write<CR>",
 vim.keymap.set("n", "<leader>cfp", "<Cmd>let @+ = expand(\"%:p\")<CR>",
   { unpack(default_opts), desc = "Copy buffer full path into unnamed buffer" })
 
-vim.keymap.set("n", "K", function()
-  vim.lsp.buf.hover({ border = "single" })
-end, { unpack(default_opts), desc = "vim.lsp.buf.hover()" })
-
 vim.keymap.set("n", "j", function()
   if vim.v.count == 0 then return "gj" end
   return "j"
