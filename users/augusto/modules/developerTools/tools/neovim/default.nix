@@ -45,6 +45,8 @@ in
           ]
         ))
       ];
+      withPython3 = false;
+      withRuby = false;
     };
   };
 }
