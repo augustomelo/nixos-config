@@ -11,6 +11,7 @@ vim.pack.add({
   "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/nvim-treesitter/nvim-treesitter-context",
   "https://github.com/olrtg/nvim-emmet",
+  "https://github.com/rachartier/tiny-cmdline.nvim",
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/tpope/vim-repeat",
   "https://github.com/tpope/vim-surround",
