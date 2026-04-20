@@ -116,7 +116,7 @@ end
 
 local M = {}
 
-M.statusline = function()
+M.render = function()
   init_colors()
 
   local parts = {
