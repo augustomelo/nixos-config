@@ -1,5 +1,3 @@
-require('vim._core.ui2').enable({}) -- experimental
-
 vim.cmd.packadd("nvim.undotree")
 
 vim.g.loaded_node_provider = 0
