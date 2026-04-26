@@ -31,7 +31,6 @@ in
         shfmt
         terraform-ls
         tree-sitter
-        tree-sitter
         typescript-language-server
         vale-ls
         yaml-language-server
