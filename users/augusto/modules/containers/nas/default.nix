@@ -8,7 +8,7 @@ let
 in
 {
   imports = [
-    ./samba.nix
+    ./copyparty.nix
   ];
 
   config = lib.mkIf cfg.enable {
