@@ -5,6 +5,7 @@
 }:
 {
   imports = [
+    ./management
     ./media
     ./nas
     ./network
@@ -33,6 +34,7 @@
       };
     };
     stack = {
+      management.enable = lib.mkEnableOption "Enable management stack";
       media.enable = lib.mkEnableOption "Enable media stack";
       nas.enable = lib.mkEnableOption "Enable nas stack";
       network.enable = lib.mkEnableOption "Enable network stack";
@@ -41,6 +43,7 @@
   };
 
   config = lib.mkIf config.homeServer.containers.enable {
+    homeServer.containers.stack.management.enable = true;
     homeServer.containers.stack.media.enable = true;
     homeServer.containers.stack.nas.enable = true;
     homeServer.containers.stack.network.enable = true;
