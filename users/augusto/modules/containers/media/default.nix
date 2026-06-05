@@ -10,6 +10,7 @@ in
   imports = [
     ./audiobookshelf.nix
     ./bentopdf.nix
+    ./bookorbit.nix
     ./immich.nix
     ./jellyfin.nix
     ./paperless-ngx.nix
