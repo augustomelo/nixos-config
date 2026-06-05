@@ -5,7 +5,6 @@
 }:
 {
   imports = [
-    ./fitness
     ./management
     ./media
     ./nas
@@ -35,7 +34,6 @@
       };
     };
     stack = {
-      fitness.enable = lib.mkEnableOption "Enable fitness stack";
       management.enable = lib.mkEnableOption "Enable management stack";
       media.enable = lib.mkEnableOption "Enable media stack";
       nas.enable = lib.mkEnableOption "Enable nas stack";
@@ -45,7 +43,6 @@
   };
 
   config = lib.mkIf config.homeServer.containers.enable {
-    homeServer.containers.stack.fitness.enable = true;
     homeServer.containers.stack.management.enable = true;
     homeServer.containers.stack.media.enable = true;
     homeServer.containers.stack.nas.enable = true;
