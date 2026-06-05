@@ -27,43 +27,50 @@
     windowManager.i3.enable = lib.mkEnableOption "Enable i3 window manager";
   };
 
-  config = lib.mkIf config.developerTools.enable {
-    catppuccin = {
-      flavor = "macchiato";
+  config = lib.mkMerge [
+    {
+      catppuccin.autoEnable = false;
+      catppuccin.enable = config.developerTools.enable;
+    }
 
-      bat.enable = true;
-      fzf.enable = true;
-      tmux = {
-        enable = true;
-        extraConfig = ''
-          set -g @catppuccin_window_status_style "rounded"
-          set -g @catppuccin_window_text " #W"
-          set -g @catppuccin_window_current_text " #W"
-        '';
+    (lib.mkIf config.developerTools.enable {
+      catppuccin = {
+        flavor = "macchiato";
+
+        bat.enable = true;
+        fzf.enable = true;
+        tmux = {
+          enable = true;
+          extraConfig = ''
+            set -g @catppuccin_window_status_style "rounded"
+            set -g @catppuccin_window_text " #W"
+            set -g @catppuccin_window_current_text " #W"
+          '';
+        };
       };
-    };
 
-    home.packages = with pkgs; [
-      cmake
-      dasel
-      dbeaver-bin
-      delta
-      docker-compose
-      eza
-      fd
-      firefox
-      gcc
-      gnumake
-      go
-      home-manager
-      hurl
-      nodejs_22
-      python313
-      ripgrep
-      sops
-      unzip
-      xsel
-      jsonnet
-    ];
-  };
+      home.packages = with pkgs; [
+        cmake
+        dasel
+        dbeaver-bin
+        delta
+        docker-compose
+        eza
+        fd
+        firefox
+        gcc
+        gnumake
+        go
+        home-manager
+        hurl
+        nodejs_22
+        python313
+        ripgrep
+        sops
+        unzip
+        xsel
+        jsonnet
+      ];
+    })
+  ];
 }
