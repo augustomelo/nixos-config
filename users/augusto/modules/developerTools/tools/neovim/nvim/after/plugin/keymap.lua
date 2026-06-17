@@ -5,6 +5,7 @@ vim.keymap.set("c", "<C-a>", "<home>",
 vim.keymap.set("c", "<C-e>", "<end>",
   { unpack(default_opts), desc = "Move cursor to the ending of the line." })
 
+
 vim.keymap.set("n", "<leader><leader>", "<C-^>",
   { unpack(default_opts), desc = "Edit the alternate file." })
 vim.keymap.set("n", "<leader>sh", "<Cmd>let @/ = \"\"<CR>",
@@ -15,6 +16,8 @@ vim.keymap.set("n", "<leader>w", "<Cmd>write<CR>",
   { unpack(default_opts), desc = "Write the whole buffer to the current file." })
 vim.keymap.set("n", "<leader>cfp", "<Cmd>let @+ = expand(\"%:p\")<CR>",
   { unpack(default_opts), desc = "Copy buffer full path into unnamed buffer" })
+vim.keymap.set("n", "<M-j>", "<Cmd>cnext<CR>", {unpack(default_opts), desc = "Open next entry quickfix"})
+vim.keymap.set("n", "<M-k>", "<Cmd>cprev<CR>", {unpack(default_opts), desc = "Open previous entry quickfix"})
 
 vim.keymap.set("n", "j", function()
   if vim.v.count == 0 then return "gj" end

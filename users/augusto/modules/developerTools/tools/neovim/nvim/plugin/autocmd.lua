@@ -10,6 +10,14 @@ vim.api.nvim_create_autocmd({ "BufLeave", "WinLeave" }, {
   group = vim.api.nvim_create_augroup("CursorLine", { clear = false })
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Open quickfix item on vertical split",
+  pattern = "qf",
+  callback = function(_)
+    vim.keymap.set("n", "<leader><Enter>", "<C-w><Enter><C-w>L", { noremap = true, silent = true, buffer = true })
+  end,
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
   desc = "LSP attach keymaps",
   callback = function(args)
