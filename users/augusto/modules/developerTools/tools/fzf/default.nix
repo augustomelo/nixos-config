@@ -10,19 +10,23 @@ in
   config = lib.mkIf cfg.enable {
     programs.fzf = {
       enable = true;
-      changeDirWidgetCommand = "fd --type=d --hidden --strip-cwd-prefix --exclude .git";
-      changeDirWidgetOptions = [
-        "--preview 'eza --tree --color=always {} | head -200'"
-      ];
+      changeDirWidget = {
+        command = "fd --type=d --hidden --strip-cwd-prefix --exclude .git";
+        options = [
+          "--preview 'eza --tree --color=always {} | head -200'"
+        ];
+      };
       defaultCommand = "fd --hidden --strip-cwd-prefix --exclude .git";
       defaultOptions = [
         "--ansi"
         "--bind 'ctrl-u:preview-up,ctrl-d:preview-down'"
       ];
-      fileWidgetCommand = "fd --type=f --hidden --strip-cwd-prefix --exclude .git";
-      fileWidgetOptions = [
-        "--preview 'bat --number --color=always --line-range :500 {}'"
-      ];
+      fileWidget = {
+        command = "fd --type=f --hidden --strip-cwd-prefix --exclude .git";
+        options = [
+          "--preview 'bat --number --color=always --line-range :500 {}'"
+        ];
+      };
     };
   };
 }
