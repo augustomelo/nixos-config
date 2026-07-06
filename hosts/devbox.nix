@@ -31,7 +31,10 @@
     networkmanager.enable = true;
   };
 
-  programs. ssh.startAgent = true;
+  programs = {
+    fuse.enable = true;
+    ssh.startAgent = true;
+  };
 
   security.sudo.wheelNeedsPassword = false;
 
