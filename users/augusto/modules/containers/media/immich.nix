@@ -34,7 +34,7 @@ in
 
       # https://immich.app/docs/overview/welcome
       immich-server = {
-        image = "ghcr.io/immich-app/immich-server:v2";
+        image = "ghcr.io/immich-app/immich-server:v3";
 
         autoUpdate = "registry";
         devices = [ "/dev/dri:/dev/dri" ];
@@ -60,7 +60,7 @@ in
 
       # https://immich.app/docs/overview/welcome
       immich-machine-learning = {
-        image = "ghcr.io/immich-app/immich-machine-learning:v2";
+        image = "ghcr.io/immich-app/immich-machine-learning:v3";
 
         autoUpdate = "registry";
         devices = [ "/dev/dri:/dev/dri" ];
