@@ -20,6 +20,7 @@ in
         bash-language-server
         emmet-language-server
         gopls
+        gotools
         helm-ls
         jdt-language-server
         jsonnet-language-server
