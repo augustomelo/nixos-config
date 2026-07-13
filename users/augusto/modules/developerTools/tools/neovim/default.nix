@@ -27,6 +27,8 @@ in
         markdownlint-cli
         nil
         nixfmt
+        pyrefly
+        ruff
         shellcheck
         shfmt
         terraform-ls
@@ -34,15 +36,6 @@ in
         typescript-language-server
         vale-ls
         yaml-language-server
-
-        (python313.withPackages (
-          ps: with ps; [
-            pylsp-mypy
-            pylsp-rope
-            python-lsp-ruff
-            python-lsp-server
-          ]
-        ))
       ];
       withPython3 = false;
       withRuby = false;

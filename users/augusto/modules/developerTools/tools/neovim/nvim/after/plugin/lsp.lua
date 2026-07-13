@@ -105,25 +105,8 @@ local servers = {
   -- https://github.com/hashicorp/terraform-ls/blob/main/docs/SETTINGS.md
   terraformls = {},
 
-  -- https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
-  pylsp = {
-    settings = {
-      pylsp = {
-        plugins = {
-          pylsp_mypy = {
-            enabled = true,
-          },
-          rope_autoimport = {
-            enabled = true,
-          },
-          ruff = {
-            enabled = true,
-            extendSelect = { "I", "N" },
-          },
-        },
-      },
-    },
-  },
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/pyrefly.lua
+  pyrefly = {},
 
   -- https://github.com/typescript-language-server/typescript-language-server/blob/master/docs/configuration.md
   ts_ls = {
