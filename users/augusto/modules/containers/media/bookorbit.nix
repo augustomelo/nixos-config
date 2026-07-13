@@ -56,7 +56,6 @@ in
       bookorbit-database = {
         image = "docker.io/pgvector/pgvector:pg16@sha256:7d400e340efb42f4d8c9c12c6427adb253f726881a9985d2a471bf0eed824dff";
 
-        autoUpdate = "registry";
         environmentFile = [ "${config.sops.templates."containers/bookorbit-database".path}" ];
         network = [
           "media"
