@@ -28,4 +28,4 @@ paginate = "never"
 --when.commands = ["diff", "show"]
 [--scope.ui]
 diff-formatter = ":git"
-pager = "delta"
+pager = ["hunk", "pager"]

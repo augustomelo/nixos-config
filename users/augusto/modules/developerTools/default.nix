@@ -12,6 +12,7 @@
     ./tools/fzf
     ./tools/ghostty
     ./tools/git
+    ./tools/hunk
     ./tools/jujutsu
     ./tools/neovim
     ./tools/podman
@@ -53,10 +54,10 @@
         cmake
         dasel
         dbeaver-bin
-        delta
         docker-compose
         eza
         fd
+        hunk
         firefox
         gcc
         gnumake

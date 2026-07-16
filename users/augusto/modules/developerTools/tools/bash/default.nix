@@ -17,7 +17,6 @@ in
       };
 
       sessionVariables = {
-        BAT_THEME = "Catppuccin Macchiato"; # this is needed for delta when running the command git blame
         EDITOR = "nvim";
         IGNOREEOF = "3";
         PAGER = "less -RF";
@@ -61,6 +60,7 @@ in
       '';
       shellAliases = {
         g = "git";
+        h = "hunk";
         jjc = "jj git init --colocate";
         la = "eza --color=always --git --long --all";
         less = "less -RF";
@@ -69,8 +69,8 @@ in
         nfu = "(cd $HOME/workspace/personal/nixos-config/ && jj new -m \"feat: update refs\" && nix flake update --flake $HOME/workspace/personal/nixos-config/)";
         nrs = "sudo nixos-rebuild switch --flake $HOME/workspace/personal/nixos-config/#";
         tmux = "tmux attach -dt nixos-config || tmux new-session -s nixos-config -c \"$HOME/workspace/personal/nixos-config/\"";
-        xauto = "xrandr --output Virtual-1 --auto --dpi 270";
         watch = "watch --color";
+        xauto = "xrandr --output Virtual-1 --auto --dpi 270";
       };
       shellOptions = [
         "cdspell"
