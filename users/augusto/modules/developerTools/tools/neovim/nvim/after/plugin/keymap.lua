@@ -11,9 +11,7 @@ vim.keymap.set("n", "<leader><leader>", "<C-^>",
 vim.keymap.set("n", "<leader>u", require("undotree").open)
 vim.keymap.set("n", "<leader>sh", "<Cmd>let @/ = \"\"<CR>",
   { unpack(default_opts), desc = "Stop the highlighting for the 'hlsearch'." })
-vim.keymap.set("n", "<leader>q", "<Cmd>quit<CR>",
-  { unpack(default_opts), desc = "Quit the current window." })
-vim.keymap.set("n", "<leader>w", "<Cmd>write<CR>",
+vim.keymap.set("n", "ZW", "<Cmd>write<CR>",
   { unpack(default_opts), desc = "Write the whole buffer to the current file." })
 vim.keymap.set("n", "<leader>cfp", "<Cmd>let @+ = expand(\"%:p\")<CR>",
   { unpack(default_opts), desc = "Copy buffer full path into unnamed buffer" })
