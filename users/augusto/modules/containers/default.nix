@@ -10,6 +10,7 @@
     ./nas
     ./network
     ./podman.nix
+    ./reverseProxy
     ./servarr
   ];
 
@@ -38,6 +39,7 @@
       media.enable = lib.mkEnableOption "Enable media stack";
       nas.enable = lib.mkEnableOption "Enable nas stack";
       network.enable = lib.mkEnableOption "Enable network stack";
+      reverseProxy.enable = lib.mkEnableOption "Enable reverseProxy stack";
       servarr.enable = lib.mkEnableOption "Enable servarr stack";
     };
   };
@@ -47,6 +49,7 @@
     homeServer.containers.stack.media.enable = true;
     homeServer.containers.stack.nas.enable = true;
     homeServer.containers.stack.network.enable = true;
+    homeServer.containers.stack.reverseProxy.enable = true;
     homeServer.containers.stack.servarr.enable = true;
   };
 }

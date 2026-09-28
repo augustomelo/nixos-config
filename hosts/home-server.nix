@@ -23,6 +23,7 @@
         3923
         5055
         5454
+        6443
         6767
         6881
         7878
@@ -47,6 +48,7 @@
             chain prerouting {
               type nat hook prerouting priority dstnat; policy accept;
               tcp dport 53 redirect to :5454
+              tcp dport 443 redirect to :6443
               udp dport 53 redirect to :5454
             }
           '';
