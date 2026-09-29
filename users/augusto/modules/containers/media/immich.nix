@@ -46,10 +46,17 @@ in
             PartOf = "podman-immich-cache.service podman-immich-database.service";
           };
         };
+        labels = {
+          "traefik.enable"="true" ;
+          "traefik.http.routers.immich-server.entrypoints"="websecure";
+          "traefik.http.routers.immich-server.rule"="Host(`photos.jali.foo`)";
+          "traefik.http.routers.immich-server.tls"="true";
+          "traefik.http.routers.immich-server.tls.certresolver"="le";
+        };
         network = [
           "media"
+          "reverse-proxy"
         ];
-        ports = [ "2283:2283" ];
         userNS = "keep-id";
         volumes = [
           "${storageFolder}/immich-server:/data"
