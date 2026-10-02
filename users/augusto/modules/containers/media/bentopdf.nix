@@ -11,11 +11,18 @@ in
     services.podman.containers = {
       # https://github.com/alam00000/bentopdf
       bentopdf = {
-        image = "docker.io/bentopdf/bentopdf:latest";
+        image = "docker.io/bentopdf/bentopdf-simple:latest";
 
-        ports = [ "3003:8080" ];
+        labels = {
+          "traefik.enable"="true" ;
+          "traefik.http.routers.bentopdf.entrypoints"="websecure";
+          "traefik.http.routers.bentopdf.rule"="Host(`pdf.jali.foo`)";
+          "traefik.http.routers.bentopdf.tls"="true";
+          "traefik.http.routers.bentopdf.tls.certresolver"="le";
+        };
         network = [
           "media"
+          "reverse-proxy"
         ];
         userNS = "keep-id";
       };
