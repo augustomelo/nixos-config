@@ -22,8 +22,17 @@ in
       environment = {
         TZ = "Etc/UTC";
       };
-      network = [ "servarr" ];
-      ports = [ "6767:6767" ];
+      labels = {
+        "traefik.enable" = "true";
+        "traefik.http.routers.bazarr.entrypoints" = "websecure";
+        "traefik.http.routers.bazarr.rule" = "Host(`subtitles.jali.foo`)";
+        "traefik.http.routers.bazarr.tls" = "true";
+        "traefik.http.routers.bazarr.tls.certresolver" = "le";
+      };
+      network = [ 
+        "reverse-proxy" 
+        "servarr" 
+      ];
       user = "augusto";
       userNS = "keep-id";
       volumes = [
