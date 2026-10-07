@@ -24,12 +24,20 @@ in
       autoUpdate = "registry";
       environment = {
         TZ = "Etc/UTC";
-        PORT = "8888";
+        PORT = "8080";
+      };
+      labels = {
+        "traefik.enable" = "true";
+        "traefik.http.routers.audiobookshelf.entrypoints" = "websecure";
+        "traefik.http.routers.audiobookshelf.rule" = "Host(`audiobooks.jali.foo`)";
+        "traefik.http.routers.audiobookshelf.tls" = "true";
+        "traefik.http.routers.audiobookshelf.tls.certresolver" = "le";
+        "traefik.http.services.audiobookshelf.loadbalancer.server.port" = "8080";
       };
       network = [
         "media"
+        "reverse-proxy"
       ];
-      ports = [ "8888:8888" ];
       userNS = "keep-id";
       volumes = [
         "${configFolder}:/config"
