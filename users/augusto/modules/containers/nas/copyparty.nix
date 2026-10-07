@@ -47,10 +47,17 @@ in
     services.podman.containers.copyparty = {
       image = "copyparty.build";
 
+      labels = {
+        "traefik.enable" = "true";
+        "traefik.http.routers.copyparty.entrypoints" = "websecure";
+        "traefik.http.routers.copyparty.rule" = "Host(`files.jali.foo`)";
+        "traefik.http.routers.copyparty.tls" = "true";
+        "traefik.http.routers.copyparty.tls.certresolver" = "le";
+      };
       network = [
         "nas"
+        "reverse-proxy"
       ];
-      ports = [ "3923:3923" ];
       userNS = "keep-id";
       volumes = [
         "${shareFolder}:/w"
@@ -65,9 +72,12 @@ in
       templates = {
         "containers/copyparty".content = ''
           [global]
+            ansi   # enable colors in log messages (both in logfiles and stdout)
             e2dsa  # enable file indexing and filesystem scanning
             e2ts   # enable multimedia indexing
-            ansi   # enable colors in log messages (both in logfiles and stdout)
+            grid
+            rproxy: 1
+            xff-src: lan
 
           [accounts]
             copyparty: ${config.sops.placeholder."containers/copyparty/admin"}
