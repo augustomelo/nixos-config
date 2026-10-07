@@ -40,10 +40,17 @@ in
           "--health-start-period=20s"
           "--health-timeout=5s"
         ];
+        labels = {
+          "traefik.enable" = "true";
+          "traefik.http.routers.bookorbit.entrypoints" = "websecure";
+          "traefik.http.routers.bookorbit.rule" = "Host(`books.jali.foo`)";
+          "traefik.http.routers.bookorbit.tls" = "true";
+          "traefik.http.routers.bookorbit.tls.certresolver" = "le";
+        };
         network = [
           "media"
+          "reverse-proxy"
         ];
-        ports = [ "3001:3000" ];
         userNS = "keep-id";
         volumes = [
           "${configFolder}:/data"
@@ -92,8 +99,7 @@ in
           POSTGRES_DB=bookorbit
           JWT_SECRET=${config.sops.placeholder."containers/bookorbit/jwt_secret"}
           SETUP_BOOTSTRAP_TOKEN=${config.sops.placeholder."containers/bookorbit/setup_bootstrap_token"}
-          APP_URL=https://bookorbit.example.com
-          CLIENT_URL=http://192.168.68.137:3000
+          APP_URL=https://books.jali.foo
           PUID=1000
           PGID=100
           NODE_MAX_OLD_SPACE_SIZE=2048
