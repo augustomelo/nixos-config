@@ -13,7 +13,7 @@ in
     ./bookorbit.nix
     ./immich.nix
     ./jellyfin.nix
-    ./paperless-ngx.nix
+    ./papra.nix
   ];
 
   config = lib.mkIf cfg.enable {
