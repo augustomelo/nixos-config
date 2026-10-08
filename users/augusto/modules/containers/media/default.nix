@@ -14,6 +14,7 @@ in
     ./immich.nix
     ./jellyfin.nix
     ./papra.nix
+    ./yamtrack.nix
   ];
 
   config = lib.mkIf cfg.enable {
