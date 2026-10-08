@@ -27,11 +27,18 @@ in
       environment = {
         TZ = "Etc/UTC";
       };
+      labels = {
+        "traefik.enable" = "true";
+        "traefik.http.routers.jellyfin.entrypoints" = "websecure";
+        "traefik.http.routers.jellyfin.rule" = "Host(`watch.jali.foo`)";
+        "traefik.http.routers.jellyfin.tls" = "true";
+        "traefik.http.routers.jellyfin.tls.certresolver" = "le";
+      };
       network = [
         "media"
+        "reverse-proxy"
         "servarr"
       ];
-      ports = [ "8096:8096" ];
       user = "augusto";
       userNS = "keep-id";
       volumes = [
