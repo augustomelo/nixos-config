@@ -20,11 +20,22 @@ in
       ];
       devices = [ "/dev/net/tun:/dev/net/tun" ];
       environmentFile = [ "${config.sops.templates."containers/privoxy".path}" ];
-      network = [ "servarr" ];
+      labels = {
+        "traefik.enable" = "true";
+        "traefik.http.routers.qbittorrent.entrypoints" = "websecure";
+        "traefik.http.routers.qbittorrent.rule" = "Host(`torrents.jali.foo`)";
+        "traefik.http.routers.qbittorrent.service" = "qbittorrent";
+        "traefik.http.routers.qbittorrent.tls" = "true";
+        "traefik.http.routers.qbittorrent.tls.certresolver" = "le";
+        "traefik.http.services.qbittorrent.loadbalancer.server.port" = "8080";
+      };
+      network = [ 
+        "reverse-proxy"
+        "servarr"
+      ];
       ports = [
         "6881:6881/tcp"
         "6881:6881/udp"
-        "8080:8080"
       ];
     };
 
