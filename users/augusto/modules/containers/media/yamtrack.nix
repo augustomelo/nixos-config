@@ -18,6 +18,7 @@ in
       yamtrack = {
         image = "ghcr.io/fuzzygrim/yamtrack:latest";
 
+        autoUpdate = "registry";
         environmentFile = [ "${config.sops.templates."containers/yamtrack".path}" ];
         group = 0;
         labels = {

@@ -19,6 +19,7 @@ in
     services.podman.containers.adguardhome = {
       image = "docker.io/adguard/adguardhome:latest";
 
+      autoUpdate = "registry";
       labels = {
         "traefik.enable" = "true";
         "traefik.http.routers.adguardhome.entrypoints" = "websecure";

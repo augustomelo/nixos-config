@@ -19,6 +19,7 @@ in
       papra = {
         image = "ghcr.io/papra-hq/papra:latest-root";
 
+        autoUpdate = "registry";
         environmentFile = [ "${config.sops.templates."containers/papra".path}" ];
         labels = {
           "traefik.enable" = "true";

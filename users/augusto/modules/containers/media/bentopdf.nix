@@ -13,6 +13,7 @@ in
       bentopdf = {
         image = "docker.io/bentopdf/bentopdf-simple:latest";
 
+        autoUpdate = "registry";
         labels = {
           "traefik.enable"="true" ;
           "traefik.http.routers.bentopdf.entrypoints"="websecure";
