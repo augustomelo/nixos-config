@@ -4,8 +4,9 @@
 }:
 {
   imports = [
-    ./shared.nix
     ./hardware/gmktec-nucbox-g3-plus.nix
+    ./services/beszel-agent.nix
+    ./shared.nix
   ];
 
   networking = {
@@ -101,16 +102,14 @@
   # https://github.com/containers/podman/issues/24796
   systemd.targets.network-online.wantedBy = [ "multi-user.target" ];
 
-  users = {
-    users.augusto = {
-      linger = true;
-      extraGroups = [
-        "podman"
-      ];
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEGL2rZ4htp01YDa9Q6iqwcmtpkawn6VdCu25idKDHKm jb@home-server"
-      ];
-    };
+  users.users.augusto = {
+    linger = true;
+    extraGroups = [
+      "podman"
+    ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEGL2rZ4htp01YDa9Q6iqwcmtpkawn6VdCu25idKDHKm jb@home-server"
+    ];
   };
 
   virtualisation = {

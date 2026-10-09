@@ -8,6 +8,7 @@ let
 in
 {
   imports = [
+    ./beszel.nix
     ./dozzle.nix
   ];
 
