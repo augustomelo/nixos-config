@@ -28,7 +28,6 @@
         HUB_URL=http://metrics.jali.foo:8090
         INTEL_GPU_DEVICE=drm:/dev/dri/card0
         KEY="${config.sops.placeholder."containers/beszelHub/key"}"
-        LOG_LEVEL=debug
         TOKEN=${config.sops.placeholder.beszelAgentToken}
       '';
     };
