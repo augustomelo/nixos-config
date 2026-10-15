@@ -11,11 +11,12 @@ in
   imports = [
     ./bazarr.nix
     ./flaresolverr.nix
-    ./seerr.nix
     ./privoxy.nix
+    ./profilarr.nix
     ./prowlarr.nix
     ./qbittorrent.nix
     ./radarr.nix
+    ./seerr.nix
     ./sonarr.nix
   ];
 
