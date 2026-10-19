@@ -25,6 +25,7 @@
     templates = {
       baeszelAgent.content = ''
         DOCKER_HOST=unix:///run/podman-socket-proxy/podman.sock
+        DOCKER_IMAGE_CHECK=false
         HUB_URL=http://metrics.jali.foo:8090
         INTEL_GPU_DEVICE=drm:/dev/dri/card0
         KEY="${config.sops.placeholder."containers/beszelHub/key"}"
