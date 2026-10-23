@@ -70,6 +70,10 @@
     tailscale = {
       enable = true;
       authKeyFile = config.sops.secrets.tailscaleAuthKey.path;
+      extraSetFlags = [
+        "--advertise-routes=192.168.68.137/32"
+      ];
+      useRoutingFeatures = "server";
     };
   };
 
