@@ -43,6 +43,9 @@ in
         bind-key [ run-shell "copy_mode_with_line_numbers.sh"
         bind-key o run-shell -b "tmux capture-pane -J -p | grep -oE '(https?):\/\/.*[^>]' | fzf-tmux -d20 --multi | xargs xdg-open"
         bind-key r source-file ${config.xdg.configHome}/tmux/tmux.conf \; display-message "~/.tmux.conf reloaded"
+        bind-key B run-shell "join_pane.sh return '#{pane_id}'"
+        bind-key J run-shell "join_pane.sh join '{marked}' '#{pane_id}'"
+        bind-key j choose-tree -Zw "run-shell \"join_pane.sh join '%%' '#{pane_id}'\""
         bind-key s display-popup -E "sessionizer.sh"
         bind-key | split-window -h
       '';
