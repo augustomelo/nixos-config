@@ -86,16 +86,22 @@ local servers = {
     },
   },
 
-  -- https://github.com/oxalica/nil/blob/main/docs/configuration.md
-  nil_ls = {
+  -- https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
+  nixd = {
     settings = {
-      ['nil'] = {
+      nixd = {
+        nixpkgs = {
+          expr = "import (builtins.getFlake (toString ./. )).inputs.nixpkgs { }",
+        },
         formatting = {
           command = { "nixfmt" },
         },
-        nix = {
-          flake = {
-            autoArchive = true,
+        options = {
+          nixos = {
+            expr = "(builtins.getFlake (toString ./. )).nixosConfigurations.devbox.options",
+          },
+          ['home-manager'] = {
+            expr = "(builtins.getFlake (toString ./. )).nixosConfigurations.devbox.options.home-manager.users.type.getSubOptions []",
           },
         },
       },

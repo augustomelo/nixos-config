@@ -8,6 +8,7 @@
   imports = [
     ./tools/bash
     ./tools/bat
+    ./tools/claude-code
     ./tools/direnv
     ./tools/fzf
     ./tools/ghostty

@@ -26,7 +26,7 @@ in
         jsonnet-language-server
         lua-language-server
         markdownlint-cli
-        nil
+        nixd
         nixfmt
         pyrefly
         ruff
