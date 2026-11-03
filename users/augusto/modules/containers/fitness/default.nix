@@ -9,6 +9,7 @@ in
 {
   imports = [
     ./opengym.nix
+    ./nutritrace.nix
   ];
 
   config = lib.mkIf cfg.enable {
