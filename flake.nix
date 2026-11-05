@@ -2,13 +2,15 @@
   description = "NixOS system and home-manager configuration";
 
   inputs = {
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -22,7 +24,6 @@
       home-manager,
       nixos-hardware,
       nixpkgs,
-      nixpkgs-stable,
       sops-nix,
       ...
     }:
@@ -40,11 +41,6 @@
               home-manager.sharedModules = [
                 sops-nix.homeManagerModules.sops
               ];
-              home-manager.extraSpecialArgs = {
-                pkgs-stable = import nixpkgs-stable {
-                  system = "aarch64-linux";
-                };
-              };
               home-manager.users.augusto = {
                 imports = [
                   ./users/augusto/home-manager.nix
