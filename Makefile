@@ -1,6 +1,6 @@
-.PHONY: check-env copy partition-format-install install-user-config sync-config
+.PHONY: backup check-env copy partition-format-install install-user-config sync-config
 
-HOSTNAME ?= unset
+NIXHOST ?= unset
 NIXADDR ?= unset
 NIXPORT ?= 22
 NIXUSER ?= augusto
@@ -12,12 +12,12 @@ MAKEFILE_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 SSH_OPTIONS=-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
 backup:
-	rsync -av $(HOSTNAME):/etc/nixos/ $(MAKEFILE_DIR)/transfer/
+	rsync -av $(NIXHOST):/etc/nixos/ $(MAKEFILE_DIR)/transfer/
 
 check-env:
-	@echo "Check if the enviroment variables are installed";
-	@if [ "$(HOSTNAME)" == "unset" ]; then \
-		echo "HOSTNAME is not set. Availble options are: devbox or home-server"; \
+	@echo "Check if the environment variables are installed";
+	@if [ "$(NIXHOST)" = "unset" ]; then \
+		echo "NIXHOST is not set. Available options are: devbox or home-server"; \
 		exit 1; \
 	fi
 
@@ -63,7 +63,7 @@ install-user-config: check-env
 		cd / && \
 		nix shell nixpkgs#git --command git clone https://github.com/augustomelo/nixos-config.git && \
 		cd /nixos-config && \
-		nixos-rebuild switch --flake \".#${HOSTNAME}\" && \
+		nixos-rebuild switch --flake \".#${NIXHOST}\" && \
 		nix shell nixpkgs#git --command git remote set-url origin git@github.com:augustomelo/nixos-config.git && \
 		mv /nixos-config /home/${NIXUSER}/workspace/personal/ && \
 		chown -R ${NIXUSER}: /home/${NIXUSER}/workspace/personal/nixos-config && \
@@ -71,4 +71,4 @@ install-user-config: check-env
 	"
 sync-config:
 	rsync -av --exclude='transfer/' --exclude='.envrc' \
-		$(MAKEFILE_DIR)/ $(NIXUSER)@$(HOSTNAME):/home/$(NIXUSER)/workspace/personal/nixos-config
+		$(MAKEFILE_DIR)/ $(NIXUSER)@$(NIXHOST):/home/$(NIXUSER)/workspace/personal/nixos-config
