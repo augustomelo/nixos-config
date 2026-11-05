@@ -26,7 +26,7 @@
       baeszelAgent.content = ''
         DOCKER_HOST=unix:///run/podman-socket-proxy/podman.sock
         DOCKER_IMAGE_CHECK=false
-        HUB_URL=http://192.168.68.137:8090
+        HUB_URL=http://127.0.0.1:8090
         INTEL_GPU_DEVICE=drm:/dev/dri/card0
         KEY="${config.sops.placeholder."containers/beszelHub/key"}"
         TOKEN=${config.sops.placeholder.beszelAgentToken}
