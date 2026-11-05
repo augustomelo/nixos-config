@@ -17,9 +17,10 @@
         6881
       ];
       allowedTCPPorts = [
+        4443
         5454
-        6443
         6881
+        8080
         8090
         9999
       ];
@@ -33,8 +34,9 @@
           content = ''
             chain prerouting {
               type nat hook prerouting priority dstnat; policy accept;
+              tcp dport 80 redirect to :8080
               tcp dport 53 redirect to :5454
-              tcp dport 443 redirect to :6443
+              tcp dport 443 redirect to :4443
               udp dport 53 redirect to :5454
             }
           '';

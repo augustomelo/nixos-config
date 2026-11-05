@@ -33,7 +33,8 @@ in
         "reverse-proxy"
       ];
       ports = [
-        "6443:443"
+        "4443:443"
+        "8080:80"
       ];
       volumes = [
         "/run/user/%U/podman/podman.sock:/var/run/docker.sock:ro"
@@ -69,6 +70,7 @@ in
                   provider: cloudflare
           entryPoints:
             web:
+              address: ":80"
               http:
                 redirections:
                   entrypoint:
