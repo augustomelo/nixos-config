@@ -47,11 +47,11 @@ in
           };
         };
         labels = {
-          "traefik.enable"="true" ;
-          "traefik.http.routers.immich-server.entrypoints"="websecure";
-          "traefik.http.routers.immich-server.rule"="Host(`photos.jali.foo`)";
-          "traefik.http.routers.immich-server.tls"="true";
-          "traefik.http.routers.immich-server.tls.certresolver"="le";
+          "traefik.enable" = "true";
+          "traefik.http.routers.immich-server.entrypoints" = "websecure";
+          "traefik.http.routers.immich-server.rule" = "Host(`photos.jali.foo`)";
+          "traefik.http.routers.immich-server.tls" = "true";
+          "traefik.http.routers.immich-server.tls.certresolver" = "le";
         };
         network = [
           "media"

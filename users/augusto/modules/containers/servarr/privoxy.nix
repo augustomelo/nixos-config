@@ -29,7 +29,7 @@ in
         "traefik.http.routers.qbittorrent.tls.certresolver" = "le";
         "traefik.http.services.qbittorrent.loadbalancer.server.port" = "8080";
       };
-      network = [ 
+      network = [
         "reverse-proxy"
         "servarr"
       ];

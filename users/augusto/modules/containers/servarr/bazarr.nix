@@ -29,9 +29,9 @@ in
         "traefik.http.routers.bazarr.tls" = "true";
         "traefik.http.routers.bazarr.tls.certresolver" = "le";
       };
-      network = [ 
-        "reverse-proxy" 
-        "servarr" 
+      network = [
+        "reverse-proxy"
+        "servarr"
       ];
       user = "augusto";
       userNS = "keep-id";

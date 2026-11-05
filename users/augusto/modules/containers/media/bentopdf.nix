@@ -15,11 +15,11 @@ in
 
         autoUpdate = "registry";
         labels = {
-          "traefik.enable"="true" ;
-          "traefik.http.routers.bentopdf.entrypoints"="websecure";
-          "traefik.http.routers.bentopdf.rule"="Host(`pdf.jali.foo`)";
-          "traefik.http.routers.bentopdf.tls"="true";
-          "traefik.http.routers.bentopdf.tls.certresolver"="le";
+          "traefik.enable" = "true";
+          "traefik.http.routers.bentopdf.entrypoints" = "websecure";
+          "traefik.http.routers.bentopdf.rule" = "Host(`pdf.jali.foo`)";
+          "traefik.http.routers.bentopdf.tls" = "true";
+          "traefik.http.routers.bentopdf.tls.certresolver" = "le";
         };
         network = [
           "media"
